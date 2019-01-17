@@ -1,16 +1,8 @@
-import Config.testInstrumentationRunner
-import Release.versionCode
-import Release.versionName
-import Versions.compileSdkVersion
-import Versions.minSdkVersion
-import Versions.targetSdkVersion
-import com.android.build.gradle.ProguardFiles.getDefaultProguardFile
-import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
-
 plugins {
   id(Plugins.androidApplication)
   id(Plugins.kotlinAndroid)
   id(Plugins.kotlinAndroidExtensions)
+  id(Plugins.safeArgs)
 }
 
 android {
@@ -36,13 +28,58 @@ dependencies {
   implementation(CoreLibraries.kotlin)
 
   implementation(CoreLibraries.appcompat)
+  /**
+   * ConstraintLayout
+   */
   implementation(CoreLibraries.constraintLayout)
-  implementation(CoreLibraries.courotinesCore)
-  implementation(CoreLibraries.courotinesAndroid)
+  /**
+   * Coroutines
+   */
+  implementation(CoreLibraries.coroutinesCore)
+  implementation(CoreLibraries.coroutinesAndroid)
+  /**
+   * AndroidKTX
+   */
   implementation(CoreLibraries.andoroidKTX)
-  implementation(CoreLibraries.lifeCycleExtension)
-  kapt(CoreLibraries.lifeCycleCompiler)
+  /**
+   * LiveData, ViewModel, LifeCycle
+   */
+  implementation(CoreLibraries.lifeCycleExtensions)
+  kapt(CoreLibraries.lifeCycleAnnotationProcessor)
+  /**
+   * Paging
+   */
+  implementation(CoreLibraries.paging)
+  /**
+   * Navigation
+   */
+  implementation(CoreLibraries.navigationFragment)
+  implementation(CoreLibraries.navigationUI)
 
+  /**
+   * Dagger2
+   */
+  implementation(ExternalLibraries.daggerCore)
+  implementation(ExternalLibraries.daggerSupport)
+  implementation(ExternalLibraries.daggerAnnotationProcessor)
+  /**
+   * Retrofit
+   */
+  implementation(ExternalLibraries.retrofitCore)
+  implementation(ExternalLibraries.retrofitCoroutinesAdapter)
+  implementation(ExternalLibraries.retrofitMoshi)
+  implementation(ExternalLibraries.moshi)
+  implementation(ExternalLibraries.okhttp)
+  implementation(ExternalLibraries.okhttpInterceptor)
+  /**
+   * Room
+   */
+  implementation(CoreLibraries.roomCore)
+  kapt(CoreLibraries.roomAnnotationProcessor)
+  implementation(CoreLibraries.roomCoroutinesSupport)
+  /**
+   * Test
+   */
   testImplementation(TestLibraries.junit)
   androidTestImplementation(TestLibraries.testRunner)
   androidTestImplementation(TestLibraries.espresso)
