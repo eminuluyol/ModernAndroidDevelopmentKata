@@ -10,6 +10,7 @@
     <item name="android:colorBackground">@color/colorBackground</item>
     <item name="android:textViewStyle">@style/GlobalTextViewStyle</item>
     <item name="materialButtonStyle">@style/GlobalMaterialButtonStyle</item>
+    <item name="bottomNavigationStyle">@style/BottomNavigationViewStyle</item>
   </style>
 
   <!-- Splash Activity theme. -->

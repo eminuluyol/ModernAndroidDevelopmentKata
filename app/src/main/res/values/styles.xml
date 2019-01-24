@@ -11,4 +11,12 @@
     <item name="android:textAllCaps">false</item>
   </style>
 
+  <style name="BottomNavigationViewStyle" parent="Widget.MaterialComponents.BottomNavigationView">
+    <item name="labelVisibilityMode">labeled</item>
+    <item name="itemHorizontalTranslationEnabled">false</item>
+    <item name="itemTextColor">@color/bottom_nav_color</item>
+    <item name="itemIconTint">@color/bottom_nav_color</item>
+    <item name="android:layout_gravity">bottom</item>
+  </style>
+
 </resources>

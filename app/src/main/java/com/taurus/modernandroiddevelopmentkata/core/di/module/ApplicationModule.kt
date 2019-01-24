@@ -2,6 +2,7 @@ package com.taurus.modernandroiddevelopmentkata.core.di.module
 
 import android.content.Context
 import com.taurus.modernandroiddevelopmentkata.MovieApp
+import com.taurus.modernandroiddevelopmentkata.network.NetworkModule
 import dagger.Module
 import dagger.Provides
 import dagger.android.support.AndroidSupportInjectionModule
@@ -12,7 +13,8 @@ import javax.inject.Singleton
     includes = [
       AndroidSupportInjectionModule::class,
       ActivityBuilderModule::class,
-      ViewModelModule::class
+      ViewModelModule::class,
+      NetworkModule::class
     ]
 )
 class ApplicationModule {

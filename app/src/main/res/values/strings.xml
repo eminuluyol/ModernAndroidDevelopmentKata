@@ -1,3 +1,7 @@
 <resources>
   <string name="app_name">ModernAndroidDevelopmentKata</string>
+  <string name="nav_movies">Movies</string>
+  <string name="nav_tv">TV Series</string>
+  <string name="nav_favorites">Favorites</string>
+  <string name="nav_profile">Profile</string>
 </resources>
