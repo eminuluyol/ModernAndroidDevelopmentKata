@@ -1,6 +1,7 @@
 package com.taurus.modernandroiddevelopmentkata
 
 import com.taurus.modernandroiddevelopmentkata.core.di.component.DaggerApplicationComponent
+import com.taurus.modernandroiddevelopmentkata.core.sharedpreference.BaseSharedPreferences
 import dagger.android.DaggerApplication
 
 class MovieApp : DaggerApplication() {
@@ -10,4 +11,9 @@ class MovieApp : DaggerApplication() {
       .build()
 
   override fun applicationInjector() = applicationInjector
+
+  override fun onCreate() {
+    super.onCreate()
+    BaseSharedPreferences.init(this)
+  }
 }
