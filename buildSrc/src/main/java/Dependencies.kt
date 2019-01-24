@@ -7,6 +7,7 @@ import Versions.jUnitVersion
 import Versions.kotlinVersion
 import Versions.ktxVersion
 import Versions.lifecycleExtensionVersion
+import Versions.materialComponentVersion
 import Versions.moshiVersion
 import Versions.navVersion
 import Versions.okhttpVersion
@@ -19,6 +20,7 @@ import Versions.supportVersion
 object CoreLibraries {
   val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
   val appcompat = "androidx.appcompat:appcompat:$supportVersion"
+  val materialComponent = "com.google.android.material:material:$materialComponentVersion"
   val constraintLayout = "com.android.support.constraint:constraint-layout:$constraintLayoutVersion"
   val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
   val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
@@ -34,9 +36,10 @@ object CoreLibraries {
 }
 
 object ExternalLibraries {
-  val daggerCore = "com.google.dagger:dagger:$daggerVersion"
-  val daggerSupport = "com.google.dagger:dagger:$daggerVersion"
-  val daggerAnnotationProcessor = "com.google.dagger:dagger-android-support:$daggerVersion"
+  val daggerCore = "com.google.dagger:dagger-android:$daggerVersion"
+  val daggerSupport = "com.google.dagger:dagger-android-support:$daggerVersion"
+  val daggerAnnotationProcessor = "com.google.dagger:dagger-android-processor:$daggerVersion"
+  val daggerCompiler ="com.google.dagger:dagger-compiler:$daggerVersion"
   val retrofitCore = "com.squareup.retrofit2:retrofit:$retrofitVersion"
   val retrofitCoroutinesAdapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$retrofitCoroutinesAdapterVersion"
   val retrofitMoshi = "com.squareup.retrofit2:converter-moshi:$retrofitVersion"

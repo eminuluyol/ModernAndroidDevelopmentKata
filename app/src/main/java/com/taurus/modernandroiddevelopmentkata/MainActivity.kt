@@ -1,12 +1,14 @@
 package com.taurus.modernandroiddevelopmentkata
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import com.taurus.modernandroiddevelopmentkata.core.BaseActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
+
+  override fun layoutResId() = R.layout.activity_main
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
   }
+
 }

@@ -2,6 +2,7 @@ plugins {
   id(Plugins.androidApplication)
   id(Plugins.kotlinAndroid)
   id(Plugins.kotlinAndroidExtensions)
+  id(Plugins.kotlinKapt)
   id(Plugins.safeArgs)
 }
 
@@ -15,12 +16,29 @@ android {
     versionName = Release.versionName
     testInstrumentationRunner = Config.testInstrumentationRunner
   }
+
   buildTypes {
     getByName("release") {
       isMinifyEnabled = false
       proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
     }
   }
+
+  androidExtensions {
+    isExperimental = true
+  }
+
+  flavorDimensions("build")
+  productFlavors {
+    create("dev") {
+      buildConfigField("String", "API_URL",  ProductFlavors.devBaseUrl)
+    }
+
+    create("prod") {
+      buildConfigField("String", "API_URL", "")
+    }
+  }
+
 }
 
 dependencies {
@@ -28,6 +46,7 @@ dependencies {
   implementation(CoreLibraries.kotlin)
 
   implementation(CoreLibraries.appcompat)
+  implementation(CoreLibraries.materialComponent)
   /**
    * ConstraintLayout
    */
@@ -61,7 +80,8 @@ dependencies {
    */
   implementation(ExternalLibraries.daggerCore)
   implementation(ExternalLibraries.daggerSupport)
-  implementation(ExternalLibraries.daggerAnnotationProcessor)
+  kapt(ExternalLibraries.daggerAnnotationProcessor)
+  kapt(ExternalLibraries.daggerCompiler)
   /**
    * Retrofit
    */
