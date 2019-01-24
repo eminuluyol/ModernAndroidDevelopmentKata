@@ -12,7 +12,8 @@ class FragmentToolbar constructor(
     @StringRes val title: Int,
     val noTitle: Boolean,
     val isOnHomePressedDefaultAction: Boolean,
-    @DrawableRes val customHomeAsUpIndicator: Int
+    @DrawableRes val customHomeAsUpIndicator: Int,
+    val isTransparentStatusBar: Boolean
 ) {
 
   companion object {
@@ -37,6 +38,7 @@ class FragmentToolbar constructor(
     private var noTitle = false
     private var isOnHomePressedDefaultAction = false
     private var customHomeAsUpIndicator = -1
+    private var isTransparentStatusBar = false
 
     @ToolbarDSL
     fun withId(@IdRes resId: Int) = apply { this.resId = resId }
@@ -61,12 +63,16 @@ class FragmentToolbar constructor(
       this.isOnHomePressedDefaultAction = false
     }
 
+    @ToolbarDSL
+    fun withTransparentStatusBar() = apply { this.isTransparentStatusBar = true }
+
     fun build(): FragmentToolbar = FragmentToolbar(
         resId,
         title,
         noTitle,
         isOnHomePressedDefaultAction,
-        customHomeAsUpIndicator
+        customHomeAsUpIndicator,
+        isTransparentStatusBar
     )
   }
 }

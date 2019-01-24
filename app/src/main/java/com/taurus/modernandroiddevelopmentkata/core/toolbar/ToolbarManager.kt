@@ -1,6 +1,9 @@
 package com.taurus.modernandroiddevelopmentkata.core.toolbar
 
+import android.graphics.Color
+import android.os.Build
 import android.view.View
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.FragmentActivity
@@ -38,6 +41,16 @@ class ToolbarManager constructor(
           containerActivity.setSupportActionBar(fragmentToolbar)
           containerActivity.supportActionBar!!.setDisplayHomeAsUpEnabled(true)
           containerActivity.supportActionBar!!.setHomeAsUpIndicator(builder.customHomeAsUpIndicator)
+        }
+
+        if (builder.isTransparentStatusBar) {
+          if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            containerActivity.apply {
+              window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+              window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+              window.statusBarColor = Color.TRANSPARENT
+            }
+          }
         }
 
       }
