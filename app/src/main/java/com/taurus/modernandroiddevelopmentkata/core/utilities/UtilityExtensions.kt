@@ -1,4 +1,4 @@
-package com.taurus.modernandroiddevelopmentkata.core.extensions
+package com.taurus.modernandroiddevelopmentkata.core.utilities
 
 import com.taurus.modernandroiddevelopmentkata.BuildConfig
 

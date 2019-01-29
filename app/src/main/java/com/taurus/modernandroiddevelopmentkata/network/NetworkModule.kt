@@ -2,7 +2,7 @@ package com.taurus.modernandroiddevelopmentkata.network
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.taurus.modernandroiddevelopmentkata.BuildConfig
-import com.taurus.modernandroiddevelopmentkata.core.extensions.debug
+import com.taurus.modernandroiddevelopmentkata.core.utilities.debug
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -23,7 +23,7 @@ class NetworkModule {
   @Singleton
   fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
     val okHttpBuilder = OkHttpClient.Builder()
-    debug { okHttpBuilder.addInterceptor(loggingInterceptor) }
+      debug { okHttpBuilder.addInterceptor(loggingInterceptor) }
     okHttpBuilder.addInterceptor(RequestInterceptor())
     return okHttpBuilder.build()
   }
