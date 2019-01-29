@@ -5,6 +5,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import kotlin.reflect.KProperty
 
+//https://gist.github.com/yanngx/efdfbf777d21d6f0e73fab4efe47e924
 class FragmentArgumentDelegate<T : Any> : kotlin.properties.ReadWriteProperty<Fragment, T> {
 
     var value: T? = null
