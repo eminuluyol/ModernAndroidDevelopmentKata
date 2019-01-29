@@ -7,12 +7,15 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.FragmentActivity
+import androidx.navigation.NavController
+import androidx.navigation.ui.setupWithNavController
 
 
-class ToolbarManager constructor(
-    private var builder: FragmentToolbar,
-    private var container: View,
-    private var activity: FragmentActivity
+class ToolbarManager(
+    private val builder: FragmentToolbar,
+    private val container: View,
+    private val activity: FragmentActivity,
+    private val navController: NavController
 ) {
 
   fun prepareToolbar() {
@@ -21,26 +24,14 @@ class ToolbarManager constructor(
       val containerActivity = activity as AppCompatActivity
       val fragmentToolbar: Toolbar? = container.findViewById(builder.resId)
 
-      fragmentToolbar?.let {
-        containerActivity.setSupportActionBar(fragmentToolbar)
+      fragmentToolbar?.let { toolbar ->
 
         if (builder.title != FragmentToolbar.NO_TITLE) {
-          fragmentToolbar.setTitle(builder.title)
-        }
-
-        if (builder.noTitle != FragmentToolbar.TITLE_ENABLED) {
-          containerActivity.supportActionBar!!.setDisplayShowTitleEnabled(false)
+          toolbar.setTitle(builder.title)
         }
 
         if (builder.isOnHomePressedDefaultAction) {
-          containerActivity.setSupportActionBar(fragmentToolbar)
-          containerActivity.supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        }
-
-        if (builder.customHomeAsUpIndicator != FragmentToolbar.NO_CUSTOM_HOME_AS_UP_INDICATOR) {
-          containerActivity.setSupportActionBar(fragmentToolbar)
-          containerActivity.supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-          containerActivity.supportActionBar!!.setHomeAsUpIndicator(builder.customHomeAsUpIndicator)
+          toolbar.setupWithNavController(navController)
         }
 
         if (builder.isTransparentStatusBar) {

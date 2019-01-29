@@ -20,10 +20,10 @@ class FragmentArgumentDelegate<T : Any> : kotlin.properties.ReadWriteProperty<Fr
         return value ?: throw IllegalStateException("Property ${property.name} could not be read")
     }
 
-    override operator fun setValue(fragment: Fragment, property: KProperty<*>, value: T) {
+    override operator fun setValue(thisRef: Fragment, property: KProperty<*>, value: T) {
         val key = property.name
-        val args = fragment.arguments ?: Bundle()
+        val args = thisRef.arguments ?: Bundle()
         args.putAll(bundleOf(key to value))
-        fragment.arguments = args
+        thisRef.arguments = args
     }
 }

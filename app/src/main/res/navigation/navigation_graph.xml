@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/action_movies">
+
+  <fragment
+      android:id="@+id/action_movies"
+      android:name="com.taurus.modernandroiddevelopmentkata.movie.MovieFragment"
+      tools:layout="@layout/fragment_movie"/>
+
+  <fragment
+      android:id="@+id/action_tv_series"
+      android:name="com.taurus.modernandroiddevelopmentkata.series.TVSeriesFragment"
+      tools:layout="@layout/fragment_tv_series"/>
+
+  <fragment
+      android:id="@+id/action_favourites"
+      android:name="com.taurus.modernandroiddevelopmentkata.favourite.FavouriteFragment"
+      tools:layout="@layout/fragment_favourite"/>
+
+  <fragment
+      android:id="@+id/action_profile"
+      android:name="com.taurus.modernandroiddevelopmentkata.profile.ProfileFragment"
+      tools:layout="@layout/fragment_profile"/>
+
+  <fragment
+      android:id="@+id/detailFragment"
+      android:name="com.taurus.modernandroiddevelopmentkata.detail.DetailFragment"
+      android:label="DetailFragment"
+      tools:layout="@layout/fragment_detail"/>
+
+</navigation>
