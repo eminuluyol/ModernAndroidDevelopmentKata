@@ -8,7 +8,7 @@ import com.taurus.modernandroiddevelopmentkata.movie.TVSeriesStateMachine
 
 class TVSeriesFragment : BaseFragment<TVSeriesStateMachine>() {
 
-  override fun getViewModel() = TVSeriesStateMachine::class.java
+  override fun obtainViewModel() = TVSeriesStateMachine::class.java
 
   override fun layoutResId() = R.layout.fragment_tv_series
 

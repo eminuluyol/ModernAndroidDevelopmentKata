@@ -8,7 +8,7 @@ import com.taurus.modernandroiddevelopmentkata.movie.FavouriteStateMachine
 
 class FavouriteFragment : BaseFragment<FavouriteStateMachine>() {
 
-  override fun getViewModel() = FavouriteStateMachine::class.java
+  override fun obtainViewModel() = FavouriteStateMachine::class.java
 
   override fun layoutResId() = R.layout.fragment_favourite
 

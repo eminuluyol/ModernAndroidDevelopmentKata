@@ -7,7 +7,7 @@ import com.taurus.modernandroiddevelopmentkata.movie.DetailStateMachine
 
 class DetailFragment : BaseFragment<DetailStateMachine>() {
 
-  override fun getViewModel() = DetailStateMachine::class.java
+  override fun obtainViewModel() = DetailStateMachine::class.java
 
   override fun layoutResId() = R.layout.fragment_detail
 

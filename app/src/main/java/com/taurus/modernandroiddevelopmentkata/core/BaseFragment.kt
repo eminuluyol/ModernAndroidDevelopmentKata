@@ -19,16 +19,16 @@ abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
   @Inject
   lateinit var viewModelFactory: ViewModelProvider.Factory
 
-  lateinit var stateMachine: VM
+  protected lateinit var stateMachine: VM
 
-  abstract fun getViewModel(): Class<VM>
+  abstract fun obtainViewModel(): Class<VM>
 
   @LayoutRes
   abstract fun layoutResId(): Int
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    stateMachine = ViewModelProviders.of(this, viewModelFactory).get(getViewModel())
+    stateMachine = ViewModelProviders.of(this, viewModelFactory).get(obtainViewModel())
   }
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

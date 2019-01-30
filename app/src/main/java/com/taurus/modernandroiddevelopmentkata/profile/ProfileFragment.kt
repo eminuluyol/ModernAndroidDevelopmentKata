@@ -8,7 +8,7 @@ import com.taurus.modernandroiddevelopmentkata.movie.ProfileStateMachine
 
 class ProfileFragment : BaseFragment<ProfileStateMachine>() {
 
-  override fun getViewModel() = ProfileStateMachine::class.java
+  override fun obtainViewModel() = ProfileStateMachine::class.java
 
   override fun layoutResId() = R.layout.fragment_profile
 
