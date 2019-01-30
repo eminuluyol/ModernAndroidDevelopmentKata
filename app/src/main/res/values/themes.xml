@@ -9,10 +9,10 @@
     <item name="colorError">@android:color/holo_red_dark</item>
     <item name="android:windowDrawsSystemBarBackgrounds">true</item>
     <item name="android:colorBackground">@color/colorBackground</item>
-    <item name="android:textViewStyle">@style/GlobalTextViewStyle</item>
+    <item name="fontFamily">@font/roboto_mono</item>
+    <item name="android:fontFamily">@font/roboto_mono</item>
     <item name="materialButtonStyle">@style/GlobalMaterialButtonStyle</item>
     <item name="bottomNavigationStyle">@style/BottomNavigationViewStyle</item>
-    <item name="actionBarStyle">@style/GlobalActionBarStyle</item>
   </style>
 
   <!-- Splash Activity theme. -->
