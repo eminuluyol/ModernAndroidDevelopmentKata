@@ -12,7 +12,7 @@
 
   <fragment
       android:id="@+id/action_tv_series"
-      android:name="com.taurus.modernandroiddevelopmentkata.series.TVSeriesFragment"
+      android:name="com.taurus.modernandroiddevelopmentkata.tvseries.TVSeriesFragment"
       tools:layout="@layout/fragment_tv_series"/>
 
   <fragment

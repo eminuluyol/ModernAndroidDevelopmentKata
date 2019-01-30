@@ -1,4 +1,4 @@
-package com.taurus.modernandroiddevelopmentkata.series
+package com.taurus.modernandroiddevelopmentkata.tvseries
 
 import com.taurus.modernandroiddevelopmentkata.R
 import com.taurus.modernandroiddevelopmentkata.core.BaseFragment

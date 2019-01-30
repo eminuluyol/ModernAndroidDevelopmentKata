@@ -5,7 +5,6 @@ import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
 import com.taurus.modernandroiddevelopmentkata.movie.DetailStateMachine
 
-
 class DetailFragment : BaseFragment<DetailStateMachine>() {
 
   override fun getViewModel() = DetailStateMachine::class.java

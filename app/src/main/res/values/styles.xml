@@ -17,6 +17,11 @@
     <item name="itemTextColor">@color/bottom_nav_color</item>
     <item name="itemIconTint">@color/bottom_nav_color</item>
     <item name="android:layout_gravity">bottom</item>
+    <item name="android:fontFamily">@font/sarabun_regular</item>
+  </style>
+
+  <style name="GlobalActionBarStyle" parent="Base.Widget.AppCompat.ActionBar">
+    <item name="android:fontFamily">@font/sarabun_regular</item>
   </style>
 
 </resources>

@@ -1,4 +1,4 @@
 object ProductFlavors {
 
-  val devBaseUrl = "\"https://api.themoviedb.org/3/\""
+  const val devBaseUrl = "\"https://api.themoviedb.org/3/\""
 }

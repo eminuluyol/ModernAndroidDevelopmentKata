@@ -9,7 +9,7 @@ plugins {
 android {
   compileSdkVersion(Versions.compileSdkVersion)
   defaultConfig {
-    applicationId = Config.applicatiınId
+    applicationId = Config.applicationId
     minSdkVersion(Versions.minSdkVersion)
     targetSdkVersion(Versions.targetSdkVersion)
     versionCode = Release.versionCode
@@ -44,7 +44,6 @@ android {
 dependencies {
 
   implementation(CoreLibraries.kotlin)
-
   implementation(CoreLibraries.appcompat)
   implementation(CoreLibraries.materialComponent)
   /**
@@ -74,7 +73,6 @@ dependencies {
    */
   implementation(CoreLibraries.navigationFragment)
   implementation(CoreLibraries.navigationUI)
-
   /**
    * Dagger2
    */
