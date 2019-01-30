@@ -16,10 +16,19 @@
 
   </com.google.android.material.appbar.AppBarLayout>
 
-  <FrameLayout
+  <RelativeLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:background="@android:color/holo_purple"
-      android:layout_marginTop="56dp"/>
+      android:layout_marginTop="56dp">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/showDetailButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click on me!"
+        android:layout_centerInParent="true"/>
+
+  </RelativeLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

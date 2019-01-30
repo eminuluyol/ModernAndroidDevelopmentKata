@@ -4,20 +4,20 @@
       android:id="@+id/action_movies"
       android:enabled="true"
       android:icon="@drawable/ic_movie_24"
-      android:title="@string/nav_movies"/>
+      android:title="@string/movies"/>
   <item
       android:id="@+id/action_tv_series"
       android:enabled="true"
       android:icon="@drawable/ic_tv_24dp"
-      android:title="@string/nav_tv"/>
+      android:title="@string/tv_series"/>
   <item
       android:id="@+id/action_favourites"
       android:enabled="true"
       android:icon="@drawable/ic_favorite_24"
-      android:title="@string/nav_favorites"/>
+      android:title="@string/favorites"/>
   <item
       android:id="@+id/action_profile"
       android:enabled="true"
       android:icon="@drawable/ic_person_24"
-      android:title="@string/nav_profile"/>
+      android:title="@string/profile"/>
 </menu>

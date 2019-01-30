@@ -14,7 +14,7 @@ class ProfileFragment : BaseFragment<ProfileStateMachine>() {
 
   override fun toolbarBuilder(): FragmentToolbar {
     return FragmentToolbar.decorateToolbar(R.id.toolbar) {
-      withTitle(R.string.nav_profile)
+      withTitle(R.string.profile)
     }
   }
 

@@ -14,7 +14,7 @@ class FavouriteFragment : BaseFragment<FavouriteStateMachine>() {
 
   override fun toolbarBuilder(): FragmentToolbar {
     return FragmentToolbar.decorateToolbar(R.id.toolbar) {
-      withTitle(R.string.nav_favorites)
+      withTitle(R.string.favorites)
     }
   }
 

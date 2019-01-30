@@ -30,6 +30,10 @@ class ToolbarManager(
           toolbar.setTitle(builder.title)
         }
 
+        if(builder.stringTitle.isNotEmpty()) {
+          toolbar.title = builder.stringTitle
+        }
+
         if (builder.isOnHomePressedDefaultAction) {
           toolbar.setupWithNavController(navController)
         }

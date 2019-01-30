@@ -8,12 +8,20 @@
   <fragment
       android:id="@+id/action_movies"
       android:name="com.taurus.modernandroiddevelopmentkata.movie.MovieFragment"
-      tools:layout="@layout/fragment_movie"/>
+      tools:layout="@layout/fragment_movie">
+    <action
+        android:id="@+id/action_movies_to_detailFragment"
+        app:destination="@id/detailFragment" />
+  </fragment>
 
   <fragment
       android:id="@+id/action_tv_series"
       android:name="com.taurus.modernandroiddevelopmentkata.tvseries.TVSeriesFragment"
-      tools:layout="@layout/fragment_tv_series"/>
+      tools:layout="@layout/fragment_tv_series">
+    <action
+        android:id="@+id/action_tv_series_to_detailFragment"
+        app:destination="@id/detailFragment" />
+  </fragment>
 
   <fragment
       android:id="@+id/action_favourites"
@@ -28,7 +36,10 @@
   <fragment
       android:id="@+id/detailFragment"
       android:name="com.taurus.modernandroiddevelopmentkata.detail.DetailFragment"
-      android:label="DetailFragment"
-      tools:layout="@layout/fragment_detail"/>
+      tools:layout="@layout/fragment_detail">
+    <argument
+        android:name="titleArg"
+        app:argType="string"/>
+  </fragment>
 
 </navigation>

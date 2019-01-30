@@ -8,6 +8,7 @@ import androidx.annotation.LayoutRes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.ToolbarManager
@@ -20,6 +21,8 @@ abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
   lateinit var viewModelFactory: ViewModelProvider.Factory
 
   protected lateinit var stateMachine: VM
+
+  protected lateinit var navController: NavController
 
   abstract fun obtainViewModel(): Class<VM>
 
@@ -36,7 +39,7 @@ abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-    val navController = Navigation.findNavController(view)
+    navController = Navigation.findNavController(view)
     ToolbarManager(toolbarBuilder(), view, requireActivity(), navController).prepareToolbar()
   }
 
