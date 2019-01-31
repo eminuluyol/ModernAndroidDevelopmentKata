@@ -6,9 +6,10 @@
     <item name="colorPrimary">@color/colorPrimary</item>
     <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     <item name="colorAccent">@color/colorAccent</item>
+    <item name="colorControlNormal">@color/black</item>
+    <item name="android:colorBackground">@color/colorBackground</item>
     <item name="colorError">@android:color/holo_red_dark</item>
     <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-    <item name="android:colorBackground">@color/colorBackground</item>
     <item name="fontFamily">@font/roboto</item>
     <item name="android:fontFamily">@font/roboto</item>
     <item name="materialButtonStyle">@style/GlobalMaterialButtonStyle</item>
