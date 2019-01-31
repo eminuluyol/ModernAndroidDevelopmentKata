@@ -4,9 +4,12 @@ import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.taurus.modernandroiddevelopmentkata.core.BaseActivity
+import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
+import com.taurus.modernandroiddevelopmentkata.core.extensions.gone
+import com.taurus.modernandroiddevelopmentkata.core.extensions.visible
 import kotlinx.android.synthetic.main.activity_main.bottomNavigationView
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity(), BaseFragment.FragmentListener {
 
   override fun layoutResId() = R.layout.activity_main
 
@@ -20,6 +23,10 @@ class MainActivity : BaseActivity() {
   private fun setupNavigation() {
     val navController = findNavController(R.id.nav_host_fragment)
     bottomNavigationView.setupWithNavController(navController)
+  }
+
+  override fun handleBottomBarVisibility(isVisible: Boolean) {
+    if(isVisible) bottomNavigationView.visible() else bottomNavigationView.gone()
   }
 
 }

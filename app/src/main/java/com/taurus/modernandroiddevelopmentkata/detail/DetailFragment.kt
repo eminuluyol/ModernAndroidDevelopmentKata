@@ -8,19 +8,21 @@ import com.taurus.modernandroiddevelopmentkata.movie.DetailStateMachine
 
 class DetailFragment : BaseFragment<DetailStateMachine>() {
 
-  private val title by lazy {
-    fromBundle(arguments!!).titleArg
-  }
-
-  override fun obtainViewModel() = DetailStateMachine::class.java
-
-  override fun layoutResId() = R.layout.fragment_detail
-
-  override fun toolbarBuilder(): FragmentToolbar {
-    return FragmentToolbar.decorateToolbar(R.id.toolbar) {
-      withTitle(title)
-      onHomePressedDefaultAction()
+    private val title by lazy {
+        fromBundle(arguments!!).titleArg
     }
-  }
+
+    override fun obtainViewModel() = DetailStateMachine::class.java
+
+    override fun layoutResId() = R.layout.fragment_detail
+
+    override fun toolbarBuilder(): FragmentToolbar {
+        return FragmentToolbar.decorateToolbar(R.id.toolbar) {
+            withTitle(title)
+            onHomePressedDefaultAction()
+        }
+    }
+
+    override fun isBottomBarEnabled() = false
 
 }

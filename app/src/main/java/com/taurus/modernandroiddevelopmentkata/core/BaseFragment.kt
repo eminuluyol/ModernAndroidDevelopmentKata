@@ -1,5 +1,6 @@
 package com.taurus.modernandroiddevelopmentkata.core
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,22 @@ import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
 abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
+
+  interface FragmentListener {
+    fun handleBottomBarVisibility(isVisible: Boolean)
+  }
+
+  private var fragmentListener: FragmentListener? = null
+
+  override fun onAttach(context: Context) {
+    super.onAttach(context)
+    try {
+      this.fragmentListener = context as FragmentListener
+    } catch (e: ClassCastException) {
+      throw ClassCastException("$context must implement FragmentListener")
+    }
+
+  }
 
   @Inject
   lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -41,7 +58,14 @@ abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
     super.onViewCreated(view, savedInstanceState)
     navController = Navigation.findNavController(view)
     ToolbarManager(toolbarBuilder(), view, requireActivity(), navController).prepareToolbar()
+    fragmentListener?.handleBottomBarVisibility(isBottomBarEnabled())
   }
+
+  /**
+   * Override and return false if you don't need the bottombar.
+   */
+  protected open fun isBottomBarEnabled() = true
+
 
   protected abstract fun toolbarBuilder(): FragmentToolbar
 
