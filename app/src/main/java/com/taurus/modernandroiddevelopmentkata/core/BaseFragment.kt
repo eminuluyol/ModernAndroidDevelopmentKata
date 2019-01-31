@@ -18,60 +18,60 @@ import javax.inject.Inject
 
 abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
 
-  interface FragmentListener {
-    fun handleBottomBarVisibility(isVisible: Boolean)
-  }
-
-  @Inject
-  lateinit var viewModelFactory: ViewModelProvider.Factory
-
-  /**
-   * ViewModel istance that provided by ViewModelProvider
-   */
-  protected lateinit var stateMachine: VM
-
-  /**
-   * NavController for using Navigation Arch Component
-   */
-  protected lateinit var navController: NavController
-
-  private var fragmentListener: FragmentListener? = null
-
-  abstract fun obtainViewModel(): Class<VM>
-
-  @LayoutRes
-  abstract fun layoutResId(): Int
-
-  override fun onAttach(context: Context) {
-    super.onAttach(context)
-    try {
-      this.fragmentListener = context as FragmentListener
-    } catch (e: ClassCastException) {
-      throw ClassCastException("$context must implement FragmentListener")
+    interface FragmentListener {
+        fun handleBottomBarVisibility(isVisible: Boolean)
     }
-  }
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    stateMachine = ViewModelProviders.of(this, viewModelFactory).get(obtainViewModel())
-  }
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
-  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-      savedInstanceState: Bundle?) = inflater.inflate(layoutResId(), container, false)!!
+    /**
+     * ViewModel istance that provided by ViewModelProvider
+     */
+    protected lateinit var stateMachine: VM
 
-  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    super.onViewCreated(view, savedInstanceState)
-    navController = Navigation.findNavController(view)
-    ToolbarManager(toolbarBuilder(), view, requireActivity(), navController).prepareToolbar()
-    fragmentListener?.handleBottomBarVisibility(isBottomBarEnabled())
-  }
+    /**
+     * NavController for using Navigation Arch Component
+     */
+    protected lateinit var navController: NavController
 
-  /**
-   * Override and return false if you don't need the bottom bar.
-   */
-  protected open fun isBottomBarEnabled() = true
+    private var fragmentListener: FragmentListener? = null
+
+    abstract fun obtainViewModel(): Class<VM>
+
+    @LayoutRes
+    abstract fun layoutResId(): Int
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        try {
+            this.fragmentListener = context as FragmentListener
+        } catch (e: ClassCastException) {
+            throw ClassCastException("$context must implement FragmentListener")
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        stateMachine = ViewModelProviders.of(this, viewModelFactory).get(obtainViewModel())
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) =
+            inflater.inflate(layoutResId(), container, false)!!
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        navController = Navigation.findNavController(view)
+        ToolbarManager(toolbarBuilder(), view, requireActivity(), navController).prepareToolbar()
+        fragmentListener?.handleBottomBarVisibility(isBottomBarEnabled)
+    }
+
+    /**
+     * Override and return false if you don't need the bottom bar.
+     */
+    protected open var isBottomBarEnabled = true
 
 
-  protected abstract fun toolbarBuilder(): FragmentToolbar
+    protected abstract fun toolbarBuilder(): FragmentToolbar
 
 }

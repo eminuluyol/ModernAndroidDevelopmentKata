@@ -23,6 +23,5 @@ class DetailFragment : BaseFragment<DetailStateMachine>() {
         }
     }
 
-    override fun isBottomBarEnabled() = false
-
+    override var isBottomBarEnabled = false
 }
