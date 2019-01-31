@@ -22,7 +22,25 @@ abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
     fun handleBottomBarVisibility(isVisible: Boolean)
   }
 
+  @Inject
+  lateinit var viewModelFactory: ViewModelProvider.Factory
+
+  /**
+   * ViewModel istance that provided by ViewModelProvider
+   */
+  protected lateinit var stateMachine: VM
+
+  /**
+   * NavController for using Navigation Arch Component
+   */
+  protected lateinit var navController: NavController
+
   private var fragmentListener: FragmentListener? = null
+
+  abstract fun obtainViewModel(): Class<VM>
+
+  @LayoutRes
+  abstract fun layoutResId(): Int
 
   override fun onAttach(context: Context) {
     super.onAttach(context)
@@ -31,20 +49,7 @@ abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
     } catch (e: ClassCastException) {
       throw ClassCastException("$context must implement FragmentListener")
     }
-
   }
-
-  @Inject
-  lateinit var viewModelFactory: ViewModelProvider.Factory
-
-  protected lateinit var stateMachine: VM
-
-  protected lateinit var navController: NavController
-
-  abstract fun obtainViewModel(): Class<VM>
-
-  @LayoutRes
-  abstract fun layoutResId(): Int
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -62,7 +67,7 @@ abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
   }
 
   /**
-   * Override and return false if you don't need the bottombar.
+   * Override and return false if you don't need the bottom bar.
    */
   protected open fun isBottomBarEnabled() = true
 
