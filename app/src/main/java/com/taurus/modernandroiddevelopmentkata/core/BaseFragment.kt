@@ -9,8 +9,7 @@ import androidx.annotation.LayoutRes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
+import com.taurus.modernandroiddevelopmentkata.MainActivity
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.ToolbarManager
 import dagger.android.support.DaggerFragment
@@ -56,7 +55,7 @@ abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        ToolbarManager(toolbarBuilder(), view, requireActivity()).prepareToolbar()
+        ToolbarManager(toolbarBuilder(), view, requireActivity() as MainActivity).prepareToolbar()
         fragmentListener?.handleBottomBarVisibility(isBottomBarEnabled)
     }
 

@@ -2,6 +2,52 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navigation_graph">
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/movieFragment">
+
+    <fragment
+        android:id="@+id/movieFragment"
+        android:name="com.taurus.modernandroiddevelopmentkata.movie.MovieFragment"
+        tools:layout="@layout/fragment_movie">
+        <action
+            android:id="@+id/action_movieFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/favouriteFragment"
+        android:name="com.taurus.modernandroiddevelopmentkata.favourite.FavouriteFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.taurus.modernandroiddevelopmentkata.profile.ProfileFragment" />
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.taurus.modernandroiddevelopmentkata.detail.DetailFragment"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="fragmentTitle"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/TVSeriesFragment"
+        android:name="com.taurus.modernandroiddevelopmentkata.tvseries.TVSeriesFragment"
+        tools:layout="@layout/fragment_tv_series">
+        <action
+            android:id="@+id/action_TVSeriesFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_MovieFragmemnt"
+        app:destination="@id/movieFragment" />
+    <action
+        android:id="@+id/action_global_FavouritesFragment"
+        app:destination="@id/favouriteFragment" />
+    <action
+        android:id="@+id/action_global_ProfileFragment"
+        app:destination="@id/profileFragment" />
+    <action
+        android:id="@+id/action_global_TVSeriesFragment"
+        app:destination="@id/TVSeriesFragment" />
 
 </navigation>

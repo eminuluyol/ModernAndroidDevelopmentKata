@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.taurus.modernandroiddevelopmentkata.MainActivity
 import com.taurus.modernandroiddevelopmentkata.R
 
-private const val SPLASH_DELAY = 2000L
+private const val SPLASH_DELAY = 50L
 
 class SplashActivity : AppCompatActivity() {
 
