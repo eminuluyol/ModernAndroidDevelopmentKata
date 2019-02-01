@@ -24,7 +24,7 @@ class TVSeriesFragment : BaseFragment<TVSeriesStateMachine>() {
         super.onViewCreated(view, savedInstanceState)
         showDetailButton.setOnClickListener {
             navController.navigate(
-                    TVSeriesFragmentDirections.actionTvSeriesToDetailFragment("From TV Series Fragment")
+                    TVSeriesFragmentDirections.destTvSeriesToDestDetails("From TV Series Fragment")
             )
         }
     }

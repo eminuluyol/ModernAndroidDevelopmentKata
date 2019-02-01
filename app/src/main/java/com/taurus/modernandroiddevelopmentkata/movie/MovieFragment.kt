@@ -23,7 +23,7 @@ class MovieFragment : BaseFragment<MovieStateMachine>() {
         super.onViewCreated(view, savedInstanceState)
         showDetailButton.setOnClickListener {
             navController.navigate(
-                    MovieFragmentDirections.actionMoviesToDetailFragment("From Movie Fragment")
+                    MovieFragmentDirections.destMoviesToDestDetails("From Movie Fragment")
             )
         }
     }
