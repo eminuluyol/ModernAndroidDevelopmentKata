@@ -1,6 +1,6 @@
 # Modern Android Development Kata Roadmap
 
-- [ ] Introduce Navigation Architecture Component and orchestrate the in-app navigation by using it
+- [X] Introduce Navigation Architecture Component and orchestrate the in-app navigation by using it
 - [ ]  Introduce Kotlin Coroutine Channels and expose the API response via LiveData
 - [ ]  Introduce Paging library and use it for pagination
 - [ ]  Introduce MontionLayout and apply some nice animations on DetailPage
