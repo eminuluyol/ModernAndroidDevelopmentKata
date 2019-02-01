@@ -6,6 +6,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.taurus.modernandroiddevelopmentkata.core.BaseActivity
 import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
 import com.taurus.modernandroiddevelopmentkata.core.extensions.gone
+import com.taurus.modernandroiddevelopmentkata.core.extensions.visibility
 import com.taurus.modernandroiddevelopmentkata.core.extensions.visible
 import kotlinx.android.synthetic.main.activity_main.bottomNavigationView
 
@@ -26,7 +27,7 @@ class MainActivity : BaseActivity(), BaseFragment.FragmentListener {
   }
 
   override fun handleBottomBarVisibility(isVisible: Boolean) {
-    if(isVisible) bottomNavigationView.visible() else bottomNavigationView.gone()
+    bottomNavigationView.visibility(isVisible)
   }
 
 }
