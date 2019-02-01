@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.internal.AndroidExtensionsExtension
+
 plugins {
   id(Plugins.androidApplication)
   id(Plugins.kotlinAndroid)
@@ -24,10 +26,6 @@ android {
     }
   }
 
-  androidExtensions {
-    isExperimental = true
-  }
-
   flavorDimensions("build")
   productFlavors {
     create("dev") {
@@ -39,6 +37,12 @@ android {
     }
   }
 
+}
+
+androidExtensions {
+  configure(delegateClosureOf<AndroidExtensionsExtension> {
+    isExperimental = true
+  })
 }
 
 dependencies {
