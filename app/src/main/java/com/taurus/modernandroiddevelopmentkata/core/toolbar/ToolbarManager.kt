@@ -14,8 +14,7 @@ import androidx.navigation.ui.setupWithNavController
 class ToolbarManager(
     private val builder: FragmentToolbar,
     private val container: View,
-    private val activity: FragmentActivity,
-    private val navController: NavController
+    private val activity: FragmentActivity
 ) {
 
   fun prepareToolbar() {
@@ -35,7 +34,7 @@ class ToolbarManager(
         }
 
         if (builder.isOnHomePressedDefaultAction) {
-          toolbar.setupWithNavController(navController)
+          // TODO
         }
 
         if (builder.isTransparentStatusBar) {
