@@ -12,6 +12,9 @@
     <action
         android:id="@+id/action_movies_to_detailFragment"
         app:destination="@id/detailFragment" />
+    <action
+        android:id="@+id/action_action_movies_to_detailFragment"
+        app:destination="@id/detailFragment" />
   </fragment>
 
   <fragment
