@@ -69,7 +69,7 @@ abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
     /**
      * Override and return false if you don't need the bottom bar.
      */
-    protected open var isBottomBarEnabled = true
+    protected open val isBottomBarEnabled = true
 
 
     protected abstract fun toolbarBuilder(): FragmentToolbar
