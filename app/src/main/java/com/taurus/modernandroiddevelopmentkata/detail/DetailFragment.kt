@@ -22,7 +22,6 @@ class DetailFragment : BaseFragment<DetailStateMachine>() {
     return FragmentToolbar.decorateToolbar(R.id.toolbar) {
       withTitle(title)
       onHomePressedDefaultAction()
-      withTransparentStatusBar()
     }
   }
 
