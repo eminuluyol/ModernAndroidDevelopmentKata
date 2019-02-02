@@ -28,12 +28,12 @@ abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
     /**
      * ViewModel istance that provided by ViewModelProvider
      */
-    protected lateinit var stateMachine: VM
+    private lateinit var stateMachine: VM
 
     /**
      * NavController for using Navigation Arch Component
      */
-    protected lateinit var navController: NavController
+    private lateinit var navController: NavController
 
     private var fragmentListener: FragmentListener? = null
 
@@ -64,6 +64,7 @@ abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
         navController = Navigation.findNavController(view)
         ToolbarManager(toolbarBuilder(), view, requireActivity(), navController).prepareToolbar()
         fragmentListener?.handleBottomBarVisibility(isBottomBarEnabled)
+        onReadyToRender(view, stateMachine, navController)
     }
 
     /**
@@ -71,7 +72,8 @@ abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
      */
     protected open val isBottomBarEnabled = true
 
-
     protected abstract fun toolbarBuilder(): FragmentToolbar
+
+    protected abstract fun onReadyToRender(view: View, stateMachine: VM, navController: NavController)
 
 }

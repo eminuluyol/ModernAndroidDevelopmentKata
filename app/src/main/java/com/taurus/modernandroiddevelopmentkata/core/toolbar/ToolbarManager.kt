@@ -1,14 +1,17 @@
 package com.taurus.modernandroiddevelopmentkata.core.toolbar
 
 import android.graphics.Color
-import android.os.Build
+import android.os.Build.VERSION
+import android.os.Build.VERSION_CODES
 import android.view.View
-import android.view.WindowManager
+import android.view.WindowManager.LayoutParams
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
 import androidx.navigation.ui.setupWithNavController
+import com.taurus.modernandroiddevelopmentkata.R.color
 
 
 class ToolbarManager(
@@ -30,7 +33,7 @@ class ToolbarManager(
           toolbar.setTitle(builder.title)
         }
 
-        if(builder.stringTitle.isNotEmpty()) {
+        if (builder.stringTitle.isNotEmpty()) {
           toolbar.title = builder.stringTitle
         }
 
@@ -39,15 +42,31 @@ class ToolbarManager(
         }
 
         if (builder.isTransparentStatusBar) {
-          if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            containerActivity.apply {
-              window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-              window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-              window.statusBarColor = Color.TRANSPARENT
-            }
-          }
+          setTransparentStatusBar(containerActivity)
+        } else {
+          clearTransparentStatusBarFlag(containerActivity)
         }
 
+      }
+    }
+  }
+
+  private fun setTransparentStatusBar(containerActivity: AppCompatActivity) {
+    if (VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP) {
+      containerActivity.apply {
+        window.addFlags(LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.addFlags(LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        window.statusBarColor = Color.TRANSPARENT
+      }
+    }
+  }
+
+  private fun clearTransparentStatusBarFlag(containerActivity: AppCompatActivity) {
+    if (VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP) {
+      containerActivity.apply {
+        window.clearFlags(LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        window.addFlags(LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.statusBarColor = ContextCompat.getColor(this, color.colorPrimaryDark)
       }
     }
   }
