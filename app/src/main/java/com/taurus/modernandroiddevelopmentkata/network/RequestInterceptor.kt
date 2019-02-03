@@ -10,11 +10,16 @@ class RequestInterceptor : Interceptor {
     val originalHttpUrl = originalRequest.url()
 
     val url = originalHttpUrl.newBuilder()
-        .addQueryParameter("api_key", "847f6b4e44e8451ffa91002efdee1e62")
+        .addQueryParameter(PARAMETER_NAME, PARAMETER_KEY)
         .build()
 
     val request = originalRequest.newBuilder().url(url).build()
 
     return chain.proceed(request)
+  }
+
+  private companion object {
+    const val PARAMETER_NAME = "api_key"
+    const val PARAMETER_KEY = "847f6b4e44e8451ffa91002efdee1e62"
   }
 }

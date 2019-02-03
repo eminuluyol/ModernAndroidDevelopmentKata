@@ -6,7 +6,7 @@ import com.taurus.modernandroiddevelopmentkata.core.di.key.ViewModelKey
 import com.taurus.modernandroiddevelopmentkata.core.di.viewmodel.ViewModelFactory
 import com.taurus.modernandroiddevelopmentkata.movie.DetailStateMachine
 import com.taurus.modernandroiddevelopmentkata.movie.FavouriteStateMachine
-import com.taurus.modernandroiddevelopmentkata.movie.MovieStateMachine
+import com.taurus.modernandroiddevelopmentkata.movie.MovieStateStateMachine
 import com.taurus.modernandroiddevelopmentkata.movie.ProfileStateMachine
 import com.taurus.modernandroiddevelopmentkata.movie.TVSeriesStateMachine
 import dagger.Binds
@@ -22,8 +22,8 @@ internal abstract class ViewModelModule {
 
   @Binds
   @IntoMap
-  @ViewModelKey(MovieStateMachine::class)
-  internal abstract fun movieStateMachine(stateMachine: MovieStateMachine): ViewModel
+  @ViewModelKey(MovieStateStateMachine::class)
+  internal abstract fun movieStateMachine(stateMachine: MovieStateStateMachine): ViewModel
 
   @Binds
   @IntoMap
