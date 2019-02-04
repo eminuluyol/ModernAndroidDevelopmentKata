@@ -1,8 +1,6 @@
 package com.taurus.modernandroiddevelopmentkata
 
 import android.os.Bundle
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import com.taurus.modernandroiddevelopmentkata.core.BaseActivity
 import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
 import com.taurus.modernandroiddevelopmentkata.core.extensions.visibility
@@ -16,19 +14,6 @@ class MainActivity : BaseActivity<MainViewModel>(), BaseFragment.FragmentListene
   @Inject
   lateinit var navigationHelper: NavigationHelper
 
-  private val movieNavController: NavController by lazy {
-    findNavController(R.id.movieTab)
-  }
-  private val tvSeriesNavController: NavController by lazy {
-    findNavController(R.id.tvSeriesTab)
-  }
-  private val favouritesNavController: NavController by lazy {
-    findNavController(R.id.favouritesTab)
-  }
-  private val profileNavController: NavController by lazy {
-    findNavController(R.id.profileTab)
-  }
-
   override fun obtainViewModel() = MainViewModel::class.java
 
   override fun layoutResId() = R.layout.activity_main
@@ -38,11 +23,7 @@ class MainActivity : BaseActivity<MainViewModel>(), BaseFragment.FragmentListene
     navigationHelper.bind(
         this,
         viewModel,
-        savedInstanceState,
-        movieNavController,
-        tvSeriesNavController,
-        favouritesNavController,
-        profileNavController
+        savedInstanceState
     )
   }
 
@@ -70,5 +51,4 @@ class MainActivity : BaseActivity<MainViewModel>(), BaseFragment.FragmentListene
   private companion object {
     const val TAB_HISTORY = "tab_history"
   }
-
 }

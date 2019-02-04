@@ -3,12 +3,13 @@ package com.taurus.modernandroiddevelopmentkata.core.navigation
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.taurus.modernandroiddevelopmentkata.MainActivity
 import com.taurus.modernandroiddevelopmentkata.MainViewModel
+import com.taurus.modernandroiddevelopmentkata.R
 import com.taurus.modernandroiddevelopmentkata.R.id
 import com.taurus.modernandroiddevelopmentkata.core.extensions.hideAllUnder
-import com.taurus.modernandroiddevelopmentkata.core.extensions.visible
 import kotlinx.android.synthetic.main.activity_main.bottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.favouritesTab
 import kotlinx.android.synthetic.main.activity_main.movieTab
@@ -20,6 +21,19 @@ class NavigationHelper(var tabHistory: TabHistory) {
   private var currentController: NavController? = null
   private lateinit var activity: MainActivity
   private lateinit var viewModel: MainViewModel
+
+  private val movieNavController: NavController by lazy {
+    activity.findNavController(R.id.movieTab)
+  }
+  private val tvSeriesNavController: NavController by lazy {
+    activity.findNavController(R.id.tvSeriesTab)
+  }
+  private val favouritesNavController: NavController by lazy {
+    activity.findNavController(R.id.favouritesTab)
+  }
+  private val profileNavController: NavController by lazy {
+    activity.findNavController(R.id.profileTab)
+  }
 
   private val movieTabContainer: Fragment by lazy { activity.movieTab }
   private val tvSeriesTabContainer: Fragment by lazy { activity.tvSeriesTab }
@@ -36,11 +50,6 @@ class NavigationHelper(var tabHistory: TabHistory) {
     )
   }
 
-  private lateinit var movieNavController: NavController
-  private lateinit var tvSeriesNavController: NavController
-  private lateinit var favouritesNavController: NavController
-  private lateinit var profileNavController: NavController
-
   private val navigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
     switchTab(item.itemId)
     return@OnNavigationItemSelectedListener true
@@ -49,18 +58,10 @@ class NavigationHelper(var tabHistory: TabHistory) {
   fun bind(
       activity: MainActivity,
       viewModel: MainViewModel,
-      savedInstanceState: Bundle?,
-      movieNavController: NavController,
-      tvSeriesNavController: NavController,
-      favouritesNavController: NavController,
-      profileNavController: NavController
+      savedInstanceState: Bundle?
   ) {
     this.activity = activity
     this.viewModel = viewModel
-    this.movieNavController = movieNavController
-    this.tvSeriesNavController = tvSeriesNavController
-    this.favouritesNavController = favouritesNavController
-    this.profileNavController = profileNavController
     setupNavigation(savedInstanceState)
   }
 
@@ -70,9 +71,7 @@ class NavigationHelper(var tabHistory: TabHistory) {
 
     if (savedInstanceState == null) {
       currentController = movieNavController
-      viewModel.currentNavController.postValue(movieNavController)
-      views.hideAllUnder(movieNavController)
-      movieTabContainer.view?.visible()
+      updateNavController(movieNavController, movieTabContainer)
     }
   }
 
@@ -93,38 +92,20 @@ class NavigationHelper(var tabHistory: TabHistory) {
 
   fun switchTab(tabId: Int, addToHistory: Boolean = true) {
     when (tabId) {
-      id.dest_movies -> {
-        currentController = movieNavController
-        viewModel.currentNavController.postValue(movieNavController)
-
-        views.hideAllUnder(movieNavController)
-        movieTabContainer.view?.visible()
-      }
-      id.dest_tv_series -> {
-        currentController = tvSeriesNavController
-        viewModel.currentNavController.postValue(tvSeriesNavController)
-
-        views.hideAllUnder(movieNavController)
-        tvSeriesTabContainer.view?.visible()
-      }
-      id.dest_favourites -> {
-        currentController = favouritesNavController
-        viewModel.currentNavController.postValue(favouritesNavController)
-
-        views.hideAllUnder(movieNavController)
-        favouritesTabContainer.view?.visible()
-      }
-      id.dest_profile -> {
-        currentController = profileNavController
-        viewModel.currentNavController.postValue(profileNavController)
-
-        views.hideAllUnder(movieNavController)
-        profileTabContainer.view?.visible()
-      }
+      id.dest_movies -> updateNavController(movieNavController, movieTabContainer)
+      id.dest_tv_series -> updateNavController(tvSeriesNavController, tvSeriesTabContainer)
+      id.dest_favourites -> updateNavController(favouritesNavController, favouritesTabContainer)
+      id.dest_profile -> updateNavController(profileNavController, profileTabContainer)
     }
     if (addToHistory) {
       tabHistory.push(tabId)
     }
+  }
+
+  private fun updateNavController(navController: NavController, tabContainer: Fragment) {
+    currentController = navController
+    viewModel.currentNavController.postValue(navController)
+    views.hideAllUnder(tabContainer)
   }
 
 }

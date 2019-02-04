@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
 
 fun ViewGroup.inflate(@LayoutRes layoutRes: Int): View =
     LayoutInflater.from(context).inflate(layoutRes, this, false)
@@ -26,6 +25,6 @@ fun View.gone() {
 
 fun View.visibility(isVisible: Boolean) = if (isVisible) this.visible() else this.gone()
 
-fun Iterable<Fragment>.hideAllUnder(navController: NavController) = this.forEach {
-  if (it == navController) it.view?.visibility = View.VISIBLE else it.view?.visibility = View.INVISIBLE
+fun Iterable<Fragment>.hideAllUnder(tabContainer: Fragment) = this.forEach {
+  if (it == tabContainer) it.view?.visibility = View.VISIBLE else it.view?.visibility = View.INVISIBLE
 }

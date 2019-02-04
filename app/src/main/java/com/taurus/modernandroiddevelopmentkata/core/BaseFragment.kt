@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
@@ -70,7 +69,7 @@ abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
     super.onViewCreated(view, savedInstanceState)
     sharedViewModel.currentNavController.nonNullObserve(viewLifecycleOwner) {
       navController = it
-      ToolbarManager(toolbarBuilder(), view, requireActivity(), it).prepareToolbar()
+      ToolbarManager(toolbarBuilder(), view, it).prepareToolbar()
     }
     fragmentListener?.handleBottomBarVisibility(isBottomBarEnabled)
   }
