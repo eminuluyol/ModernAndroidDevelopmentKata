@@ -6,6 +6,7 @@ import androidx.navigation.findNavController
 import com.taurus.modernandroiddevelopmentkata.core.BaseActivity
 import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
 import com.taurus.modernandroiddevelopmentkata.core.extensions.visibility
+import com.taurus.modernandroiddevelopmentkata.core.navigation.NavigationHelper
 import com.taurus.modernandroiddevelopmentkata.core.navigation.TabHistory
 import kotlinx.android.synthetic.main.activity_main.bottomNavigationView
 import javax.inject.Inject

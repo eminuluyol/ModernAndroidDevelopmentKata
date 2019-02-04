@@ -1,7 +1,6 @@
-package com.taurus.modernandroiddevelopmentkata
+package com.taurus.modernandroiddevelopmentkata.core.navigation
 
 import com.taurus.modernandroiddevelopmentkata.core.di.scope.ActivityScope
-import com.taurus.modernandroiddevelopmentkata.core.navigation.TabHistory
 import dagger.Module
 import dagger.Provides
 
@@ -14,6 +13,7 @@ class NavigationModule {
 
   @Provides
   @ActivityScope
-  fun provideNavigationHelper(tabHistory: TabHistory) = NavigationHelper(tabHistory)
+  fun provideNavigationHelper(tabHistory: TabHistory) = NavigationHelper(
+      tabHistory)
 
 }

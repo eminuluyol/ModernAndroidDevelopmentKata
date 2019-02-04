@@ -1,13 +1,14 @@
-package com.taurus.modernandroiddevelopmentkata
+package com.taurus.modernandroiddevelopmentkata.core.navigation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.taurus.modernandroiddevelopmentkata.MainActivity
+import com.taurus.modernandroiddevelopmentkata.MainViewModel
+import com.taurus.modernandroiddevelopmentkata.R.id
 import com.taurus.modernandroiddevelopmentkata.core.extensions.hideAllUnder
-import com.taurus.modernandroiddevelopmentkata.core.extensions.visibility
 import com.taurus.modernandroiddevelopmentkata.core.extensions.visible
-import com.taurus.modernandroiddevelopmentkata.core.navigation.TabHistory
 import kotlinx.android.synthetic.main.activity_main.bottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.favouritesTab
 import kotlinx.android.synthetic.main.activity_main.movieTab
@@ -64,7 +65,7 @@ class NavigationHelper(var tabHistory: TabHistory) {
   }
 
   private fun setupNavigation(savedInstanceState: Bundle?) {
-    tabHistory.push(R.id.dest_movies)
+    tabHistory.push(id.dest_movies)
     bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener)
 
     if (savedInstanceState == null) {
@@ -92,28 +93,28 @@ class NavigationHelper(var tabHistory: TabHistory) {
 
   fun switchTab(tabId: Int, addToHistory: Boolean = true) {
     when (tabId) {
-      R.id.dest_movies -> {
+      id.dest_movies -> {
         currentController = movieNavController
         viewModel.currentNavController.postValue(movieNavController)
 
         views.hideAllUnder(movieNavController)
         movieTabContainer.view?.visible()
       }
-      R.id.dest_tv_series -> {
+      id.dest_tv_series -> {
         currentController = tvSeriesNavController
         viewModel.currentNavController.postValue(tvSeriesNavController)
 
         views.hideAllUnder(movieNavController)
         tvSeriesTabContainer.view?.visible()
       }
-      R.id.dest_favourites -> {
+      id.dest_favourites -> {
         currentController = favouritesNavController
         viewModel.currentNavController.postValue(favouritesNavController)
 
         views.hideAllUnder(movieNavController)
         favouritesTabContainer.view?.visible()
       }
-      R.id.dest_profile -> {
+      id.dest_profile -> {
         currentController = profileNavController
         viewModel.currentNavController.postValue(profileNavController)
 

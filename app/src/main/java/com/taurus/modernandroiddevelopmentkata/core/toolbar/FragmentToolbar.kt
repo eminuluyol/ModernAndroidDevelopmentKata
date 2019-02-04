@@ -10,8 +10,7 @@ class FragmentToolbar private constructor(
     @IdRes val resId: Int,
     @StringRes val title: Int,
     val stringTitle: String,
-    val isOnHomePressedDefaultAction: Boolean,
-    val isTransparentStatusBar: Boolean
+    val isOnHomePressedDefaultAction: Boolean
 ) {
 
   companion object {
@@ -32,12 +31,11 @@ class FragmentToolbar private constructor(
     private var resId: Int = NO_TOOLBAR
     private var title: Int = -1
     private var isOnHomePressedDefaultAction = false
-    private var isTransparentStatusBar = false
     private var stringTitle = ""
 
     fun withId(@IdRes resId: Int) = apply { this.resId = resId }
 
-    fun withTitle(stringTitle: String) = apply {this.stringTitle = stringTitle}
+    fun withTitle(stringTitle: String) = apply { this.stringTitle = stringTitle }
 
     fun withTitle(title: Int) = apply { this.title = title }
 
@@ -47,14 +45,11 @@ class FragmentToolbar private constructor(
       this.isOnHomePressedDefaultAction = true
     }
 
-    fun withTransparentStatusBar() = apply { this.isTransparentStatusBar = true }
-
     fun build(): FragmentToolbar = FragmentToolbar(
         resId,
         title,
         stringTitle,
-        isOnHomePressedDefaultAction,
-        isTransparentStatusBar
+        isOnHomePressedDefaultAction
     )
   }
 }

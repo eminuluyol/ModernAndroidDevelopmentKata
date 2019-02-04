@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import com.taurus.modernandroiddevelopmentkata.MainViewModel
+import com.taurus.modernandroiddevelopmentkata.core.extensions.nonNullObserve
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.ToolbarManager
 import dagger.android.support.DaggerFragment
@@ -67,12 +68,10 @@ abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-    sharedViewModel.currentNavController.observe(viewLifecycleOwner, Observer {
-      it?.let { currentNavController ->
-        navController = currentNavController
-        ToolbarManager(toolbarBuilder(), view, requireActivity(), currentNavController).prepareToolbar()
-      }
-    })
+    sharedViewModel.currentNavController.nonNullObserve(viewLifecycleOwner) {
+      navController = it
+      ToolbarManager(toolbarBuilder(), view, requireActivity(), it).prepareToolbar()
+    }
     fragmentListener?.handleBottomBarVisibility(isBottomBarEnabled)
   }
 
