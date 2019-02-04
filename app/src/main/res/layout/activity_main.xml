@@ -6,72 +6,48 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-  <FrameLayout
-      android:id="@+id/movieTabContainer"
-      android:layout_width="match_parent"
-      android:layout_height="0dp"
-      app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
-      app:layout_constraintTop_toTopOf="parent">
-
     <fragment
         android:id="@+id/movieTab"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
+        app:layout_constraintTop_toTopOf="parent"
         app:defaultNavHost="false"
         app:navGraph="@navigation/navigation_graph_movie" />
-  </FrameLayout>
-
-  <FrameLayout
-      android:id="@+id/tvSeriesTabContainer"
-      android:layout_width="match_parent"
-      android:layout_height="0dp"
-      android:visibility="invisible"
-      app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
-      app:layout_constraintTop_toTopOf="parent">
 
     <fragment
         android:id="@+id/tvSeriesTab"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
+        app:layout_constraintTop_toTopOf="parent"
         app:defaultNavHost="false"
         app:navGraph="@navigation/navigation_graph_tv_series" />
-  </FrameLayout>
-
-  <FrameLayout
-      android:id="@+id/favouritesTabContainer"
-      android:layout_width="match_parent"
-      android:layout_height="0dp"
-      android:visibility="invisible"
-      app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
-      app:layout_constraintTop_toTopOf="parent">
 
     <fragment
         android:id="@+id/favouritesTab"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
+        app:layout_constraintTop_toTopOf="parent"
         app:defaultNavHost="false"
         app:navGraph="@navigation/navigation_graph_favourites" />
-  </FrameLayout>
-
-  <FrameLayout
-      android:id="@+id/profileTabContainer"
-      android:layout_width="match_parent"
-      android:layout_height="0dp"
-      android:visibility="invisible"
-      app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
-      app:layout_constraintTop_toTopOf="parent">
 
     <fragment
         android:id="@+id/profileTab"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
+        app:layout_constraintTop_toTopOf="parent"
         app:defaultNavHost="false"
         app:navGraph="@navigation/navigation_graph_profile" />
-  </FrameLayout>
 
   <com.google.android.material.bottomnavigation.BottomNavigationView
       android:id="@+id/bottomNavigationView"

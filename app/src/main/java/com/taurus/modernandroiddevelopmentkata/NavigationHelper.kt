@@ -1,17 +1,17 @@
 package com.taurus.modernandroiddevelopmentkata
 
 import android.os.Bundle
-import android.widget.FrameLayout
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.taurus.modernandroiddevelopmentkata.core.extensions.invisible
 import com.taurus.modernandroiddevelopmentkata.core.extensions.visible
 import com.taurus.modernandroiddevelopmentkata.core.navigation.TabHistory
 import kotlinx.android.synthetic.main.activity_main.bottomNavigationView
-import kotlinx.android.synthetic.main.activity_main.favouritesTabContainer
-import kotlinx.android.synthetic.main.activity_main.movieTabContainer
-import kotlinx.android.synthetic.main.activity_main.profileTabContainer
-import kotlinx.android.synthetic.main.activity_main.tvSeriesTabContainer
+import kotlinx.android.synthetic.main.activity_main.favouritesTab
+import kotlinx.android.synthetic.main.activity_main.movieTab
+import kotlinx.android.synthetic.main.activity_main.profileTab
+import kotlinx.android.synthetic.main.activity_main.tvSeriesTab
 
 class NavigationHelper(var tabHistory: TabHistory) {
 
@@ -19,10 +19,10 @@ class NavigationHelper(var tabHistory: TabHistory) {
   private lateinit var activity: MainActivity
   private lateinit var viewModel: MainViewModel
 
-  private val movieTabContainer: FrameLayout by lazy { activity.movieTabContainer }
-  private val tvSeriesTabContainer: FrameLayout by lazy { activity.tvSeriesTabContainer }
-  private val favouritesTabContainer: FrameLayout by lazy { activity.favouritesTabContainer }
-  private val profileTabContainer: FrameLayout by lazy { activity.profileTabContainer }
+  private val movieTabContainer: Fragment by lazy { activity.movieTab }
+  private val tvSeriesTabContainer: Fragment by lazy { activity.tvSeriesTab }
+  private val favouritesTabContainer: Fragment by lazy { activity.favouritesTab }
+  private val profileTabContainer: Fragment by lazy { activity.profileTab }
   private val bottomNavigationView: BottomNavigationView by lazy { activity.bottomNavigationView }
 
   private lateinit var movieNavController: NavController
@@ -60,6 +60,10 @@ class NavigationHelper(var tabHistory: TabHistory) {
     if (savedInstanceState == null) {
       currentController = movieNavController
       viewModel.currentNavController.postValue(movieNavController)
+      movieTabContainer.view?.visible()
+      tvSeriesTabContainer.view?.invisible()
+      favouritesTabContainer.view?.invisible()
+      profileTabContainer.view?.invisible()
     }
   }
 
@@ -84,37 +88,37 @@ class NavigationHelper(var tabHistory: TabHistory) {
         currentController = movieNavController
         viewModel.currentNavController.postValue(movieNavController)
 
-        movieTabContainer.visible()
-        tvSeriesTabContainer.invisible()
-        favouritesTabContainer.invisible()
-        profileTabContainer.invisible()
+        movieTabContainer.view?.visible()
+        tvSeriesTabContainer.view?.invisible()
+        favouritesTabContainer.view?.invisible()
+        profileTabContainer.view?.invisible()
       }
       R.id.dest_tv_series -> {
         currentController = tvSeriesNavController
         viewModel.currentNavController.postValue(tvSeriesNavController)
 
-        tvSeriesTabContainer.visible()
-        movieTabContainer.invisible()
-        favouritesTabContainer.invisible()
-        profileTabContainer.invisible()
+        tvSeriesTabContainer.view?.visible()
+        movieTabContainer.view?.invisible()
+        favouritesTabContainer.view?.invisible()
+        profileTabContainer.view?.invisible()
       }
       R.id.dest_favourites -> {
         currentController = favouritesNavController
         viewModel.currentNavController.postValue(favouritesNavController)
 
-        favouritesTabContainer.visible()
-        tvSeriesTabContainer.invisible()
-        movieTabContainer.invisible()
-        profileTabContainer.invisible()
+        favouritesTabContainer.view?.visible()
+        tvSeriesTabContainer.view?.invisible()
+        movieTabContainer.view?.invisible()
+        profileTabContainer.view?.invisible()
       }
       R.id.dest_profile -> {
         currentController = profileNavController
         viewModel.currentNavController.postValue(profileNavController)
 
-        profileTabContainer.visible()
-        favouritesTabContainer.invisible()
-        tvSeriesTabContainer.invisible()
-        movieTabContainer.invisible()
+        profileTabContainer.view?.visible()
+        favouritesTabContainer.view?.invisible()
+        tvSeriesTabContainer.view?.invisible()
+        movieTabContainer.view?.invisible()
       }
     }
     if (addToHistory) {
