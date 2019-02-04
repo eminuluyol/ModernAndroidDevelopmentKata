@@ -4,7 +4,8 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.taurus.modernandroiddevelopmentkata.core.extensions.invisible
+import com.taurus.modernandroiddevelopmentkata.core.extensions.hideAllUnder
+import com.taurus.modernandroiddevelopmentkata.core.extensions.visibility
 import com.taurus.modernandroiddevelopmentkata.core.extensions.visible
 import com.taurus.modernandroiddevelopmentkata.core.navigation.TabHistory
 import kotlinx.android.synthetic.main.activity_main.bottomNavigationView
@@ -24,6 +25,15 @@ class NavigationHelper(var tabHistory: TabHistory) {
   private val favouritesTabContainer: Fragment by lazy { activity.favouritesTab }
   private val profileTabContainer: Fragment by lazy { activity.profileTab }
   private val bottomNavigationView: BottomNavigationView by lazy { activity.bottomNavigationView }
+
+  private val views by lazy {
+    listOf(
+        movieTabContainer,
+        tvSeriesTabContainer,
+        favouritesTabContainer,
+        profileTabContainer
+    )
+  }
 
   private lateinit var movieNavController: NavController
   private lateinit var tvSeriesNavController: NavController
@@ -60,10 +70,8 @@ class NavigationHelper(var tabHistory: TabHistory) {
     if (savedInstanceState == null) {
       currentController = movieNavController
       viewModel.currentNavController.postValue(movieNavController)
+      views.hideAllUnder(movieNavController)
       movieTabContainer.view?.visible()
-      tvSeriesTabContainer.view?.invisible()
-      favouritesTabContainer.view?.invisible()
-      profileTabContainer.view?.invisible()
     }
   }
 
@@ -88,37 +96,29 @@ class NavigationHelper(var tabHistory: TabHistory) {
         currentController = movieNavController
         viewModel.currentNavController.postValue(movieNavController)
 
+        views.hideAllUnder(movieNavController)
         movieTabContainer.view?.visible()
-        tvSeriesTabContainer.view?.invisible()
-        favouritesTabContainer.view?.invisible()
-        profileTabContainer.view?.invisible()
       }
       R.id.dest_tv_series -> {
         currentController = tvSeriesNavController
         viewModel.currentNavController.postValue(tvSeriesNavController)
 
+        views.hideAllUnder(movieNavController)
         tvSeriesTabContainer.view?.visible()
-        movieTabContainer.view?.invisible()
-        favouritesTabContainer.view?.invisible()
-        profileTabContainer.view?.invisible()
       }
       R.id.dest_favourites -> {
         currentController = favouritesNavController
         viewModel.currentNavController.postValue(favouritesNavController)
 
+        views.hideAllUnder(movieNavController)
         favouritesTabContainer.view?.visible()
-        tvSeriesTabContainer.view?.invisible()
-        movieTabContainer.view?.invisible()
-        profileTabContainer.view?.invisible()
       }
       R.id.dest_profile -> {
         currentController = profileNavController
         viewModel.currentNavController.postValue(profileNavController)
 
+        views.hideAllUnder(movieNavController)
         profileTabContainer.view?.visible()
-        favouritesTabContainer.view?.invisible()
-        tvSeriesTabContainer.view?.invisible()
-        movieTabContainer.view?.invisible()
       }
     }
     if (addToHistory) {
