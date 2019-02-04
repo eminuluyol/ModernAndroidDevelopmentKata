@@ -10,7 +10,7 @@ import com.taurus.modernandroiddevelopmentkata.movie.MovieModule
 import com.taurus.modernandroiddevelopmentkata.profile.ProfileFragment
 import com.taurus.modernandroiddevelopmentkata.movie.ProfileModule
 import com.taurus.modernandroiddevelopmentkata.tvseries.TVSeriesFragment
-import com.taurus.modernandroiddevelopmentkata.movie.TVSeriesModule
+import com.taurus.modernandroiddevelopmentkata.tvseries.TVSeriesModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
