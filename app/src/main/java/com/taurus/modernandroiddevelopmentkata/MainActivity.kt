@@ -20,11 +20,7 @@ class MainActivity : BaseActivity<MainViewModel>(), BaseFragment.FragmentListene
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    navigationHelper.bind(
-        this,
-        viewModel,
-        savedInstanceState
-    )
+    navigationHelper.bind(this, savedInstanceState)
   }
 
   override fun onSaveInstanceState(outState: Bundle?) {

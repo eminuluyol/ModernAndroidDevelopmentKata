@@ -6,10 +6,9 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.taurus.modernandroiddevelopmentkata.MainActivity
-import com.taurus.modernandroiddevelopmentkata.MainViewModel
 import com.taurus.modernandroiddevelopmentkata.R
 import com.taurus.modernandroiddevelopmentkata.R.id
-import com.taurus.modernandroiddevelopmentkata.core.extensions.hideAllUnder
+import com.taurus.modernandroiddevelopmentkata.core.extensions.hideAllExcept
 import kotlinx.android.synthetic.main.activity_main.bottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.favouritesTab
 import kotlinx.android.synthetic.main.activity_main.movieTab
@@ -20,7 +19,6 @@ class NavigationHelper(var tabHistory: TabHistory) {
 
   private var currentController: NavController? = null
   private lateinit var activity: MainActivity
-  private lateinit var viewModel: MainViewModel
 
   private val movieNavController: NavController by lazy {
     activity.findNavController(R.id.movieTab)
@@ -55,13 +53,8 @@ class NavigationHelper(var tabHistory: TabHistory) {
     return@OnNavigationItemSelectedListener true
   }
 
-  fun bind(
-      activity: MainActivity,
-      viewModel: MainViewModel,
-      savedInstanceState: Bundle?
-  ) {
+  fun bind(activity: MainActivity, savedInstanceState: Bundle?) {
     this.activity = activity
-    this.viewModel = viewModel
     setupNavigation(savedInstanceState)
   }
 
@@ -70,7 +63,6 @@ class NavigationHelper(var tabHistory: TabHistory) {
     bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener)
 
     if (savedInstanceState == null) {
-      currentController = movieNavController
       updateNavController(movieNavController, movieTabContainer)
     }
   }
@@ -104,8 +96,7 @@ class NavigationHelper(var tabHistory: TabHistory) {
 
   private fun updateNavController(navController: NavController, tabContainer: Fragment) {
     currentController = navController
-    viewModel.currentNavController.postValue(navController)
-    views.hideAllUnder(tabContainer)
+    views.hideAllExcept(tabContainer)
   }
 
 }
