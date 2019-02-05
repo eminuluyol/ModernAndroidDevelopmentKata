@@ -1,5 +1,6 @@
 package com.taurus.modernandroiddevelopmentkata
 
+import android.content.Intent
 import android.os.Bundle
 import com.taurus.modernandroiddevelopmentkata.core.BaseActivity
 import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
@@ -32,6 +33,10 @@ class MainActivity : BaseActivity(), BaseFragment.FragmentListener {
             navigationHelper.tabHistory = it.getSerializable(TAB_HISTORY) as TabHistory
             navigationHelper.switchTab(bottomNavigationView.selectedItemId, false)
         }
+    }
+
+    override fun supportNavigateUpTo(upIntent: Intent) {
+        navigationHelper.supportNavigateUpTo(upIntent)
     }
 
     override fun onBackPressed() {

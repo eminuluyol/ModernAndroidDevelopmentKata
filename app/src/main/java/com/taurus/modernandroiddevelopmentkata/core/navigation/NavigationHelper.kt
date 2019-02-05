@@ -1,5 +1,6 @@
 package com.taurus.modernandroiddevelopmentkata.core.navigation
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
@@ -61,6 +62,10 @@ class NavigationHelper(var tabHistory: TabHistory) {
         if (savedInstanceState == null) {
             updateNavController(movieNavController, movieTabContainer)
         }
+    }
+
+    fun supportNavigateUpTo(upIntent: Intent) {
+        currentController?.navigateUp()
     }
 
     fun onBackPressed() {
