@@ -2,15 +2,15 @@ package com.taurus.modernandroiddevelopmentkata.core.di.module
 
 import com.taurus.modernandroiddevelopmentkata.core.di.scope.FragmentScope
 import com.taurus.modernandroiddevelopmentkata.detail.DetailFragment
-import com.taurus.modernandroiddevelopmentkata.movie.DetailModule
+import com.taurus.modernandroiddevelopmentkata.detail.DetailModule
 import com.taurus.modernandroiddevelopmentkata.favourite.FavouriteFragment
-import com.taurus.modernandroiddevelopmentkata.movie.FavouriteModule
+import com.taurus.modernandroiddevelopmentkata.favourite.FavouriteModule
 import com.taurus.modernandroiddevelopmentkata.movie.MovieFragment
 import com.taurus.modernandroiddevelopmentkata.movie.MovieModule
 import com.taurus.modernandroiddevelopmentkata.profile.ProfileFragment
-import com.taurus.modernandroiddevelopmentkata.movie.ProfileModule
+import com.taurus.modernandroiddevelopmentkata.profile.ProfileModule
 import com.taurus.modernandroiddevelopmentkata.tvseries.TVSeriesFragment
-import com.taurus.modernandroiddevelopmentkata.movie.TVSeriesModule
+import com.taurus.modernandroiddevelopmentkata.tvseries.TVSeriesModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

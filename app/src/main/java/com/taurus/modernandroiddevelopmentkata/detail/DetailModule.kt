@@ -1,4 +1,4 @@
-package com.taurus.modernandroiddevelopmentkata.movie
+package com.taurus.modernandroiddevelopmentkata.detail
 
 import dagger.Module
 

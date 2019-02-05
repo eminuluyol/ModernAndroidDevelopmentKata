@@ -10,7 +10,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
+import com.taurus.modernandroiddevelopmentkata.MainViewModel
+import com.taurus.modernandroiddevelopmentkata.core.extensions.nonNullObserve
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.ToolbarManager
 import dagger.android.support.DaggerFragment
@@ -18,60 +19,67 @@ import javax.inject.Inject
 
 abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
 
-    interface FragmentListener {
-        fun handleBottomBarVisibility(isVisible: Boolean)
+  interface FragmentListener {
+    fun handleBottomBarVisibility(isVisible: Boolean)
+  }
+
+  @Inject
+  lateinit var viewModelFactory: ViewModelProvider.Factory
+
+  /**
+   * ViewModel istance that provided by ViewModelProvider
+   */
+  protected lateinit var stateMachine: VM
+
+  /**
+   * NavController for using Navigation Arch Component
+   */
+  protected lateinit var navController: NavController
+
+  private var fragmentListener: FragmentListener? = null
+
+  abstract fun obtainViewModel(): Class<VM>
+
+  @LayoutRes
+  abstract fun layoutResId(): Int
+
+  private lateinit var sharedViewModel: MainViewModel
+
+  override fun onAttach(context: Context) {
+    super.onAttach(context)
+    try {
+      this.fragmentListener = context as FragmentListener
+    } catch (e: ClassCastException) {
+      throw ClassCastException("$context must implement FragmentListener")
     }
+  }
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    stateMachine = ViewModelProviders.of(this, viewModelFactory).get(obtainViewModel())
+    sharedViewModel = ViewModelProviders.of(requireActivity(), viewModelFactory).get(
+        MainViewModel::class.java)
+  }
 
-    /**
-     * ViewModel istance that provided by ViewModelProvider
-     */
-    protected lateinit var stateMachine: VM
+  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+      savedInstanceState: Bundle?) =
+      inflater.inflate(layoutResId(), container, false)!!
 
-    /**
-     * NavController for using Navigation Arch Component
-     */
-    protected lateinit var navController: NavController
-
-    private var fragmentListener: FragmentListener? = null
-
-    abstract fun obtainViewModel(): Class<VM>
-
-    @LayoutRes
-    abstract fun layoutResId(): Int
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        try {
-            this.fragmentListener = context as FragmentListener
-        } catch (e: ClassCastException) {
-            throw ClassCastException("$context must implement FragmentListener")
-        }
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+    sharedViewModel.currentNavController.nonNullObserve(viewLifecycleOwner) {
+      navController = it
+      ToolbarManager(toolbarBuilder(), view, it).prepareToolbar()
     }
+    fragmentListener?.handleBottomBarVisibility(isBottomBarEnabled)
+  }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        stateMachine = ViewModelProviders.of(this, viewModelFactory).get(obtainViewModel())
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) =
-            inflater.inflate(layoutResId(), container, false)!!
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        navController = Navigation.findNavController(view)
-        ToolbarManager(toolbarBuilder(), view, requireActivity(), navController).prepareToolbar()
-        fragmentListener?.handleBottomBarVisibility(isBottomBarEnabled)
-    }
-
-    /**
-     * Override and return false if you don't need the bottom bar.
-     */
-    protected open val isBottomBarEnabled = true
+  /**
+   * Override and return false if you don't need the bottom bar.
+   */
+  protected open val isBottomBarEnabled = true
 
 
-    protected abstract fun toolbarBuilder(): FragmentToolbar
+  protected abstract fun toolbarBuilder(): FragmentToolbar
 
 }
