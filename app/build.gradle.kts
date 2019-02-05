@@ -99,6 +99,10 @@ dependencies {
   implementation(CoreLibraries.roomCore)
   kapt(CoreLibraries.roomAnnotationProcessor)
   implementation(CoreLibraries.roomCoroutinesSupport)
+    /**
+     * Stetho
+     */
+  implementation(ExternalLibraries.stetho)
   /**
    * Test
    */

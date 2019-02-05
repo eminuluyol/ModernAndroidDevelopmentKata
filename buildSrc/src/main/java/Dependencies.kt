@@ -15,6 +15,7 @@ import Versions.pagingVersion
 import Versions.retrofitCoroutinesAdapterVersion
 import Versions.retrofitVersion
 import Versions.roomVersion
+import Versions.stethoVersion
 import Versions.supportVersion
 
 object CoreLibraries {
@@ -46,6 +47,7 @@ object ExternalLibraries {
   const val moshi = "com.squareup.moshi:moshi:$moshiVersion"
   const val okhttp = "com.squareup.okhttp3:okhttp:$okhttpVersion"
   const val okhttpInterceptor = "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
+  const val stetho = "com.facebook.stetho:stetho:$stethoVersion"
 }
 
 object TestLibraries {
