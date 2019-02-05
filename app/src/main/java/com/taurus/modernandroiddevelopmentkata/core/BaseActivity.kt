@@ -6,19 +6,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import dagger.android.support.DaggerAppCompatActivity
 
-abstract class BaseActivity<VM : ViewModel> : DaggerAppCompatActivity() {
-
-  abstract fun obtainViewModel(): Class<VM>
-
-  protected lateinit var viewModel: VM
-
+abstract class BaseActivity : DaggerAppCompatActivity() {
   @LayoutRes
   abstract fun layoutResId(): Int
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(layoutResId())
-    viewModel = ViewModelProviders.of(this).get(obtainViewModel())
   }
 
 }

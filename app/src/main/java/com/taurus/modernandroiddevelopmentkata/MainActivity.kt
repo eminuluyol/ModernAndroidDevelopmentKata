@@ -9,12 +9,10 @@ import com.taurus.modernandroiddevelopmentkata.core.navigation.TabHistory
 import kotlinx.android.synthetic.main.activity_main.bottomNavigationView
 import javax.inject.Inject
 
-class MainActivity : BaseActivity<MainViewModel>(), BaseFragment.FragmentListener {
+class MainActivity : BaseActivity(), BaseFragment.FragmentListener {
 
   @Inject
   lateinit var navigationHelper: NavigationHelper
-
-  override fun obtainViewModel() = MainViewModel::class.java
 
   override fun layoutResId() = R.layout.activity_main
 
