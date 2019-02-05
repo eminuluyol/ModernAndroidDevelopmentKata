@@ -25,6 +25,6 @@ fun View.gone() {
 
 fun View.visibility(isVisible: Boolean) = if (isVisible) this.visible() else this.gone()
 
-fun Iterable<Fragment>.hideAllUnder(tabContainer: Fragment) = this.forEach {
+fun Iterable<Fragment>.hideAllExcept(tabContainer: Fragment) = this.forEach {
   if (it == tabContainer) it.view?.visibility = View.VISIBLE else it.view?.visibility = View.INVISIBLE
 }
