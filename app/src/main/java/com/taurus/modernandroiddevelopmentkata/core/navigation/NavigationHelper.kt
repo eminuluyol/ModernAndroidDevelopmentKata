@@ -8,7 +8,6 @@ import androidx.navigation.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.taurus.modernandroiddevelopmentkata.MainActivity
 import com.taurus.modernandroiddevelopmentkata.R
-import com.taurus.modernandroiddevelopmentkata.R.id
 import com.taurus.modernandroiddevelopmentkata.core.extensions.hideAllExcept
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -56,7 +55,6 @@ class NavigationHelper(var tabHistory: TabHistory) {
     }
 
     private fun setupNavigation(savedInstanceState: Bundle?) {
-        tabHistory.push(id.dest_movies)
         bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener)
 
         if (savedInstanceState == null) {
@@ -71,24 +69,20 @@ class NavigationHelper(var tabHistory: TabHistory) {
     fun onBackPressed() {
         currentController?.let {
             if (it.popBackStack().not()) {
-                if (tabHistory.size > 1) {
-                    val tabId = tabHistory.popPrevious()
+                tabHistory.popPrevious()?.let { tabId ->
                     switchTab(tabId, false)
                     bottomNavigationView.menu.findItem(tabId)?.isChecked = true
-                } else {
-                    tabHistory.clear()
-                    return activity.finish()
-                }
+                } ?: activity.finish()
             }
-        } ?: run { activity.finish() }
+        } ?: activity.finish()
     }
 
     fun switchTab(tabId: Int, addToHistory: Boolean = true) {
         when (tabId) {
-            id.dest_movies -> updateNavController(movieNavController, movieTabContainer)
-            id.dest_tv_series -> updateNavController(tvSeriesNavController, tvSeriesTabContainer)
-            id.dest_favourites -> updateNavController(favouritesNavController, favouritesTabContainer)
-            id.dest_profile -> updateNavController(profileNavController, profileTabContainer)
+            R.id.dest_movies -> updateNavController(movieNavController, movieTabContainer)
+            R.id.dest_tv_series -> updateNavController(tvSeriesNavController, tvSeriesTabContainer)
+            R.id.dest_favourites -> updateNavController(favouritesNavController, favouritesTabContainer)
+            R.id.dest_profile -> updateNavController(profileNavController, profileTabContainer)
         }
         if (addToHistory) {
             tabHistory.push(tabId)
