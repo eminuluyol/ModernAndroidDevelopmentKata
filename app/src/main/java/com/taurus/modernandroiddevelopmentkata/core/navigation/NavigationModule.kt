@@ -7,13 +7,13 @@ import dagger.Provides
 @Module
 class NavigationModule {
 
-  @Provides
-  @ActivityScope
-  fun provideTabHistory() = TabHistory()
+    @Provides
+    @ActivityScope
+    fun provideTabHistory() = TabHistory()
 
-  @Provides
-  @ActivityScope
-  fun provideNavigationHelper(tabHistory: TabHistory) = NavigationHelper(
-      tabHistory)
+    @Provides
+    @ActivityScope
+    fun provideNavigationHelper(tabHistory: TabHistory) = NavigationHelper(
+        tabHistory)
 
 }

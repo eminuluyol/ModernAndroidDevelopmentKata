@@ -14,28 +14,28 @@ import javax.inject.Singleton
 @Module
 class NetworkModule {
 
-  @Provides
-  @Singleton
-  fun provideLoggingInterceptor(): HttpLoggingInterceptor = HttpLoggingInterceptor()
-      .setLevel(HttpLoggingInterceptor.Level.BODY)
+    @Provides
+    @Singleton
+    fun provideLoggingInterceptor(): HttpLoggingInterceptor = HttpLoggingInterceptor()
+        .setLevel(HttpLoggingInterceptor.Level.BODY)
 
-  @Provides
-  @Singleton
-  fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
-    val okHttpBuilder = OkHttpClient.Builder()
-      debug { okHttpBuilder.addInterceptor(loggingInterceptor) }
-    okHttpBuilder.addInterceptor(RequestInterceptor())
-    return okHttpBuilder.build()
-  }
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
+        val okHttpBuilder = OkHttpClient.Builder()
+        debug { okHttpBuilder.addInterceptor(loggingInterceptor) }
+        okHttpBuilder.addInterceptor(RequestInterceptor())
+        return okHttpBuilder.build()
+    }
 
-  @Provides
-  @Singleton
-  fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit =
-      Retrofit.Builder()
-          .client(okHttpClient)
-          .addCallAdapterFactory(CoroutineCallAdapterFactory.invoke())
-          .addConverterFactory(MoshiConverterFactory.create())
-          .baseUrl(BuildConfig.API_URL)
-          .build()
+    @Provides
+    @Singleton
+    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit =
+        Retrofit.Builder()
+            .client(okHttpClient)
+            .addCallAdapterFactory(CoroutineCallAdapterFactory.invoke())
+            .addConverterFactory(MoshiConverterFactory.create())
+            .baseUrl(BuildConfig.API_URL)
+            .build()
 
 }

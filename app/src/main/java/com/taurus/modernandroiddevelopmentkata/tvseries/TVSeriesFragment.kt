@@ -1,11 +1,10 @@
 package com.taurus.modernandroiddevelopmentkata.tvseries
 
-import android.os.Bundle
 import android.view.View
+import androidx.navigation.NavController
 import com.taurus.modernandroiddevelopmentkata.R
 import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
-import com.taurus.modernandroiddevelopmentkata.movie.TVSeriesStateMachine
 import kotlinx.android.synthetic.main.fragment_tv_series.*
 
 class TVSeriesFragment : BaseFragment<TVSeriesStateMachine>() {
@@ -20,11 +19,10 @@ class TVSeriesFragment : BaseFragment<TVSeriesStateMachine>() {
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onReadyToRender(view: View, stateMachine: TVSeriesStateMachine, navController: NavController) {
         showDetailButton.setOnClickListener {
             navController.navigate(
-                    TVSeriesFragmentDirections.destTvSeriesToDestDetails("From TV Series Fragment")
+                TVSeriesFragmentDirections.destTvSeriesToDestDetails("From TV Series Fragment")
             )
         }
     }

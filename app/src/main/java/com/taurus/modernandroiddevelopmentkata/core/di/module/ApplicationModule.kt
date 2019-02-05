@@ -12,20 +12,20 @@ import javax.inject.Singleton
 
 @Module(
     includes = [
-      AndroidSupportInjectionModule::class,
-      ActivityBuilderModule::class,
-      ViewModelModule::class,
-      NetworkModule::class
+        AndroidSupportInjectionModule::class,
+        ActivityBuilderModule::class,
+        ViewModelModule::class,
+        NetworkModule::class
     ]
 )
 class ApplicationModule {
 
-  @Provides
-  @Singleton
-  fun provideContext(movieApp: MovieApp): Context = movieApp.applicationContext
+    @Provides
+    @Singleton
+    fun provideContext(movieApp: MovieApp): Context = movieApp.applicationContext
 
-  @Provides
-  @Singleton
-  fun provideResourceHelper(context: Context) = ResourceHelper(context)
+    @Provides
+    @Singleton
+    fun provideResourceHelper(context: Context) = ResourceHelper(context)
 
 }

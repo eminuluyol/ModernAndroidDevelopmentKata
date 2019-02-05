@@ -4,5 +4,4 @@ import dagger.Module
 
 @Module
 class TVSeriesModule {
-
 }

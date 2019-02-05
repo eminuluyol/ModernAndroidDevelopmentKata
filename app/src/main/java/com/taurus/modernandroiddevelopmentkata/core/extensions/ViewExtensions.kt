@@ -12,19 +12,19 @@ fun ViewGroup.inflate(@LayoutRes layoutRes: Int): View =
 fun View.isVisible() = visibility == View.VISIBLE
 
 fun View.visible() {
-  this.visibility = View.VISIBLE
+    this.visibility = View.VISIBLE
 }
 
 fun View.invisible() {
-  this.visibility = View.INVISIBLE
+    this.visibility = View.INVISIBLE
 }
 
 fun View.gone() {
-  this.visibility = View.GONE
+    this.visibility = View.GONE
 }
 
 fun View.visibility(isVisible: Boolean) = if (isVisible) this.visible() else this.gone()
 
 fun Iterable<Fragment>.hideAllExcept(tabContainer: Fragment) = this.forEach {
-  if (it == tabContainer) it.view?.visibility = View.VISIBLE else it.view?.visibility = View.INVISIBLE
+    if (it == tabContainer) it.view?.visibility = View.VISIBLE else it.view?.visibility = View.INVISIBLE
 }

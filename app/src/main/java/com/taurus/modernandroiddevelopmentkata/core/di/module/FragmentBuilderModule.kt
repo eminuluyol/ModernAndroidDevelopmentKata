@@ -17,24 +17,24 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class FragmentBuilderModule {
 
-  @FragmentScope
-  @ContributesAndroidInjector(modules = [MovieModule::class])
-  abstract fun movieFragment(): MovieFragment
+    @FragmentScope
+    @ContributesAndroidInjector(modules = [MovieModule::class])
+    abstract fun movieFragment(): MovieFragment
 
-  @FragmentScope
-  @ContributesAndroidInjector(modules = [TVSeriesModule::class])
-  abstract fun tvSeriesFragment(): TVSeriesFragment
+    @FragmentScope
+    @ContributesAndroidInjector(modules = [TVSeriesModule::class])
+    abstract fun tvSeriesFragment(): TVSeriesFragment
 
-  @FragmentScope
-  @ContributesAndroidInjector(modules = [FavouriteModule::class])
-  abstract fun favouriteFragment(): FavouriteFragment
+    @FragmentScope
+    @ContributesAndroidInjector(modules = [FavouriteModule::class])
+    abstract fun favouriteFragment(): FavouriteFragment
 
-  @FragmentScope
-  @ContributesAndroidInjector(modules = [ProfileModule::class])
-  abstract fun profileFragment(): ProfileFragment
+    @FragmentScope
+    @ContributesAndroidInjector(modules = [ProfileModule::class])
+    abstract fun profileFragment(): ProfileFragment
 
-  @FragmentScope
-  @ContributesAndroidInjector(modules = [DetailModule::class])
-  abstract fun detailFragment(): DetailFragment
+    @FragmentScope
+    @ContributesAndroidInjector(modules = [DetailModule::class])
+    abstract fun detailFragment(): DetailFragment
 
 }

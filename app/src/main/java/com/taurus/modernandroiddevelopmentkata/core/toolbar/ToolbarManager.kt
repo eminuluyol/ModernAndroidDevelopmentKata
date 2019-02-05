@@ -11,24 +11,24 @@ class ToolbarManager(
     private val navController: NavController
 ) {
 
-  fun prepareToolbar() {
+    fun prepareToolbar() {
 
-    if (builder.resId != FragmentToolbar.NO_TOOLBAR) {
-      val fragmentToolbar: Toolbar? = container.findViewById(builder.resId)
+        if (builder.resId != FragmentToolbar.NO_TOOLBAR) {
+            val fragmentToolbar: Toolbar? = container.findViewById(builder.resId)
 
-      fragmentToolbar?.let { toolbar ->
-        if (builder.title != FragmentToolbar.NO_TITLE) {
-          toolbar.setTitle(builder.title)
+            fragmentToolbar?.let { toolbar ->
+                if (builder.title != FragmentToolbar.NO_TITLE) {
+                    toolbar.setTitle(builder.title)
+                }
+
+                if (builder.stringTitle.isNotEmpty()) {
+                    toolbar.title = builder.stringTitle
+                }
+
+                if (builder.isOnHomePressedDefaultAction) {
+                    toolbar.setupWithNavController(navController)
+                }
+            }
         }
-
-        if (builder.stringTitle.isNotEmpty()) {
-          toolbar.title = builder.stringTitle
-        }
-
-        if (builder.isOnHomePressedDefaultAction) {
-          toolbar.setupWithNavController(navController)
-        }
-      }
     }
-  }
 }
