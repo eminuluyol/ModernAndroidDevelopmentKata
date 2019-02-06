@@ -3,14 +3,13 @@ package com.taurus.modernandroiddevelopmentkata
 import android.content.Intent
 import android.os.Bundle
 import com.taurus.modernandroiddevelopmentkata.core.BaseActivity
-import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
 import com.taurus.modernandroiddevelopmentkata.core.extensions.visibility
-import com.taurus.modernandroiddevelopmentkata.core.navigation.NavigationHelper
-import com.taurus.modernandroiddevelopmentkata.core.navigation.TabHistory
+import com.taurus.modernandroiddevelopmentkata.navigation.NavigationHelper
+import com.taurus.modernandroiddevelopmentkata.navigation.TabHistory
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(), BaseFragment.FragmentListener {
+class MainActivity : BaseActivity(), com.taurus.modernandroiddevelopmentkata.core.BaseFragment.FragmentListener {
 
     @Inject
     lateinit var navigationHelper: NavigationHelper

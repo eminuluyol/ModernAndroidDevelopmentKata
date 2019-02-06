@@ -3,10 +3,9 @@ package com.taurus.modernandroiddevelopmentkata.profile
 import android.view.View
 import androidx.navigation.NavController
 import com.taurus.modernandroiddevelopmentkata.R
-import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
 
-class ProfileFragment : BaseFragment<ProfileStateMachine>() {
+class ProfileFragment : com.taurus.modernandroiddevelopmentkata.core.BaseFragment<ProfileStateMachine>() {
 
     override fun obtainViewModel() = ProfileStateMachine::class.java
 
