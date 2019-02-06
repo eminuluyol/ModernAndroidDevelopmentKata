@@ -77,7 +77,7 @@ dependencies {
     /**
      * Test
      */
-    testApi(TestLibraries.junit)
-    androidTestApi(TestLibraries.testRunner)
-    androidTestApi(TestLibraries.espresso)
+    androidTestImplementation(TestLibraries.junit)
+    androidTestImplementation(TestLibraries.testRunner)
+    androidTestImplementation(TestLibraries.espresso)
 }

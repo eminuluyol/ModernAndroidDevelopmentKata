@@ -10,7 +10,7 @@ class NavigationModule {
 
     @Provides
     @ActivityScope
-    fun provideTabHistory() = TabHistory(R.id.dest_movies)
+    fun provideTabHistory() = TabHistory(R.id.navigation_movies)
 
     @Provides
     @ActivityScope

@@ -26,7 +26,7 @@ abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
     /**
-     * ViewModel istance that provided by ViewModelProvider
+     * ViewModel instance that provided by ViewModelProvider
      */
     private lateinit var stateMachine: VM
 

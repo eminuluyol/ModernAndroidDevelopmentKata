@@ -13,8 +13,7 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
         app:layout_constraintTop_toTopOf="parent"
-        app:defaultNavHost="false"
-        app:navGraph="@navigation/navigation_graph_movie" />
+        app:defaultNavHost="false" />
 
     <fragment
         android:id="@+id/tvSeriesTab"
@@ -24,8 +23,7 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
         app:layout_constraintTop_toTopOf="parent"
-        app:defaultNavHost="false"
-        app:navGraph="@navigation/navigation_graph_tv_series" />
+        app:defaultNavHost="false" />
 
     <fragment
         android:id="@+id/favouritesTab"
@@ -35,8 +33,7 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
         app:layout_constraintTop_toTopOf="parent"
-        app:defaultNavHost="false"
-        app:navGraph="@navigation/navigation_graph_favourites" />
+        app:defaultNavHost="false" />
 
     <fragment
         android:id="@+id/profileTab"
@@ -46,8 +43,7 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
         app:layout_constraintTop_toTopOf="parent"
-        app:defaultNavHost="false"
-        app:navGraph="@navigation/navigation_graph_profile" />
+        app:defaultNavHost="false" />
 
   <com.google.android.material.bottomnavigation.BottomNavigationView
       android:id="@+id/bottomNavigationView"

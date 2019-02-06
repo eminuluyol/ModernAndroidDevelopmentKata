@@ -19,4 +19,10 @@ android {
 
 dependencies {
     implementation(project(":core"))
+    /**
+     * Test
+     */
+    androidTestImplementation(TestLibraries.junit)
+    androidTestImplementation(TestLibraries.testRunner)
+    androidTestImplementation(TestLibraries.espresso)
 }

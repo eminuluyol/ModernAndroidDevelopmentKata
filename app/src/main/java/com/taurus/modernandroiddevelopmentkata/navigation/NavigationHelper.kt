@@ -9,24 +9,52 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.taurus.modernandroiddevelopmentkata.MainActivity
 import com.taurus.modernandroiddevelopmentkata.R
 import com.taurus.modernandroiddevelopmentkata.core.extensions.hideAllExcept
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.bottomNavigationView
+import kotlinx.android.synthetic.main.activity_main.favouritesTab
+import kotlinx.android.synthetic.main.activity_main.movieTab
+import kotlinx.android.synthetic.main.activity_main.profileTab
+import kotlinx.android.synthetic.main.activity_main.tvSeriesTab
 
-class NavigationHelper(var tabHistory: TabHistory) {
+class NavigationHelper(private var tabHistory: TabHistory) {
 
+    private val startDestinations = mapOf(
+        R.id.navigation_movies to R.id.movie_fragment,
+        R.id.navigation_tv_series to R.id.tv_series_fragment,
+        R.id.navigation_favourites to R.id.favourites_fragment,
+        R.id.navigation_profile to R.id.profile_fragment
+    )
+
+    private var currentTabId: Int = R.id.navigation_movies
     private var currentController: NavController? = null
     private lateinit var activity: MainActivity
 
     private val movieNavController: NavController by lazy {
-        activity.findNavController(R.id.movieTab)
+        activity.findNavController(R.id.movieTab).apply {
+            graph = navInflater.inflate(R.navigation.navigation_graph).apply {
+                startDestination = startDestinations.getValue(R.id.navigation_movies)
+            }
+        }
     }
     private val tvSeriesNavController: NavController by lazy {
-        activity.findNavController(R.id.tvSeriesTab)
+        activity.findNavController(R.id.tvSeriesTab).apply {
+            graph = navInflater.inflate(R.navigation.navigation_graph).apply {
+                startDestination = startDestinations.getValue(R.id.navigation_tv_series)
+            }
+        }
     }
     private val favouritesNavController: NavController by lazy {
-        activity.findNavController(R.id.favouritesTab)
+        activity.findNavController(R.id.favouritesTab).apply {
+            graph = navInflater.inflate(R.navigation.navigation_graph).apply {
+                startDestination = startDestinations.getValue(R.id.navigation_favourites)
+            }
+        }
     }
     private val profileNavController: NavController by lazy {
-        activity.findNavController(R.id.profileTab)
+        activity.findNavController(R.id.profileTab).apply {
+            graph = navInflater.inflate(R.navigation.navigation_graph).apply {
+                startDestination = startDestinations.getValue(R.id.navigation_profile)
+            }
+        }
     }
 
     private val movieTabContainer: Fragment by lazy { activity.movieTab }
@@ -68,7 +96,7 @@ class NavigationHelper(var tabHistory: TabHistory) {
 
     fun onBackPressed() {
         currentController?.let {
-            if (it.currentDestination?.id == it.graph.startDestination) {
+            if (it.currentDestination?.id == startDestinations.getValue(currentTabId)) {
                 tabHistory.popPrevious()?.let { tabId ->
                     switchTab(tabId, false)
                     bottomNavigationView.menu.findItem(tabId)?.isChecked = true
@@ -80,11 +108,15 @@ class NavigationHelper(var tabHistory: TabHistory) {
     }
 
     fun switchTab(tabId: Int, addToHistory: Boolean = true) {
+        currentTabId = tabId
         when (tabId) {
-            R.id.dest_movies -> updateNavController(movieNavController, movieTabContainer)
-            R.id.dest_tv_series -> updateNavController(tvSeriesNavController, tvSeriesTabContainer)
-            R.id.dest_favourites -> updateNavController(favouritesNavController, favouritesTabContainer)
-            R.id.dest_profile -> updateNavController(profileNavController, profileTabContainer)
+            R.id.navigation_movies -> updateNavController(movieNavController, movieTabContainer)
+            R.id.navigation_tv_series -> updateNavController(tvSeriesNavController,
+                tvSeriesTabContainer)
+            R.id.navigation_favourites -> updateNavController(favouritesNavController,
+                favouritesTabContainer)
+            R.id.navigation_profile -> updateNavController(profileNavController,
+                profileTabContainer)
         }
         if (addToHistory) {
             tabHistory.push(tabId)
@@ -94,6 +126,21 @@ class NavigationHelper(var tabHistory: TabHistory) {
     private fun updateNavController(navController: NavController, tabContainer: Fragment) {
         currentController = navController
         views.hideAllExcept(tabContainer)
+    }
+
+    fun onSaveInstanceState(outState: Bundle?) {
+        outState?.putSerializable(TAB_HISTORY, tabHistory)
+    }
+
+    fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+        savedInstanceState?.let {
+            tabHistory = it.getSerializable(TAB_HISTORY) as TabHistory
+            switchTab(bottomNavigationView.selectedItemId, false)
+        }
+    }
+
+    private companion object {
+        const val TAB_HISTORY = "tab_history"
     }
 
 }

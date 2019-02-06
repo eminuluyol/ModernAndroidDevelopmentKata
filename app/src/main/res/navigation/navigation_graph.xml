@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph">
+
+    <fragment
+        android:id="@id/movie_fragment"
+        android:name="com.taurus.modernandroiddevelopmentkata.movies.MovieFragment"
+        tools:layout="@layout/fragment_movie">
+        <action
+            android:id="@+id/navigate_from_movies_to_details"
+            app:destination="@id/details_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@id/tv_series_fragment"
+        android:name="com.taurus.modernandroiddevelopmentkata.tvseries.TVSeriesFragment"
+        tools:layout="@layout/fragment_tv_series">
+        <action
+            android:id="@+id/navigate_from_tv_series_to_details"
+            app:destination="@id/details_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@id/favourites_fragment"
+        android:name="com.taurus.modernandroiddevelopmentkata.favourite.FavouriteFragment"
+        tools:layout="@layout/fragment_favourite" />
+
+    <fragment
+        android:id="@id/profile_fragment"
+        android:name="com.taurus.modernandroiddevelopmentkata.profile.ProfileFragment"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@id/details_fragment"
+        android:name="com.taurus.modernandroiddevelopmentkata.detail.DetailFragment"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="titleArg"
+            app:argType="string" />
+    </fragment>
+
+</navigation>

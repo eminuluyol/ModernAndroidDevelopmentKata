@@ -4,7 +4,7 @@ import android.view.View
 import androidx.navigation.NavController
 import com.taurus.modernandroiddevelopmentkata.R
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
-import kotlinx.android.synthetic.main.fragment_tv_series.*
+import kotlinx.android.synthetic.main.fragment_tv_series.showDetailButton
 
 class TVSeriesFragment : com.taurus.modernandroiddevelopmentkata.core.BaseFragment<TVSeriesStateMachine>() {
 
@@ -18,11 +18,13 @@ class TVSeriesFragment : com.taurus.modernandroiddevelopmentkata.core.BaseFragme
         }
     }
 
-    override fun onReadyToRender(view: View, stateMachine: TVSeriesStateMachine, navController: NavController) {
+    override fun onReadyToRender(view: View, stateMachine: TVSeriesStateMachine,
+        navController: NavController) {
         showDetailButton.setOnClickListener {
-            navController.navigate(
-                TVSeriesFragmentDirections.destTvSeriesToDestDetails("From TV Series Fragment")
+            val action = TVSeriesFragmentDirections.navigateFromTvSeriesToDetails(
+                "From TV Series Fragment"
             )
+            navController.navigate(action)
         }
     }
 
