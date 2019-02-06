@@ -68,11 +68,13 @@ class NavigationHelper(var tabHistory: TabHistory) {
 
     fun onBackPressed() {
         currentController?.let {
-            if (it.popBackStack().not()) {
+            if (it.currentDestination?.id == it.graph.startDestination) {
                 tabHistory.popPrevious()?.let { tabId ->
                     switchTab(tabId, false)
                     bottomNavigationView.menu.findItem(tabId)?.isChecked = true
                 } ?: activity.finish()
+            } else {
+                it.popBackStack()
             }
         } ?: activity.finish()
     }
