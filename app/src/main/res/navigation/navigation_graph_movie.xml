@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navigation_graph"
+    android:id="@id/navigation_graph_movie"
     app:startDestination="@id/dest_movies">
 
     <fragment
@@ -11,16 +11,9 @@
         tools:layout="@layout/fragment_movie">
         <action
             android:id="@+id/dest_movies_to_dest_details"
-            app:destination="@id/dest_details" />
+            app:destination="@id/navigation_graph_details" />
     </fragment>
 
-    <fragment
-        android:id="@+id/dest_details"
-        android:name="com.taurus.modernandroiddevelopmentkata.detail.DetailFragment"
-        tools:layout="@layout/fragment_detail">
-        <argument
-            android:name="titleArg"
-            app:argType="string" />
-    </fragment>
+    <include app:graph="@navigation/navigation_graph_details" />
 
 </navigation>

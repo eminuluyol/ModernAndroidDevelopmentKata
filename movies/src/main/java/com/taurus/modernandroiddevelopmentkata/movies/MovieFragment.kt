@@ -1,6 +1,7 @@
 package com.taurus.modernandroiddevelopmentkata.movies
 
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
@@ -21,10 +22,10 @@ class MovieFragment : BaseFragment<MovieStateMachine>() {
 
     override fun onReadyToRender(view: View, stateMachine: MovieStateMachine, navController: NavController) {
         showDetailButton.setOnClickListener {
-//            navController.navigate(
-//                MovieFragmentDirections.destMoviesToDestDetails("From Movie Fragment")
-//            )
+            navController.navigate(
+                R.id.navigation_graph_details,
+                bundleOf("titleArg" to "From Movie Fragment")
+            )
         }
     }
-
 }

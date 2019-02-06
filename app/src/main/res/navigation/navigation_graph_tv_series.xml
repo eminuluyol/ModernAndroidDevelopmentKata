@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/navigation_graph"
+    android:id="@id/navigation_graph_tv_series"
     app:startDestination="@id/dest_tv_series">
 
     <fragment
@@ -15,7 +15,7 @@
   </fragment>
 
     <fragment
-      android:id="@+id/dest_details"
+      android:id="@id/dest_details"
       android:name="com.taurus.modernandroiddevelopmentkata.detail.DetailFragment"
       tools:layout="@layout/fragment_detail">
     <argument
