@@ -16,7 +16,7 @@ object Versions {
    * Dependency Versions
    */
   const val gradleVersion = "3.3.0"
-  const val kotlinVersion = "1.3.11"
+  const val kotlinVersion = "1.3.20"
   const val supportVersion = "1.0.0"
   const val materialComponentVersion = "1.1.0-alpha02"
   const val constraintLayoutVersion = "2.0.0-alpha3"
