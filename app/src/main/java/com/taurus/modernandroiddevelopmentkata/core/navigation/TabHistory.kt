@@ -1,34 +1,29 @@
 package com.taurus.modernandroiddevelopmentkata.core.navigation
 
 import java.io.Serializable
-import java.util.ArrayList
+import java.util.*
 
-class TabHistory : Serializable {
+class TabHistory(initialValue: Int) : Serializable {
 
-  private val stack: ArrayList<Int> = ArrayList()
+    private val stack: Deque<Int> = ArrayDeque()
 
-  private val isEmpty: Boolean
-    get() = stack.size == 0
-
-  val size: Int
-    get() = stack.size
-
-  fun push(entry: Int) {
-    stack.add(entry)
-  }
-
-  fun popPrevious(): Int {
-    var entry = -1
-
-    if (!isEmpty) {
-      entry = stack[stack.size - 2]
-      stack.removeAt(stack.size - 2)
+    init {
+        stack.push(initialValue)
     }
-    return entry
-  }
 
-  fun clear() {
-    stack.clear()
-  }
+    fun push(entry: Int) {
+        stack.push(entry)
+    }
+
+    fun popPrevious(): Int? = stack.run {
+        if (canGoBack()) {
+            pop()
+            peek()
+        } else {
+            null
+        }
+    }
+
+    fun canGoBack() = stack.size > 1
 }
 

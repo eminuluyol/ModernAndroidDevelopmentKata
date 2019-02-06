@@ -11,11 +11,11 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = [ApplicationModule::class])
 interface ApplicationComponent : AndroidInjector<MovieApp> {
-  @Component.Builder
-  interface Builder {
-    @BindsInstance
-    fun application(application: MovieApp): Builder
+    @Component.Builder
+    interface Builder {
+        @BindsInstance
+        fun application(application: MovieApp): Builder
 
-    fun build(): ApplicationComponent
-  }
+        fun build(): ApplicationComponent
+    }
 }
