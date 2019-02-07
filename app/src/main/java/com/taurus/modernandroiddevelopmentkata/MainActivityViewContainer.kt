@@ -1,11 +1,10 @@
-package com.taurus.modernandroiddevelopmentkata.navigation
+package com.taurus.modernandroiddevelopmentkata
 
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.taurus.modernandroiddevelopmentkata.MainActivity
-import com.taurus.modernandroiddevelopmentkata.R
 import com.taurus.modernandroiddevelopmentkata.core.di.scope.ActivityScope
 import com.taurus.modernandroiddevelopmentkata.core.extensions.hideAllExcept
+import com.taurus.modernandroiddevelopmentkata.navigation.NavigationManager
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 

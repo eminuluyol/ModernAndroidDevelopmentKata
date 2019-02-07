@@ -18,16 +18,7 @@ class NavigationManager @Inject constructor(
     lateinit var tabHistory: TabHistory
         private set
 
-    private val currentTabId: Int
-        get() = tabHistory.peek()
     private var currentController: NavController? = null
-
-    private val startDestinations = mapOf(
-        R.id.navigation_movies to R.id.navigation_movies,
-        R.id.navigation_tv_series to R.id.navigation_tv_series,
-        R.id.navigation_favourites to R.id.navigation_favourites,
-        R.id.navigation_profile to R.id.navigation_profile
-    )
 
     private val movieNavController: NavController by lazy {
         activity.findNavController(R.id.movieTab).initWithStartDestination(R.id.navigation_movies)
@@ -44,13 +35,13 @@ class NavigationManager @Inject constructor(
 
     private fun NavController.initWithStartDestination(@IdRes destId: Int) = apply {
         graph = navInflater.inflate(R.navigation.navigation_graph).apply {
-            startDestination = startDestinations.getValue(destId)
+            startDestination = destId
         }
     }
 
     fun bind(tabHistory: TabHistory) {
         this.tabHistory = tabHistory
-        switchTab(tabHistory.peek(), false)
+        switchTab(tabHistory.currentTabId, false)
     }
 
     fun switchTab(tabId: Int) {
@@ -73,7 +64,7 @@ class NavigationManager @Inject constructor(
 
     fun onBackPressed() {
         currentController?.let {
-            if (it.currentDestination?.id == startDestinations.getValue(currentTabId)) {
+            if (it.currentDestination?.id == tabHistory.currentTabId) {
                 tabHistory.popPrevious()?.let { tabId ->
                     switchTab(tabId, false)
                 } ?: activity.finish()
