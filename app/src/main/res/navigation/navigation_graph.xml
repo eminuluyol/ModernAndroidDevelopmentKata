@@ -5,39 +5,39 @@
     android:id="@+id/navigation_graph">
 
     <fragment
-        android:id="@id/movie_fragment"
+        android:id="@id/navigation_movies"
         android:name="com.taurus.modernandroiddevelopmentkata.movies.MovieFragment"
         tools:layout="@layout/fragment_movie">
         <action
             android:id="@+id/navigate_from_movies_to_details"
-            app:destination="@id/details_fragment" />
+            app:destination="@id/navigation_details" />
     </fragment>
 
     <fragment
-        android:id="@id/tv_series_fragment"
+        android:id="@id/navigation_tv_series"
         android:name="com.taurus.modernandroiddevelopmentkata.tvseries.TVSeriesFragment"
         tools:layout="@layout/fragment_tv_series">
         <action
             android:id="@+id/navigate_from_tv_series_to_details"
-            app:destination="@id/details_fragment" />
+            app:destination="@id/navigation_details" />
     </fragment>
 
     <fragment
-        android:id="@id/favourites_fragment"
+        android:id="@id/navigation_favourites"
         android:name="com.taurus.modernandroiddevelopmentkata.favourite.FavouriteFragment"
         tools:layout="@layout/fragment_favourite" />
 
     <fragment
-        android:id="@id/profile_fragment"
+        android:id="@id/navigation_profile"
         android:name="com.taurus.modernandroiddevelopmentkata.profile.ProfileFragment"
         tools:layout="@layout/fragment_profile" />
 
     <fragment
-        android:id="@id/details_fragment"
+        android:id="@id/navigation_details"
         android:name="com.taurus.modernandroiddevelopmentkata.detail.DetailFragment"
         tools:layout="@layout/fragment_detail">
         <argument
-            android:name="titleArg"
+            android:name="title"
             app:argType="string" />
     </fragment>
 

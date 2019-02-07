@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
+import dagger.android.AndroidInjection
 import dagger.android.support.DaggerAppCompatActivity
 
 abstract class BaseActivity<VM : ViewModel> : DaggerAppCompatActivity() {
@@ -12,7 +13,8 @@ abstract class BaseActivity<VM : ViewModel> : DaggerAppCompatActivity() {
      * ViewModel instance that provided by ViewModelProvider
      */
 
-    private lateinit var viewModel: VM
+    protected lateinit var viewModel: VM
+        private set
 
     abstract fun obtainViewModel(): Class<VM>
 
@@ -21,6 +23,7 @@ abstract class BaseActivity<VM : ViewModel> : DaggerAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AndroidInjection.inject(this)
         setContentView(layoutResId())
         viewModel = ViewModelProviders.of(this).get(obtainViewModel())
     }

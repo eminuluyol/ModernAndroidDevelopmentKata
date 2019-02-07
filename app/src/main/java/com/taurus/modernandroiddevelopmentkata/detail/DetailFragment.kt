@@ -9,7 +9,7 @@ import com.taurus.modernandroiddevelopmentkata.detail.DetailFragmentArgs.fromBun
 class DetailFragment : com.taurus.modernandroiddevelopmentkata.core.BaseFragment<DetailStateMachine>() {
 
     private val title by lazy {
-        fromBundle(arguments!!).titleArg
+        fromBundle(arguments!!).title
     }
 
     override fun obtainViewModel() = DetailStateMachine::class.java

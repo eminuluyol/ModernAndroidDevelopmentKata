@@ -24,6 +24,8 @@ class TabHistory(initialValue: Int) : Serializable {
         }
     }
 
+    fun peek() = stack.peek()
+
     private fun canGoBack() = stack.size > 1
 }
 

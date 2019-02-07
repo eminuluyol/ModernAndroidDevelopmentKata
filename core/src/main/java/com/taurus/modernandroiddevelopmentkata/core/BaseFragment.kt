@@ -13,6 +13,8 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.ToolbarManager
+import dagger.android.AndroidInjection
+import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
@@ -44,6 +46,7 @@ abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+        AndroidSupportInjection.inject(this)
         try {
             this.fragmentListener = context as FragmentListener
         } catch (e: ClassCastException) {
