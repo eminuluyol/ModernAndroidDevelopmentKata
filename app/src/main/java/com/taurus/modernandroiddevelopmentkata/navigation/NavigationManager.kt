@@ -30,31 +30,21 @@ class NavigationManager @Inject constructor(
     )
 
     private val movieNavController: NavController by lazy {
-        activity.findNavController(R.id.movieTab).apply {
-            graph = navInflater.inflate(R.navigation.navigation_graph).apply {
-                startDestination = startDestinations.getValue(R.id.navigation_movies)
-            }
-        }
+        activity.findNavController(R.id.movieTab).initWithStartDestination(R.id.navigation_movies)
     }
     private val tvSeriesNavController: NavController by lazy {
-        activity.findNavController(R.id.tvSeriesTab).apply {
-            graph = navInflater.inflate(R.navigation.navigation_graph).apply {
-                startDestination = startDestinations.getValue(R.id.navigation_tv_series)
-            }
-        }
+        activity.findNavController(R.id.tvSeriesTab).initWithStartDestination(R.id.navigation_tv_series)
     }
     private val favouritesNavController: NavController by lazy {
-        activity.findNavController(R.id.favouritesTab).apply {
-            graph = navInflater.inflate(R.navigation.navigation_graph).apply {
-                startDestination = startDestinations.getValue(R.id.navigation_favourites)
-            }
-        }
+        activity.findNavController(R.id.favouritesTab).initWithStartDestination(R.id.navigation_favourites)
     }
     private val profileNavController: NavController by lazy {
-        activity.findNavController(R.id.profileTab).apply {
-            graph = navInflater.inflate(R.navigation.navigation_graph).apply {
-                startDestination = startDestinations.getValue(R.id.navigation_profile)
-            }
+        activity.findNavController(R.id.profileTab).initWithStartDestination(R.id.navigation_profile)
+    }
+
+    private fun NavController.initWithStartDestination(@IdRes destId: Int) = apply {
+        graph = navInflater.inflate(R.navigation.navigation_graph).apply {
+            startDestination = startDestinations.getValue(destId)
         }
     }
 

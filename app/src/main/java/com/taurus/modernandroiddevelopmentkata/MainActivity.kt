@@ -11,9 +11,10 @@ import com.taurus.modernandroiddevelopmentkata.navigation.*
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
-class MainActivity : BaseActivity<NavigationViewModel>(), BaseFragment.FragmentListener {
-
-    override fun obtainViewModel() = NavigationViewModel::class.java
+class MainActivity : BaseActivity<NavigationViewModel>(
+    R.layout.activity_main,
+    NavigationViewModel::class.java
+), BaseFragment.FragmentListener {
 
     @Inject
     lateinit var navigationManager: NavigationManager
@@ -22,12 +23,10 @@ class MainActivity : BaseActivity<NavigationViewModel>(), BaseFragment.FragmentL
     @Inject
     lateinit var mainActivityViewContainer: MainActivityViewContainer
 
-    override fun layoutResId() = R.layout.activity_main
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        navigationManager.bind(TabHistory(R.id.navigation_movies))
+        navigationManager.bind(viewModel.tabHistory)
         mainActivityViewContainer.bind { tabId ->
             navigationRouter.navigate(TabNavigationCommand(tabId))
         }
