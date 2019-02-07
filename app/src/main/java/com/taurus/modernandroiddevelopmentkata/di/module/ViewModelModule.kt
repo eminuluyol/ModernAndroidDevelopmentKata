@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.taurus.modernandroiddevelopmentkata.core.di.key.ViewModelKey
 import com.taurus.modernandroiddevelopmentkata.core.di.viewmodel.ViewModelFactory
 import com.taurus.modernandroiddevelopmentkata.detail.DetailStateMachine
-import com.taurus.modernandroiddevelopmentkata.favourite.FavouriteStateMachine
+import com.taurus.modernandroiddevelopmentkata.favourites.FavouriteStateMachine
 import com.taurus.modernandroiddevelopmentkata.movies.MovieStateMachine
 import com.taurus.modernandroiddevelopmentkata.profile.ProfileStateMachine
 import com.taurus.modernandroiddevelopmentkata.tvseries.TVSeriesStateMachine

@@ -1,12 +1,11 @@
-package com.taurus.modernandroiddevelopmentkata.favourite
+package com.taurus.modernandroiddevelopmentkata.favourites
 
 import android.view.View
 import androidx.navigation.NavController
-import com.taurus.modernandroiddevelopmentkata.R
+import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
 
-
-class FavouriteFragment : com.taurus.modernandroiddevelopmentkata.core.BaseFragment<FavouriteStateMachine>() {
+class FavouriteFragment : BaseFragment<FavouriteStateMachine>() {
 
     override fun obtainViewModel() = FavouriteStateMachine::class.java
 

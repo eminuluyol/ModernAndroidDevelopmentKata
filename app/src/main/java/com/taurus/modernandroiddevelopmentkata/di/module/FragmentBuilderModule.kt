@@ -3,8 +3,8 @@ package com.taurus.modernandroiddevelopmentkata.di.module
 import com.taurus.modernandroiddevelopmentkata.core.di.scope.FragmentScope
 import com.taurus.modernandroiddevelopmentkata.detail.DetailFragment
 import com.taurus.modernandroiddevelopmentkata.detail.DetailModule
-import com.taurus.modernandroiddevelopmentkata.favourite.FavouriteFragment
-import com.taurus.modernandroiddevelopmentkata.favourite.FavouriteModule
+import com.taurus.modernandroiddevelopmentkata.favourites.FavouriteFragment
+import com.taurus.modernandroiddevelopmentkata.favourites.FavouriteModule
 import com.taurus.modernandroiddevelopmentkata.movies.MovieFragment
 import com.taurus.modernandroiddevelopmentkata.movies.MovieModule
 import com.taurus.modernandroiddevelopmentkata.profile.ProfileFragment
