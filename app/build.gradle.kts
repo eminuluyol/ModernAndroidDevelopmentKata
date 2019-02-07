@@ -48,6 +48,7 @@ androidExtensions {
 dependencies {
   implementation(project(":core"))
   implementation(project(":movies"))
+  implementation(project(":tvseries"))
 
   kapt(CoreLibraries.lifeCycleAnnotationProcessor)
   kapt(ExternalLibraries.daggerAnnotationProcessor)

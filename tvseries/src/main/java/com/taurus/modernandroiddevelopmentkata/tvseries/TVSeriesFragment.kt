@@ -3,10 +3,11 @@ package com.taurus.modernandroiddevelopmentkata.tvseries
 import android.view.View
 import androidx.navigation.NavController
 import com.taurus.modernandroiddevelopmentkata.R
+import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
-import kotlinx.android.synthetic.main.fragment_tv_series.*
+import kotlinx.android.synthetic.main.fragment_tv_series.showDetailButton
 
-class TVSeriesFragment : com.taurus.modernandroiddevelopmentkata.core.BaseFragment<TVSeriesStateMachine>() {
+class TVSeriesFragment : BaseFragment<TVSeriesStateMachine>() {
 
     override fun obtainViewModel() = TVSeriesStateMachine::class.java
 
@@ -19,12 +20,9 @@ class TVSeriesFragment : com.taurus.modernandroiddevelopmentkata.core.BaseFragme
     }
 
     override fun onReadyToRender(view: View, stateMachine: TVSeriesStateMachine,
-                                 navController: NavController) {
+        navController: NavController) {
         showDetailButton.setOnClickListener {
-            val action = TVSeriesFragmentDirections.navigateFromTvSeriesToDetails(
-                "From TV Series Fragment"
-            )
-            navController.navigate(action)
+
         }
     }
 
