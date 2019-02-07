@@ -6,8 +6,9 @@ import androidx.lifecycle.ViewModel
 import com.taurus.modernandroiddevelopmentkata.core.navigation.Event
 import com.taurus.modernandroiddevelopmentkata.core.navigation.NavigationCommand
 import com.taurus.modernandroiddevelopmentkata.core.navigation.NavigationRouter
+import javax.inject.Inject
 
-class NavigationViewModel : ViewModel(), NavigationRouter {
+class NavigationViewModel @Inject constructor() : ViewModel(), NavigationRouter {
 
     private val _navigationRouter = MutableLiveData<Event<NavigationCommand>>()
 

@@ -14,7 +14,6 @@ import javax.inject.Singleton
     includes = [
         AndroidSupportInjectionModule::class,
         ActivityBuilderModule::class,
-        ViewModelModule::class,
         NetworkModule::class
     ]
 )

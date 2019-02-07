@@ -32,8 +32,8 @@ class MainActivity : BaseActivity<NavigationViewModel>(), BaseFragment.FragmentL
             navigationRouter.navigate(TabNavigationCommand(tabId))
         }
 
-//        viewModel.navigationRouter.nonNullObserve(this) {
-//            it.getContentIfNotHandled()?.let { navigationRouterFacade.process(it) }
+//        viewModel.navigationRouter.nonNullObserveEvent(this) {
+//            navigationRouterFacade.process(it)
 //        }
     }
 
