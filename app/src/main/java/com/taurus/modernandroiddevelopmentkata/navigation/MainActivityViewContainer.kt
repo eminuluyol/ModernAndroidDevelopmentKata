@@ -45,5 +45,6 @@ class MainActivityViewContainer @Inject constructor(
             else -> throw IllegalArgumentException("Unexpected tab id")
         }
         views.hideAllExcept(tabContainer)
+        bottomNavigationView.menu.findItem(tabId)?.isChecked = true
     }
 }
