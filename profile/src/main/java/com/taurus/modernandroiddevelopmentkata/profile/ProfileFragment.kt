@@ -1,7 +1,6 @@
 package com.taurus.modernandroiddevelopmentkata.profile
 
 import android.view.View
-import androidx.navigation.NavController
 import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
 import com.taurus.profile.R
@@ -18,7 +17,7 @@ class ProfileFragment : BaseFragment<ProfileStateMachine>() {
         }
     }
 
-    override fun onReadyToRender(view: View, stateMachine: ProfileStateMachine, navController: NavController) {
+    override fun onReadyToRender(view: View, stateMachine: ProfileStateMachine) {
     }
 
 }

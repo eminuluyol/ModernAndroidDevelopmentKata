@@ -1,12 +1,11 @@
 package com.taurus.modernandroiddevelopmentkata.detail
 
 import android.view.View
-import androidx.navigation.NavController
-import com.taurus.modernandroiddevelopmentkata.R
+import com.taurus.details.R
+import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
-import com.taurus.modernandroiddevelopmentkata.detail.DetailFragmentArgs.fromBundle
 
-class DetailFragment : com.taurus.modernandroiddevelopmentkata.core.BaseFragment<DetailStateMachine>() {
+class DetailFragment : BaseFragment<DetailStateMachine>() {
 
     private val title by lazy {
         fromBundle(arguments!!).title
@@ -25,7 +24,7 @@ class DetailFragment : com.taurus.modernandroiddevelopmentkata.core.BaseFragment
 
     override val isBottomBarEnabled = false
 
-    override fun onReadyToRender(view: View, stateMachine: DetailStateMachine, navController: NavController) {
+    override fun onReadyToRender(view: View, stateMachine: DetailStateMachine) {
     }
 
 }

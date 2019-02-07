@@ -17,9 +17,9 @@
         android:id="@id/navigation_tv_series"
         android:name="com.taurus.modernandroiddevelopmentkata.tvseries.TVSeriesFragment"
         tools:layout="@layout/fragment_tv_series">
-        <action
-            android:id="@+id/navigate_from_tv_series_to_details"
-            app:destination="@id/navigation_details" />
+        <!--<action-->
+        <!--android:id="@+id/navigate_from_tv_series_to_details"-->
+        <!--app:destination="@id/navigation_details" />-->
     </fragment>
 
     <fragment

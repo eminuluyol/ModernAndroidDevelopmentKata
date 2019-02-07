@@ -1,7 +1,6 @@
 package com.taurus.modernandroiddevelopmentkata.favourites
 
 import android.view.View
-import androidx.navigation.NavController
 import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
 
@@ -17,7 +16,7 @@ class FavouriteFragment : BaseFragment<FavouriteStateMachine>() {
         }
     }
 
-    override fun onReadyToRender(view: View, stateMachine: FavouriteStateMachine, navController: NavController) {
+    override fun onReadyToRender(view: View, stateMachine: FavouriteStateMachine) {
     }
 
 }

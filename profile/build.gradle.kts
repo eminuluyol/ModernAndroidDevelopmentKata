@@ -18,14 +18,11 @@ android {
 }
 
 dependencies {
-    implementation(project(":core"))
+    implementation(project(Modules.core))
     /**
      * Test
      */
     androidTestImplementation(TestLibraries.junit)
     androidTestImplementation(TestLibraries.testRunner)
     androidTestImplementation(TestLibraries.espresso)
-}
-repositories {
-    mavenCentral()
 }

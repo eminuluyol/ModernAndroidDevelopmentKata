@@ -13,7 +13,6 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.ToolbarManager
-import dagger.android.AndroidInjection
 import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
@@ -60,7 +59,7 @@ abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?) =
+        savedInstanceState: Bundle?) =
         inflater.inflate(layoutResId(), container, false)!!
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -68,7 +67,7 @@ abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
         navController = findNavController()
         ToolbarManager(toolbarBuilder(), view, navController).prepareToolbar()
         fragmentListener?.handleBottomBarVisibility(isBottomBarEnabled)
-        onReadyToRender(view, stateMachine, navController)
+        onReadyToRender(view, stateMachine)
     }
 
     /**
@@ -79,6 +78,6 @@ abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
 
     protected abstract fun toolbarBuilder(): FragmentToolbar
 
-    protected abstract fun onReadyToRender(view: View, stateMachine: VM, navController: NavController)
+    protected abstract fun onReadyToRender(view: View, stateMachine: VM)
 
 }

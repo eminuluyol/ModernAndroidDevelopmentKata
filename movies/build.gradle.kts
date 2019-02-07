@@ -18,7 +18,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":core"))
+    implementation(project(Modules.core))
     /**
      * Test
      */

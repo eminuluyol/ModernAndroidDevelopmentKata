@@ -1,7 +1,6 @@
 package com.taurus.modernandroiddevelopmentkata.tvseries
 
 import android.view.View
-import androidx.navigation.NavController
 import com.taurus.modernandroiddevelopmentkata.R
 import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
@@ -19,10 +18,8 @@ class TVSeriesFragment : BaseFragment<TVSeriesStateMachine>() {
         }
     }
 
-    override fun onReadyToRender(view: View, stateMachine: TVSeriesStateMachine,
-        navController: NavController) {
+    override fun onReadyToRender(view: View, stateMachine: TVSeriesStateMachine) {
         showDetailButton.setOnClickListener {
-
         }
     }
 
