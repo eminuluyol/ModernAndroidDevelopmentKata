@@ -50,6 +50,7 @@ dependencies {
   implementation(project(":movies"))
   implementation(project(":tvseries"))
   implementation(project(":favourites"))
+  implementation(project(":profile"))
 
   kapt(CoreLibraries.lifeCycleAnnotationProcessor)
   kapt(ExternalLibraries.daggerAnnotationProcessor)
