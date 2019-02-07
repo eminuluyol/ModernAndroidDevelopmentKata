@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="movie_fragment" type="id" />
+    <item name="tv_series_fragment" type="id" />
+    <item name="favourites_fragment" type="id" />
+    <item name="profile_fragment" type="id" />
+    <item name="details_fragment" type="id" />
+
+    <item name="navigation_movies" type="id" />
+    <item name="navigation_tv_series" type="id" />
+    <item name="navigation_favourites" type="id" />
+    <item name="navigation_profile" type="id" />
+    <item name="navigation_details" type="id" />
+</resources>

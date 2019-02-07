@@ -5,12 +5,14 @@ import android.os.Bundle
 import com.taurus.modernandroiddevelopmentkata.core.BaseActivity
 import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
 import com.taurus.modernandroiddevelopmentkata.core.extensions.visibility
-import com.taurus.modernandroiddevelopmentkata.core.navigation.NavigationHelper
-import com.taurus.modernandroiddevelopmentkata.core.navigation.TabHistory
-import kotlinx.android.synthetic.main.activity_main.*
+import com.taurus.modernandroiddevelopmentkata.navigation.NavigationHelper
+import com.taurus.modernandroiddevelopmentkata.navigation.NavigationViewModel
+import kotlinx.android.synthetic.main.activity_main.bottomNavigationView
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(), BaseFragment.FragmentListener {
+class MainActivity : BaseActivity<NavigationViewModel>(), BaseFragment.FragmentListener {
+
+    override fun obtainViewModel() = NavigationViewModel::class.java
 
     @Inject
     lateinit var navigationHelper: NavigationHelper
@@ -24,15 +26,12 @@ class MainActivity : BaseActivity(), BaseFragment.FragmentListener {
 
     override fun onSaveInstanceState(outState: Bundle?) {
         super.onSaveInstanceState(outState)
-        outState?.putSerializable(TAB_HISTORY, navigationHelper.tabHistory)
+        navigationHelper.onSaveInstanceState(outState)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
         super.onRestoreInstanceState(savedInstanceState)
-        savedInstanceState?.let {
-            navigationHelper.tabHistory = it.getSerializable(TAB_HISTORY) as TabHistory
-            navigationHelper.switchTab(bottomNavigationView.selectedItemId, false)
-        }
+        navigationHelper.onRestoreInstanceState(savedInstanceState)
     }
 
     override fun supportNavigateUpTo(upIntent: Intent) {
@@ -45,9 +44,5 @@ class MainActivity : BaseActivity(), BaseFragment.FragmentListener {
 
     override fun handleBottomBarVisibility(isVisible: Boolean) {
         bottomNavigationView.visibility(isVisible)
-    }
-
-    private companion object {
-        const val TAB_HISTORY = "tab_history"
     }
 }

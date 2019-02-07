@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
   <item
-      android:id="@id/dest_movies"
+      android:id="@id/navigation_movies"
       android:enabled="true"
       android:icon="@drawable/ic_movie_24"
       android:title="@string/movies"/>
   <item
-      android:id="@id/dest_tv_series"
+      android:id="@id/navigation_tv_series"
       android:enabled="true"
       android:icon="@drawable/ic_tv_24dp"
       android:title="@string/tv_series"/>
   <item
-      android:id="@id/dest_favourites"
+      android:id="@id/navigation_favourites"
       android:enabled="true"
       android:icon="@drawable/ic_favorite_24"
       android:title="@string/favorites"/>
   <item
-      android:id="@id/dest_profile"
+      android:id="@id/navigation_profile"
       android:enabled="true"
       android:icon="@drawable/ic_person_24"
       android:title="@string/profile"/>

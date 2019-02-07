@@ -3,11 +3,10 @@ package com.taurus.modernandroiddevelopmentkata.detail
 import android.view.View
 import androidx.navigation.NavController
 import com.taurus.modernandroiddevelopmentkata.R
-import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
 import com.taurus.modernandroiddevelopmentkata.detail.DetailFragmentArgs.fromBundle
 
-class DetailFragment : BaseFragment<DetailStateMachine>() {
+class DetailFragment : com.taurus.modernandroiddevelopmentkata.core.BaseFragment<DetailStateMachine>() {
 
     private val title by lazy {
         fromBundle(arguments!!).titleArg

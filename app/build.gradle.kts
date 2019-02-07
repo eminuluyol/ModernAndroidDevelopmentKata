@@ -46,59 +46,13 @@ androidExtensions {
 }
 
 dependencies {
+  implementation(project(":core"))
+  implementation(project(":movies"))
 
-  implementation(CoreLibraries.kotlin)
-  implementation(CoreLibraries.appcompat)
-  implementation(CoreLibraries.materialComponent)
-  /**
-   * ConstraintLayout
-   */
-  implementation(CoreLibraries.constraintLayout)
-  /**
-   * Coroutines
-   */
-  implementation(CoreLibraries.coroutinesCore)
-  implementation(CoreLibraries.coroutinesAndroid)
-  /**
-   * AndroidKTX
-   */
-  implementation(CoreLibraries.andoroidKTX)
-  /**
-   * LiveData, ViewModel, LifeCycle
-   */
-  implementation(CoreLibraries.lifeCycleExtensions)
   kapt(CoreLibraries.lifeCycleAnnotationProcessor)
-  /**
-   * Paging
-   */
-  implementation(CoreLibraries.paging)
-  /**
-   * Navigation
-   */
-  implementation(CoreLibraries.navigationFragment)
-  implementation(CoreLibraries.navigationUI)
-  /**
-   * Dagger2
-   */
-  implementation(ExternalLibraries.daggerCore)
-  implementation(ExternalLibraries.daggerSupport)
   kapt(ExternalLibraries.daggerAnnotationProcessor)
   kapt(ExternalLibraries.daggerCompiler)
-  /**
-   * Retrofit
-   */
-  implementation(ExternalLibraries.retrofitCore)
-  implementation(ExternalLibraries.retrofitCoroutinesAdapter)
-  implementation(ExternalLibraries.retrofitMoshi)
-  implementation(ExternalLibraries.moshi)
-  implementation(ExternalLibraries.okhttp)
-  implementation(ExternalLibraries.okhttpInterceptor)
-  /**
-   * Room
-   */
-  implementation(CoreLibraries.roomCore)
   kapt(CoreLibraries.roomAnnotationProcessor)
-  implementation(CoreLibraries.roomCoroutinesSupport)
     /**
      * Stetho
      */
