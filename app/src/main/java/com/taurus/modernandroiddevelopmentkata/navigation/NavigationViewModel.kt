@@ -1,20 +1,10 @@
 package com.taurus.modernandroiddevelopmentkata.navigation
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.taurus.modernandroiddevelopmentkata.core.navigation.Event
-import com.taurus.modernandroiddevelopmentkata.core.navigation.NavigationCommand
-import com.taurus.modernandroiddevelopmentkata.core.navigation.NavigationRouter
+import com.taurus.modernandroiddevelopmentkata.R
+import javax.inject.Inject
 
-class NavigationViewModel : ViewModel(), NavigationRouter {
+class NavigationViewModel @Inject constructor() : ViewModel() {
 
-    private val _navigationRouter = MutableLiveData<Event<NavigationCommand>>()
-
-    val navigationRouter: LiveData<Event<NavigationCommand>>
-        get() = _navigationRouter
-
-    override fun navigate(navigationCommand: NavigationCommand) {
-        _navigationRouter.postValue(Event(navigationCommand))
-    }
+    val tabHistory: TabHistory = TabHistory(R.id.navigation_movies)
 }

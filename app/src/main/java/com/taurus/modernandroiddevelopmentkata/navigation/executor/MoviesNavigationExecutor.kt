@@ -1,4 +1,4 @@
-package com.taurus.modernandroiddevelopmentkata.navigation.router
+package com.taurus.modernandroiddevelopmentkata.navigation.executor
 
 import com.taurus.modernandroiddevelopmentkata.core.navigation.NavigationCommand
 import com.taurus.modernandroiddevelopmentkata.movies.MovieFragmentDirections
@@ -6,7 +6,7 @@ import com.taurus.modernandroiddevelopmentkata.movies.navigation.NavigateFromMov
 import com.taurus.modernandroiddevelopmentkata.navigation.NavigationManager
 import javax.inject.Inject
 
-class MoviesNavigationRouter @Inject constructor(
+class MoviesNavigationExecutor @Inject constructor(
     private val navigationManager: NavigationManager
 ) : NavigationRouterFacade.NavigationExecutor {
 

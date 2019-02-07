@@ -2,7 +2,7 @@ package com.taurus.modernandroiddevelopmentkata.di.module
 
 import com.taurus.modernandroiddevelopmentkata.MainActivity
 import com.taurus.modernandroiddevelopmentkata.core.di.scope.ActivityScope
-import com.taurus.modernandroiddevelopmentkata.navigation.NavigationModule
+import com.taurus.modernandroiddevelopmentkata.navigation.executor.NavigationExecutorModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -13,7 +13,7 @@ abstract class ActivityBuilderModule {
     @ContributesAndroidInjector(modules = [
         MainActivityBindingsModule::class,
         FragmentBuilderModule::class,
-        NavigationModule::class
+        NavigationExecutorModule::class
     ])
     abstract fun mainActivity(): MainActivity
 

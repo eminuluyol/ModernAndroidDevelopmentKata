@@ -7,6 +7,9 @@ class TabHistory(initialValue: Int) : Serializable {
 
     private val stack: Deque<Int> = ArrayDeque()
 
+    val currentTabId: Int
+        get() = stack.peek()
+
     init {
         stack.push(initialValue)
     }
@@ -23,8 +26,6 @@ class TabHistory(initialValue: Int) : Serializable {
             null
         }
     }
-
-    fun peek() = stack.peek()
 
     private fun canGoBack() = stack.size > 1
 }

@@ -7,10 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.taurus.modernandroiddevelopmentkata.core.di.viewmodel.ViewModelFactory
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.ToolbarManager
 import dagger.android.support.AndroidSupportInjection
@@ -24,7 +24,7 @@ abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
     }
 
     @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+    protected lateinit var viewModelFactory: ViewModelFactory<VM>
 
     /**
      * ViewModel instance that provided by ViewModelProvider
