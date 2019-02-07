@@ -11,11 +11,12 @@ import dagger.Provides
 import dagger.multibindings.ElementsIntoSet
 
 @Module
-class NavigationModule {
+object NavigationModule {
 
     @Provides
     @ActivityScope
     @ElementsIntoSet
+    @JvmStatic
     fun provideRouters(
         appNavigationRouter: AppNavigationRouter,
         moviesNavigationRouter: MoviesNavigationRouter
@@ -24,6 +25,7 @@ class NavigationModule {
 
     @Provides
     @ActivityScope
+    @JvmStatic
     fun provideNavigationRouter(navigationRouterFacade: NavigationRouterFacade): NavigationRouter =
     // TODO provide something proper here
         object : NavigationRouter {
