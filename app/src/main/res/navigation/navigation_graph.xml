@@ -8,10 +8,6 @@
         android:id="@id/navigation_movies"
         android:name="com.taurus.modernandroiddevelopmentkata.movies.MovieFragment"
         tools:layout="@layout/fragment_movie">
-        <!-- navigate to nested graph via a global action -->
-        <action
-            android:id="@+id/navigate_from_movies_to_details"
-            app:destination="@id/navigation_graph_details_start" />
     </fragment>
 
     <fragment
@@ -39,6 +35,8 @@
         tools:layout="@layout/fragment_profile" />
 
     <include app:graph="@navigation/navigation_graph_details" />
+    <!-- navigate to nested graph via a global action -->
+    <!-- An action is "global" only within its graph, and not visible in other graphs -->
     <action
         android:id="@+id/navigation_graph_details_start"
         app:destination="@id/navigation_graph_details">

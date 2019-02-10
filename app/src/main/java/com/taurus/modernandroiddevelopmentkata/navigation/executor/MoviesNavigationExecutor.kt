@@ -1,6 +1,5 @@
 package com.taurus.modernandroiddevelopmentkata.navigation.executor
 
-import com.taurus.modernandroiddevelopmentkata.NavigationGraphDirections
 import com.taurus.modernandroiddevelopmentkata.core.navigation.NavigationCommand
 import com.taurus.modernandroiddevelopmentkata.movies.MovieFragmentDirections
 import com.taurus.modernandroiddevelopmentkata.movies.navigation.NavigateFromMoviesToDetails
