@@ -10,16 +10,20 @@
         tools:layout="@layout/fragment_movie">
         <action
             android:id="@+id/navigate_from_movies_to_details"
-            app:destination="@id/navigation_details" />
+            app:destination="@id/navigation_graph_details_start" />
     </fragment>
 
     <fragment
         android:id="@id/navigation_tv_series"
         android:name="com.taurus.modernandroiddevelopmentkata.tvseries.TVSeriesFragment"
         tools:layout="@layout/fragment_tv_series">
-        <!--<action-->
-        <!--android:id="@+id/navigate_from_tv_series_to_details"-->
-        <!--app:destination="@id/navigation_details" />-->
+        <action
+            android:id="@+id/navigate_from_tv_series_to_details"
+            app:destination="@id/navigation_graph_details" >
+            <argument
+                android:name="title"
+                app:argType="string"/>
+        </action>
     </fragment>
 
     <fragment
@@ -32,13 +36,14 @@
         android:name="com.taurus.modernandroiddevelopmentkata.profile.ProfileFragment"
         tools:layout="@layout/fragment_profile" />
 
-    <fragment
-        android:id="@id/navigation_details"
-        android:name="com.taurus.modernandroiddevelopmentkata.detail.DetailFragment"
-        tools:layout="@layout/fragment_detail">
+    <include app:graph="@navigation/navigation_graph_details" />
+
+    <action
+        android:id="@+id/navigation_graph_details_start"
+        app:destination="@id/navigation_graph_details">
         <argument
             android:name="title"
             app:argType="string" />
-    </fragment>
+    </action>
 
 </navigation>

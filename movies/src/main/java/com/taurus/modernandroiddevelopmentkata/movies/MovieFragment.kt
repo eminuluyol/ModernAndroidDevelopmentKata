@@ -5,7 +5,7 @@ import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
 import com.taurus.modernandroiddevelopmentkata.core.navigation.NavigationRouter
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
 import com.taurus.modernandroiddevelopmentkata.movies.navigation.NavigateFromMoviesToDetails
-import kotlinx.android.synthetic.main.fragment_movie.showDetailButton
+import kotlinx.android.synthetic.main.fragment_movie.*
 import javax.inject.Inject
 
 class MovieFragment : BaseFragment<MovieStateMachine>() {

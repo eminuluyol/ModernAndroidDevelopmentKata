@@ -8,7 +8,7 @@ import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
 class DetailFragment : BaseFragment<DetailStateMachine>() {
 
     private val title by lazy {
-        fromBundle(arguments!!).title
+        arguments?.getString("title") ?: "DetailFragment"
     }
 
     override fun obtainViewModel() = DetailStateMachine::class.java

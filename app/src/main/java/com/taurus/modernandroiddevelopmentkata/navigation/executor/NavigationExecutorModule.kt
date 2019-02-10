@@ -15,9 +15,10 @@ object NavigationExecutorModule {
     @JvmStatic
     fun provideRouters(
         appNavigationExecutor: AppNavigationExecutor,
-        moviesNavigationExecutor: MoviesNavigationExecutor
+        moviesNavigationExecutor: MoviesNavigationExecutor,
+        tvSeriesNavigationExecutor: TvSeriesNavigationExecutor
     ): Set<NavigationRouterFacade.NavigationExecutor> =
-        setOf(appNavigationExecutor, moviesNavigationExecutor)
+        setOf(appNavigationExecutor, moviesNavigationExecutor, tvSeriesNavigationExecutor)
 
     @Provides
     @ActivityScope
