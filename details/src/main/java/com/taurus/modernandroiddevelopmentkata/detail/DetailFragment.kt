@@ -4,11 +4,13 @@ import android.view.View
 import com.taurus.details.R
 import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
+import com.taurus.modernandroiddevelopmentkata.detail.DetailFragmentArgs.fromBundle
 
 class DetailFragment : BaseFragment<DetailStateMachine>() {
 
     private val title by lazy {
-        arguments?.getString("title") ?: "DetailFragment"
+        // required arg -> force non-nullability
+        fromBundle(arguments!!).title
     }
 
     override fun obtainViewModel() = DetailStateMachine::class.java
