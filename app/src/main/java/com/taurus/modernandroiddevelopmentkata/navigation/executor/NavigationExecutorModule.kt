@@ -16,9 +16,14 @@ object NavigationExecutorModule {
     fun provideRouters(
         appNavigationExecutor: AppNavigationExecutor,
         moviesNavigationExecutor: MoviesNavigationExecutor,
-        tvSeriesNavigationExecutor: TvSeriesNavigationExecutor
-    ): Set<NavigationRouterFacade.NavigationExecutor> =
-        setOf(appNavigationExecutor, moviesNavigationExecutor, tvSeriesNavigationExecutor)
+        tvSeriesNavigationExecutor: TvSeriesNavigationExecutor,
+        detailsNavigationExecutor: DetailsNavigationExecutor
+    ): Set<NavigationRouterFacade.NavigationExecutor> = setOf(
+        appNavigationExecutor,
+        moviesNavigationExecutor,
+        tvSeriesNavigationExecutor,
+        detailsNavigationExecutor
+    )
 
     @Provides
     @ActivityScope

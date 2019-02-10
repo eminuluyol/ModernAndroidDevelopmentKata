@@ -3,22 +3,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-  <com.google.android.material.appbar.AppBarLayout
-      android:id="@+id/appbarLayout"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content">
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbarLayout"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"/>
+        android:layout_height="wrap_content">
 
-  </com.google.android.material.appbar.AppBarLayout>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize" />
 
-  <FrameLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:background="@android:color/holo_red_light"
-      android:layout_marginTop="56dp"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="56dp"
+        android:background="@android:color/holo_red_light">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/showSimilarMoviesButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Show similar movies" />
+
+    </RelativeLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

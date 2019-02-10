@@ -8,6 +8,7 @@
         android:id="@id/navigation_movies"
         android:name="com.taurus.modernandroiddevelopmentkata.movies.MovieFragment"
         tools:layout="@layout/fragment_movie">
+        <!-- navigate to nested graph via a global action -->
         <action
             android:id="@+id/navigate_from_movies_to_details"
             app:destination="@id/navigation_graph_details_start" />
@@ -17,6 +18,7 @@
         android:id="@id/navigation_tv_series"
         android:name="com.taurus.modernandroiddevelopmentkata.tvseries.TVSeriesFragment"
         tools:layout="@layout/fragment_tv_series">
+        <!-- navigate to nested graph directly, passing args for its startDestination -->
         <action
             android:id="@+id/navigate_from_tv_series_to_details"
             app:destination="@id/navigation_graph_details" >
@@ -37,10 +39,19 @@
         tools:layout="@layout/fragment_profile" />
 
     <include app:graph="@navigation/navigation_graph_details" />
-
     <action
         android:id="@+id/navigation_graph_details_start"
         app:destination="@id/navigation_graph_details">
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </action>
+
+    <!-- Navigating from one nested graph to another requires a global action -->
+    <include app:graph="@navigation/navigation_graph_similar_movies" />
+    <action
+        android:id="@+id/navigation_graph_similar_movies_start"
+        app:destination="@id/navigation_graph_similar_movies">
         <argument
             android:name="title"
             app:argType="string" />

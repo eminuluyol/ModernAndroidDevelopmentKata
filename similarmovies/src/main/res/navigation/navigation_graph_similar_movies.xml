@@ -2,13 +2,13 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@+id/navigation_details"
-    android:id="@+id/navigation_graph_details">
+    app:startDestination="@+id/navigation_similar_movies"
+    android:id="@+id/navigation_graph_similar_movies">
 
     <fragment
-        android:id="@+id/navigation_details"
-        android:name="com.taurus.modernandroiddevelopmentkata.detail.DetailFragment"
-        tools:layout="@layout/fragment_detail">
+        android:id="@+id/navigation_similar_movies"
+        android:name="com.taurus.modernandroiddevelopmentkata.detail.SimilarMoviesFragment"
+        tools:layout="@layout/fragment_similar_movies">
         <argument
             android:name="title"
             app:argType="string" />

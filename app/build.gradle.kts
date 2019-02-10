@@ -52,6 +52,7 @@ dependencies {
     implementation(project(Modules.favourites))
     implementation(project(Modules.profile))
     implementation(project(Modules.details))
+    implementation(project(Modules.similarmovies))
 
     kapt(CoreLibraries.lifeCycleAnnotationProcessor)
     kapt(ExternalLibraries.daggerAnnotationProcessor)

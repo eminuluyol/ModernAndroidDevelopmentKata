@@ -6,4 +6,5 @@ object Modules {
     const val favourites = ":favourites"
     const val profile = ":profile"
     const val details = ":details"
+    const val similarmovies = ":similarmovies"
 }
