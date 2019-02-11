@@ -6,7 +6,7 @@ import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
 import com.taurus.modernandroiddevelopmentkata.similarmovies.SimilarMoviesFragmentArgs.fromBundle
 
-class SimilarMoviesFragment : BaseFragment<SimilarMoviesMachine>() {
+internal class SimilarMoviesFragment : BaseFragment<SimilarMoviesMachine>() {
 
     private val title by lazy {
         // required arg -> force non-nullability

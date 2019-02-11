@@ -20,6 +20,11 @@ android {
 dependencies {
     implementation(project(Modules.core))
     /**
+     * kapt
+     */
+    kapt(ExternalLibraries.daggerAnnotationProcessor)
+    kapt(ExternalLibraries.daggerCompiler)
+    /**
      * Test
      */
     androidTestImplementation(TestLibraries.junit)

@@ -10,7 +10,7 @@ import com.taurus.modernandroiddevelopmentkata.detail.navigation.NavigateFromDet
 import kotlinx.android.synthetic.main.fragment_detail.*
 import javax.inject.Inject
 
-class DetailFragment : BaseFragment<DetailStateMachine>() {
+internal class DetailFragment : BaseFragment<DetailStateMachine>() {
 
     @Inject
     lateinit var navigationRouter: NavigationRouter
