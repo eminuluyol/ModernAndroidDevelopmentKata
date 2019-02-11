@@ -1,10 +1,10 @@
-package com.taurus.modernandroiddevelopmentkata.detail
+package com.taurus.modernandroiddevelopmentkata.similarmovies
 
 import android.view.View
 import com.taurus.details.R
 import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
-import com.taurus.modernandroiddevelopmentkata.detail.SimilarMoviesFragmentArgs.fromBundle
+import com.taurus.modernandroiddevelopmentkata.similarmovies.SimilarMoviesFragmentArgs.fromBundle
 
 class SimilarMoviesFragment : BaseFragment<SimilarMoviesMachine>() {
 

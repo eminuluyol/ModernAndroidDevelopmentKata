@@ -1,4 +1,4 @@
-package com.taurus.modernandroiddevelopmentkata.detail
+package com.taurus.modernandroiddevelopmentkata.similarmovies
 
 import androidx.lifecycle.ViewModel
 import javax.inject.Inject

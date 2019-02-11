@@ -3,7 +3,6 @@ package com.taurus.modernandroiddevelopmentkata.navigation.executor
 import com.taurus.modernandroiddevelopmentkata.NavigationGraphDirections
 import com.taurus.modernandroiddevelopmentkata.core.navigation.NavigationCommand
 import com.taurus.modernandroiddevelopmentkata.detail.navigation.NavigateFromDetailsToSimilarMovies
-import com.taurus.modernandroiddevelopmentkata.movies.navigation.NavigateFromMoviesToDetails
 import com.taurus.modernandroiddevelopmentkata.navigation.NavigationManager
 import javax.inject.Inject
 
