@@ -31,9 +31,6 @@ class MainActivity : BaseActivity<NavigationViewModel>(
             navigationRouter.navigate(TabNavigationCommand(tabId))
         }
 
-//        viewModel.navigationRouter.nonNullObserveEvent(this) {
-//            navigationRouterFacade.process(it)
-//        }
     }
 
     override fun supportNavigateUpTo(upIntent: Intent) {

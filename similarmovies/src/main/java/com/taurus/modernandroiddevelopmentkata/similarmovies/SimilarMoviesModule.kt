@@ -8,6 +8,6 @@ import dagger.android.ContributesAndroidInjector
 abstract class SimilarMoviesModule {
 
     @FragmentScope
-    @ContributesAndroidInjector//(modules = [SimilarMoviesDepsModule::class])
-    abstract fun similarMoviesFragment(): SimilarMoviesFragment
+    @ContributesAndroidInjector(modules = [SimilarMoviesDepsModule::class])
+    internal abstract fun similarMoviesFragment(): SimilarMoviesFragment
 }
