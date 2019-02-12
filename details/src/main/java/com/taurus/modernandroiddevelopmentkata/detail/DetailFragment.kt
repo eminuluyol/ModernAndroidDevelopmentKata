@@ -31,7 +31,7 @@ internal class DetailFragment : BaseFragment<DetailStateMachine>() {
         }
     }
 
-    override val isBottomBarEnabled = false
+    override val isBottomBarEnabled = true
 
     override fun onReadyToRender(view: View, stateMachine: DetailStateMachine) {
         showSimilarMoviesButton.setOnClickListener {

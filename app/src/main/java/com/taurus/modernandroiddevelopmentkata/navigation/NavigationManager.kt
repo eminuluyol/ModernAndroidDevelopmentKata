@@ -16,7 +16,8 @@ class NavigationManager @Inject constructor(
     lateinit var tabHistory: TabHistory
         private set
 
-    private var currentController: NavController? = null
+    private val currentController: NavController?
+        get() = tabContainer.getNavController(tabHistory.currentTabId)
 
     fun bind(tabHistory: TabHistory) {
         this.tabHistory = tabHistory
@@ -32,7 +33,6 @@ class NavigationManager @Inject constructor(
             tabHistory.push(tabId)
         }
         tabContainer.showTab(tabId)
-        currentController = tabContainer.getNavController(tabId)
     }
 
     fun onBackPressed() {
@@ -54,6 +54,7 @@ class NavigationManager @Inject constructor(
     fun navigateUp(): Boolean = currentController?.navigateUp() ?: false
 
     interface TabContainer {
+        fun bind()
         fun showTab(@IdRes tabId: Int)
         fun getNavController(tabId: Int): NavController
     }

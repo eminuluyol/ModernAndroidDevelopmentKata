@@ -1,6 +1,5 @@
 package com.taurus.modernandroiddevelopmentkata.main
 
-import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
@@ -14,7 +13,7 @@ import javax.inject.Inject
 
 @ActivityScope
 class MultiHostTabContainer @Inject constructor(
-    activity: FragmentActivity,
+    private val activity: FragmentActivity,
     private val bottomNavigationViewHolder: BottomNavigationViewHolder
 ) : NavigationManager.TabContainer {
 
@@ -33,23 +32,16 @@ class MultiHostTabContainer @Inject constructor(
         )
     }
 
-    private val movieNavController: NavController by lazy {
-        activity.findNavController(R.id.movieTab).initWithStartDestination(R.id.navigation_movies)
-    }
-    private val tvSeriesNavController: NavController by lazy {
-        activity.findNavController(R.id.tvSeriesTab).initWithStartDestination(R.id.navigation_tv_series)
-    }
-    private val favouritesNavController: NavController by lazy {
-        activity.findNavController(R.id.favouritesTab).initWithStartDestination(R.id.navigation_favourites)
-    }
-    private val profileNavController: NavController by lazy {
-        activity.findNavController(R.id.profileTab).initWithStartDestination(R.id.navigation_profile)
-    }
+    private lateinit var movieNavController: NavController
+    private lateinit var tvSeriesNavController: NavController
+    private lateinit var favouritesNavController: NavController
+    private lateinit var profileNavController: NavController
 
-    private fun NavController.initWithStartDestination(@IdRes destId: Int) = apply {
-        graph = navInflater.inflate(R.navigation.navigation_graph).apply {
-            startDestination = destId
-        }
+    override fun bind() {
+        movieNavController = activity.findNavController(R.id.movieTab).initWith(R.navigation.navigation_graph, R.id.navigation_movies)
+        tvSeriesNavController = activity.findNavController(R.id.tvSeriesTab).initWith(R.navigation.navigation_graph, R.id.navigation_tv_series)
+        favouritesNavController = activity.findNavController(R.id.favouritesTab).initWith(R.navigation.navigation_graph, R.id.navigation_favourites)
+        profileNavController = activity.findNavController(R.id.profileTab).initWith(R.navigation.navigation_graph, R.id.navigation_profile)
     }
 
     override fun getNavController(tabId: Int): NavController {

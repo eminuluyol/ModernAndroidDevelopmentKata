@@ -27,10 +27,13 @@ class MainActivity : BaseActivity<NavigationViewModel>(
     lateinit var navigationRouter: NavigationRouter
     @Inject
     lateinit var bottomNavigationViewHolder: BottomNavigationViewHolder
+    @Inject
+    lateinit var tabContainer: NavigationManager.TabContainer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        tabContainer.bind()
         navigationManager.bind(viewModel.tabHistory)
         bottomNavigationViewHolder.bind { tabId ->
             navigationRouter.navigate(TabNavigationCommand(tabId))

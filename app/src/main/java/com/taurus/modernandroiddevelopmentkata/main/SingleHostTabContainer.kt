@@ -1,7 +1,7 @@
 package com.taurus.modernandroiddevelopmentkata.main
 
 import android.widget.FrameLayout
-import androidx.annotation.IdRes
+import androidx.core.view.children
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -22,27 +22,27 @@ class SingleHostTabContainer @Inject constructor(
     // this relies on the layout from activity_main_single_container.xml
     private val tabContainer: FrameLayout by lazy { activity.tabContentContainer }
 
+    override fun bind() {
+        // no-op
+    }
+
     override fun getNavController(tabId: Int): NavController =
-        tabContainer.findNavController() //.children.map { it.findNavController() }.first()
+    // note that tabId is ignored - we always return currently attached NavController
+        tabContainer.children.map { it.findNavController() }.first()
 
     override fun showTab(tabId: Int) {
         val tag = tabId.toString()
         var fragment = activity.supportFragmentManager.findFragmentByTag(tag)
         if (fragment == null) {
             fragment = NavHostFragment()
-            fragment.findNavController().initWithStartDestination(tabId)
         }
 
         activity.supportFragmentManager.beginTransaction()
             .replace(R.id.tabContentContainer, fragment, tag)
+            // NavController is not available before onCreate()
+            .runOnCommit { fragment.findNavController().initWith(R.navigation.navigation_graph, tabId) }
             .commit()
 
         bottomNavigationViewHolder.highlightTabItem(tabId)
-    }
-
-    private fun NavController.initWithStartDestination(@IdRes destId: Int) = apply {
-        graph = navInflater.inflate(R.navigation.navigation_graph).apply {
-            startDestination = destId
-        }
     }
 }
