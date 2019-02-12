@@ -4,7 +4,7 @@ import com.taurus.modernandroiddevelopmentkata.core.di.scope.ActivityScope
 import com.taurus.modernandroiddevelopmentkata.main.MultiHostTabContainer
 import com.taurus.modernandroiddevelopmentkata.main.SingleHostTabContainer
 import com.taurus.modernandroiddevelopmentkata.navigation.NavigationManager
-import com.taurus.modernandroiddevelopmentkata.singleContainerTabs
+import com.taurus.modernandroiddevelopmentkata.main.singleContainerTabs
 import dagger.Module
 import dagger.Provides
 

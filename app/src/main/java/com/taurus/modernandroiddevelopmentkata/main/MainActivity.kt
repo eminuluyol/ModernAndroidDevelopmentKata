@@ -1,13 +1,13 @@
-package com.taurus.modernandroiddevelopmentkata
+package com.taurus.modernandroiddevelopmentkata.main
 
 import android.content.Intent
 import android.os.Bundle
+import com.taurus.modernandroiddevelopmentkata.R
 import com.taurus.modernandroiddevelopmentkata.core.BaseActivity
 import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
 import com.taurus.modernandroiddevelopmentkata.core.extensions.visibility
 import com.taurus.modernandroiddevelopmentkata.core.navigation.BackCommand
 import com.taurus.modernandroiddevelopmentkata.core.navigation.NavigationRouter
-import com.taurus.modernandroiddevelopmentkata.main.BottomNavigationViewHolder
 import com.taurus.modernandroiddevelopmentkata.navigation.NavigationManager
 import com.taurus.modernandroiddevelopmentkata.navigation.NavigationViewModel
 import com.taurus.modernandroiddevelopmentkata.navigation.TabNavigationCommand

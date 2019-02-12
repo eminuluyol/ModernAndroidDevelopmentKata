@@ -1,6 +1,6 @@
 package com.taurus.modernandroiddevelopmentkata.di.module
 
-import com.taurus.modernandroiddevelopmentkata.MainActivity
+import com.taurus.modernandroiddevelopmentkata.main.MainActivity
 import com.taurus.modernandroiddevelopmentkata.core.di.scope.ActivityScope
 import com.taurus.modernandroiddevelopmentkata.navigation.executor.NavigationExecutorModule
 import dagger.Module

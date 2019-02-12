@@ -6,6 +6,7 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.RemoteViews
 import androidx.navigation.NavDeepLinkBuilder
+import com.taurus.modernandroiddevelopmentkata.main.MainActivity
 
 class DeepLinkAppWidgetProvider : AppWidgetProvider() {
     override fun onUpdate(

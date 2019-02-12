@@ -2,7 +2,7 @@ package com.taurus.modernandroiddevelopmentkata.di.module
 
 import android.app.Activity
 import androidx.fragment.app.FragmentActivity
-import com.taurus.modernandroiddevelopmentkata.MainActivity
+import com.taurus.modernandroiddevelopmentkata.main.MainActivity
 import com.taurus.modernandroiddevelopmentkata.core.di.scope.ActivityScope
 import dagger.Binds
 import dagger.Module
