@@ -78,9 +78,7 @@ class NavigationManager @Inject constructor(
         currentController?.navigate(navDirections)
     }
 
-    fun supportNavigateUp() {
-        currentController?.navigateUp()
-    }
+    fun navigateUp(): Boolean = currentController?.navigateUp() ?: false
 
     interface TabContainer {
         fun showTab(@IdRes tabId: Int)

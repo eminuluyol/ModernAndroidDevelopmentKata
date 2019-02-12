@@ -7,7 +7,9 @@ import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
 import com.taurus.modernandroiddevelopmentkata.core.extensions.visibility
 import com.taurus.modernandroiddevelopmentkata.core.navigation.BackCommand
 import com.taurus.modernandroiddevelopmentkata.core.navigation.NavigationRouter
-import com.taurus.modernandroiddevelopmentkata.navigation.*
+import com.taurus.modernandroiddevelopmentkata.navigation.NavigationManager
+import com.taurus.modernandroiddevelopmentkata.navigation.NavigationViewModel
+import com.taurus.modernandroiddevelopmentkata.navigation.TabNavigationCommand
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -31,10 +33,23 @@ class MainActivity : BaseActivity<NavigationViewModel>(
             navigationRouter.navigate(TabNavigationCommand(tabId))
         }
 
+        handleDeeplinkIntent(intent)
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        handleDeeplinkIntent(intent)
+    }
+
+    private fun handleDeeplinkIntent(intent: Intent?) {
+        // uncomment to simulate custom deep link handling
+//        navigationRouter.navigate(TabNavigationCommand(R.id.navigation_tv_series))
+//        navigationRouter.navigate(NavigateFromTvSeriesToDetails("from deep link"))
+//        navigationRouter.navigate(NavigateFromDetailsToSimilarMovies("from deep link"))
     }
 
     override fun supportNavigateUpTo(upIntent: Intent) {
-        navigationManager.supportNavigateUp()
+        navigationManager.navigateUp()
     }
 
     override fun onBackPressed() {
