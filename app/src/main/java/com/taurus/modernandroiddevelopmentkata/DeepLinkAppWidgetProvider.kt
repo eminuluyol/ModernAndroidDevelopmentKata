@@ -30,7 +30,7 @@ class DeepLinkAppWidgetProvider : AppWidgetProvider() {
         val pendingIntent = NavDeepLinkBuilder(context)
             .setComponentName(MainActivity::class.java)
             .setGraph(R.navigation.navigation_graph)
-            .setDestination(R.id.navigation_tv_series)
+            .setDestination(R.id.navigation_details)
             .setArguments(args)
             .createPendingIntent()
 
