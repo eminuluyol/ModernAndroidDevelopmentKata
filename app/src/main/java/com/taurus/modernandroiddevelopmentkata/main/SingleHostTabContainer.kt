@@ -31,17 +31,23 @@ class SingleHostTabContainer @Inject constructor(
         tabContainer.children.map { it.findNavController() }.first()
 
     override fun showTab(tabId: Int) {
+
+        val fragmentTransaction = activity.supportFragmentManager.beginTransaction()
+
+        activity.supportFragmentManager.findFragmentById(R.id.tabContentContainer)?.let { fragmentTransaction.detach(it) }
+
         val tag = tabId.toString()
         var fragment = activity.supportFragmentManager.findFragmentByTag(tag)
         if (fragment == null) {
             fragment = NavHostFragment()
+            fragmentTransaction.add(R.id.tabContentContainer, fragment, tag)
+                // NavController is not available before onCreate()
+                .runOnCommit { fragment.findNavController().initWith(R.navigation.navigation_graph, tabId) }
+        } else {
+            fragmentTransaction.attach(fragment)
         }
 
-        activity.supportFragmentManager.beginTransaction()
-            .replace(R.id.tabContentContainer, fragment, tag)
-            // NavController is not available before onCreate()
-            .runOnCommit { fragment.findNavController().initWith(R.navigation.navigation_graph, tabId) }
-            .commit()
+        fragmentTransaction.commit()
 
         bottomNavigationViewHolder.highlightTabItem(tabId)
     }

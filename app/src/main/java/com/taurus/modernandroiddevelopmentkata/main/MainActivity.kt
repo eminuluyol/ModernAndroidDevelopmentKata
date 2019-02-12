@@ -14,7 +14,7 @@ import com.taurus.modernandroiddevelopmentkata.navigation.TabNavigationCommand
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
-val singleContainerTabs = false
+val singleContainerTabs = true
 
 class MainActivity : BaseActivity<NavigationViewModel>(
     if (singleContainerTabs) R.layout.activity_main_single_container else R.layout.activity_main,
