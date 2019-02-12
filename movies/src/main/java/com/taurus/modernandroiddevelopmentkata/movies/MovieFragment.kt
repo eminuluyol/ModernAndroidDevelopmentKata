@@ -1,5 +1,6 @@
 package com.taurus.modernandroiddevelopmentkata.movies
 
+import android.util.Log
 import android.view.View
 import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
 import com.taurus.modernandroiddevelopmentkata.core.navigation.NavigationRouter
@@ -27,5 +28,15 @@ class MovieFragment : BaseFragment<MovieStateMachine>() {
         showDetailButton.setOnClickListener {
             navigationRouter.navigate(NavigateFromMoviesToDetails("From Movies Fragment"))
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("Movie", "onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("Movie", "onPause")
     }
 }

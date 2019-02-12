@@ -1,10 +1,9 @@
 package com.taurus.modernandroiddevelopmentkata.di.module
 
 import android.app.Activity
+import androidx.fragment.app.FragmentActivity
 import com.taurus.modernandroiddevelopmentkata.MainActivity
-import com.taurus.modernandroiddevelopmentkata.MainActivityViewContainer
 import com.taurus.modernandroiddevelopmentkata.core.di.scope.ActivityScope
-import com.taurus.modernandroiddevelopmentkata.navigation.NavigationManager
 import dagger.Binds
 import dagger.Module
 
@@ -17,6 +16,5 @@ abstract class MainActivityBindingsModule {
 
     @ActivityScope
     @Binds
-    abstract fun tabContainer(mainActivityViewContainer: MainActivityViewContainer):
-        NavigationManager.TabContainer
+    abstract fun fragmentActivity(mainActivity: MainActivity): FragmentActivity
 }

@@ -4,8 +4,6 @@ import android.app.Activity
 import androidx.annotation.IdRes
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
-import androidx.navigation.findNavController
-import com.taurus.modernandroiddevelopmentkata.R
 import com.taurus.modernandroiddevelopmentkata.core.di.scope.ActivityScope
 import javax.inject.Inject
 
@@ -20,25 +18,6 @@ class NavigationManager @Inject constructor(
 
     private var currentController: NavController? = null
 
-    private val movieNavController: NavController by lazy {
-        activity.findNavController(R.id.movieTab).initWithStartDestination(R.id.navigation_movies)
-    }
-    private val tvSeriesNavController: NavController by lazy {
-        activity.findNavController(R.id.tvSeriesTab).initWithStartDestination(R.id.navigation_tv_series)
-    }
-    private val favouritesNavController: NavController by lazy {
-        activity.findNavController(R.id.favouritesTab).initWithStartDestination(R.id.navigation_favourites)
-    }
-    private val profileNavController: NavController by lazy {
-        activity.findNavController(R.id.profileTab).initWithStartDestination(R.id.navigation_profile)
-    }
-
-    private fun NavController.initWithStartDestination(@IdRes destId: Int) = apply {
-        graph = navInflater.inflate(R.navigation.navigation_graph).apply {
-            startDestination = destId
-        }
-    }
-
     fun bind(tabHistory: TabHistory) {
         this.tabHistory = tabHistory
         switchTab(tabHistory.currentTabId, false)
@@ -49,17 +28,11 @@ class NavigationManager @Inject constructor(
     }
 
     private fun switchTab(tabId: Int, addToHistory: Boolean = true) {
-        currentController = when (tabId) {
-            R.id.navigation_movies -> movieNavController
-            R.id.navigation_tv_series -> tvSeriesNavController
-            R.id.navigation_favourites -> favouritesNavController
-            R.id.navigation_profile -> profileNavController
-            else -> throw IllegalArgumentException("Unexpected tab id")
-        }
         if (addToHistory) {
             tabHistory.push(tabId)
         }
         tabContainer.showTab(tabId)
+        currentController = tabContainer.getNavController(tabId)
     }
 
     fun onBackPressed() {
@@ -82,6 +55,6 @@ class NavigationManager @Inject constructor(
 
     interface TabContainer {
         fun showTab(@IdRes tabId: Int)
+        fun getNavController(tabId: Int): NavController
     }
-
 }

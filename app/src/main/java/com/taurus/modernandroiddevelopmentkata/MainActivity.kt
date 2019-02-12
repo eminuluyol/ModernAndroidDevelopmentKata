@@ -7,14 +7,17 @@ import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
 import com.taurus.modernandroiddevelopmentkata.core.extensions.visibility
 import com.taurus.modernandroiddevelopmentkata.core.navigation.BackCommand
 import com.taurus.modernandroiddevelopmentkata.core.navigation.NavigationRouter
+import com.taurus.modernandroiddevelopmentkata.main.BottomNavigationViewHolder
 import com.taurus.modernandroiddevelopmentkata.navigation.NavigationManager
 import com.taurus.modernandroiddevelopmentkata.navigation.NavigationViewModel
 import com.taurus.modernandroiddevelopmentkata.navigation.TabNavigationCommand
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
+val singleContainerTabs = false
+
 class MainActivity : BaseActivity<NavigationViewModel>(
-    R.layout.activity_main,
+    if (singleContainerTabs) R.layout.activity_main_single_container else R.layout.activity_main,
     NavigationViewModel::class.java
 ), BaseFragment.FragmentListener {
 
@@ -23,13 +26,13 @@ class MainActivity : BaseActivity<NavigationViewModel>(
     @Inject
     lateinit var navigationRouter: NavigationRouter
     @Inject
-    lateinit var mainActivityViewContainer: MainActivityViewContainer
+    lateinit var bottomNavigationViewHolder: BottomNavigationViewHolder
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         navigationManager.bind(viewModel.tabHistory)
-        mainActivityViewContainer.bind { tabId ->
+        bottomNavigationViewHolder.bind { tabId ->
             navigationRouter.navigate(TabNavigationCommand(tabId))
         }
 
