@@ -1,4 +1,4 @@
-package com.taurus.modernandroiddevelopmentkata.core.navigation
+package com.taurus.modernandroiddevelopmentkata.core.livedata
 
 import androidx.lifecycle.Observer
 

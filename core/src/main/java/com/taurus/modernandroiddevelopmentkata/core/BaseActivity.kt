@@ -22,7 +22,6 @@ abstract class BaseActivity<VM : ViewModel>(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        AndroidInjection.inject(this)
         setContentView(layoutResId)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(viewModelClass)
     }

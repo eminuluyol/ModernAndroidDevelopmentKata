@@ -3,8 +3,8 @@ package com.taurus.modernandroiddevelopmentkata.core.extensions
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
-import com.taurus.modernandroiddevelopmentkata.core.navigation.Event
-import com.taurus.modernandroiddevelopmentkata.core.navigation.EventObserver
+import com.taurus.modernandroiddevelopmentkata.core.livedata.Event
+import com.taurus.modernandroiddevelopmentkata.core.livedata.EventObserver
 
 fun <T> LiveData<T>.nonNullObserve(owner: LifecycleOwner, observer: (t: T) -> Unit) {
     this.observe(owner, Observer {
