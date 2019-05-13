@@ -5,40 +5,54 @@
     android:id="@+id/navigation_graph">
 
     <fragment
-        android:id="@id/movie_fragment"
+        android:id="@id/navigation_movies"
         android:name="com.taurus.modernandroiddevelopmentkata.movies.MovieFragment"
         tools:layout="@layout/fragment_movie">
-        <action
-            android:id="@+id/navigate_from_movies_to_details"
-            app:destination="@id/details_fragment" />
     </fragment>
 
     <fragment
-        android:id="@id/tv_series_fragment"
+        android:id="@id/navigation_tv_series"
         android:name="com.taurus.modernandroiddevelopmentkata.tvseries.TVSeriesFragment"
         tools:layout="@layout/fragment_tv_series">
+        <!-- navigate to nested graph directly, passing args for its startDestination -->
         <action
             android:id="@+id/navigate_from_tv_series_to_details"
-            app:destination="@id/details_fragment" />
+            app:destination="@id/navigation_graph_details" >
+            <argument
+                android:name="title"
+                app:argType="string"/>
+        </action>
     </fragment>
 
     <fragment
-        android:id="@id/favourites_fragment"
-        android:name="com.taurus.modernandroiddevelopmentkata.favourite.FavouriteFragment"
+        android:id="@id/navigation_favourites"
+        android:name="com.taurus.modernandroiddevelopmentkata.favourites.FavouriteFragment"
         tools:layout="@layout/fragment_favourite" />
 
     <fragment
-        android:id="@id/profile_fragment"
+        android:id="@id/navigation_profile"
         android:name="com.taurus.modernandroiddevelopmentkata.profile.ProfileFragment"
         tools:layout="@layout/fragment_profile" />
 
-    <fragment
-        android:id="@id/details_fragment"
-        android:name="com.taurus.modernandroiddevelopmentkata.detail.DetailFragment"
-        tools:layout="@layout/fragment_detail">
+    <include app:graph="@navigation/navigation_graph_details" />
+    <!-- navigate to nested graph via a global action -->
+    <!-- An action is "global" only within its graph, and not visible in other graphs -->
+    <action
+        android:id="@+id/navigation_graph_details_start"
+        app:destination="@id/navigation_graph_details">
         <argument
-            android:name="titleArg"
+            android:name="title"
             app:argType="string" />
-    </fragment>
+    </action>
+
+    <!-- Navigating from one nested graph to another requires a global action -->
+    <include app:graph="@navigation/navigation_graph_similar_movies" />
+    <action
+        android:id="@+id/navigation_graph_similar_movies_start"
+        app:destination="@id/navigation_graph_similar_movies">
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </action>
 
 </navigation>

@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
-import com.taurus.modernandroiddevelopmentkata.MainActivity
+import com.taurus.modernandroiddevelopmentkata.main.MainActivity
 import com.taurus.modernandroiddevelopmentkata.R
 
 private const val SPLASH_DELAY = 2000L

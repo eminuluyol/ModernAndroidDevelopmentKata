@@ -1,3 +1,3 @@
 rootProject.buildFileName = 'build.gradle.kts'
 
-include ':app', ':movies', ':core'
+include ':app', ':movies', ':core', ':tvseries', ':favourites', ':profile', ':details', ":similarmovies"

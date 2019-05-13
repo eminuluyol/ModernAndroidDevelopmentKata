@@ -3,10 +3,18 @@ package com.taurus.modernandroiddevelopmentkata.core.utilities
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.os.Build
-import androidx.annotation.*
+import androidx.annotation.ColorInt
+import androidx.annotation.ColorRes
+import androidx.annotation.DimenRes
+import androidx.annotation.DrawableRes
+import androidx.annotation.IntegerRes
+import androidx.annotation.Px
+import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class ResourceHelper @Inject constructor(private val context: Context) {
 
     fun getString(@StringRes resId: Int): String {

@@ -7,12 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.taurus.modernandroiddevelopmentkata.core.di.viewmodel.ViewModelFactory
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.ToolbarManager
+import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
@@ -23,7 +24,7 @@ abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
     }
 
     @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+    protected lateinit var viewModelFactory: ViewModelFactory<VM>
 
     /**
      * ViewModel instance that provided by ViewModelProvider
@@ -44,6 +45,7 @@ abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+        AndroidSupportInjection.inject(this)
         try {
             this.fragmentListener = context as FragmentListener
         } catch (e: ClassCastException) {
@@ -57,7 +59,7 @@ abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?) =
+        savedInstanceState: Bundle?) =
         inflater.inflate(layoutResId(), container, false)!!
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -65,7 +67,7 @@ abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
         navController = findNavController()
         ToolbarManager(toolbarBuilder(), view, navController).prepareToolbar()
         fragmentListener?.handleBottomBarVisibility(isBottomBarEnabled)
-        onReadyToRender(view, stateMachine, navController)
+        onReadyToRender(view, stateMachine)
     }
 
     /**
@@ -76,6 +78,6 @@ abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
 
     protected abstract fun toolbarBuilder(): FragmentToolbar
 
-    protected abstract fun onReadyToRender(view: View, stateMachine: VM, navController: NavController)
+    protected abstract fun onReadyToRender(view: View, stateMachine: VM)
 
 }

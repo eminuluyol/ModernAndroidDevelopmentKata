@@ -4,25 +4,25 @@ import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
+import com.taurus.modernandroiddevelopmentkata.core.di.viewmodel.ViewModelFactory
+import dagger.android.AndroidInjection
 import dagger.android.support.DaggerAppCompatActivity
+import javax.inject.Inject
 
-abstract class BaseActivity<VM : ViewModel> : DaggerAppCompatActivity() {
+abstract class BaseActivity<VM : ViewModel>(
+    @LayoutRes private val layoutResId: Int,
+    private val viewModelClass: Class<VM>
+) : DaggerAppCompatActivity() {
 
-    /**
-     * ViewModel instance that provided by ViewModelProvider
-     */
+    @Inject
+    protected lateinit var viewModelFactory: ViewModelFactory<VM>
 
-    private lateinit var viewModel: VM
-
-    abstract fun obtainViewModel(): Class<VM>
-
-    @LayoutRes
-    abstract fun layoutResId(): Int
+    protected lateinit var viewModel: VM
+        private set
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(layoutResId())
-        viewModel = ViewModelProviders.of(this).get(obtainViewModel())
+        setContentView(layoutResId)
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(viewModelClass)
     }
-
 }

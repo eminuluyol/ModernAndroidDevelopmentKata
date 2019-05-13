@@ -21,8 +21,18 @@
     </activity>
 
     <activity
-        android:name=".MainActivity"
+        android:name=".main.MainActivity"
         android:theme="@style/AppTheme"/>
+
+      <receiver android:name=".DeepLinkAppWidgetProvider">
+          <intent-filter>
+              <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+          </intent-filter>
+
+          <meta-data
+              android:name="android.appwidget.provider"
+              android:resource="@xml/appwidget_provider_deeplink" />
+      </receiver>
 
   </application>
 
