@@ -7,7 +7,6 @@ import dagger.Component
 import dagger.android.AndroidInjector
 import javax.inject.Singleton
 
-
 @Singleton
 @Component(modules = [ApplicationModule::class])
 interface ApplicationComponent : AndroidInjector<MovieApp> {

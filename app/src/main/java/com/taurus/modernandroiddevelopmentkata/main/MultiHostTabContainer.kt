@@ -7,8 +7,11 @@ import androidx.navigation.findNavController
 import com.taurus.modernandroiddevelopmentkata.R
 import com.taurus.modernandroiddevelopmentkata.core.di.scope.ActivityScope
 import com.taurus.modernandroiddevelopmentkata.core.extensions.hideAllExcept
-import com.taurus.modernandroiddevelopmentkata.navigation.NavigationManager
-import kotlinx.android.synthetic.main.activity_main.*
+import com.taurus.modernandroiddevelopmentkata.core.navigation.NavigationManager
+import kotlinx.android.synthetic.main.activity_main.favouritesTab
+import kotlinx.android.synthetic.main.activity_main.movieTab
+import kotlinx.android.synthetic.main.activity_main.profileTab
+import kotlinx.android.synthetic.main.activity_main.tvSeriesTab
 import javax.inject.Inject
 
 @ActivityScope
@@ -38,10 +41,14 @@ class MultiHostTabContainer @Inject constructor(
     private lateinit var profileNavController: NavController
 
     override fun bind() {
-        movieNavController = activity.findNavController(R.id.movieTab).initWith(R.navigation.navigation_graph, R.id.navigation_movies)
-        tvSeriesNavController = activity.findNavController(R.id.tvSeriesTab).initWith(R.navigation.navigation_graph, R.id.navigation_tv_series)
-        favouritesNavController = activity.findNavController(R.id.favouritesTab).initWith(R.navigation.navigation_graph, R.id.navigation_favourites)
-        profileNavController = activity.findNavController(R.id.profileTab).initWith(R.navigation.navigation_graph, R.id.navigation_profile)
+        movieNavController = activity.findNavController(R.id.movieTab).initWith(
+            R.navigation.navigation_graph, R.id.navigation_movies)
+        tvSeriesNavController = activity.findNavController(R.id.tvSeriesTab).initWith(
+            R.navigation.navigation_graph, R.id.navigation_tv_series)
+        favouritesNavController = activity.findNavController(R.id.favouritesTab).initWith(
+            R.navigation.navigation_graph, R.id.navigation_favourites)
+        profileNavController = activity.findNavController(R.id.profileTab).initWith(
+            R.navigation.navigation_graph, R.id.navigation_profile)
     }
 
     override fun getNavController(tabId: Int): NavController {

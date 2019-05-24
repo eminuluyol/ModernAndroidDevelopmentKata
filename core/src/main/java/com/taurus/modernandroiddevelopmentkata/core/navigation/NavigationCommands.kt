@@ -1,4 +1,4 @@
-package com.taurus.modernandroiddevelopmentkata.navigation
+package com.taurus.modernandroiddevelopmentkata.core.navigation
 
 import androidx.annotation.IdRes
 import com.taurus.modernandroiddevelopmentkata.core.navigation.NavigationCommand

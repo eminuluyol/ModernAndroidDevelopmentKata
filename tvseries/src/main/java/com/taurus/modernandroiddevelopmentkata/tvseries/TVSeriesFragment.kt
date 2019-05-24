@@ -3,16 +3,16 @@ package com.taurus.modernandroiddevelopmentkata.tvseries
 import android.view.View
 import com.taurus.modernandroiddevelopmentkata.R
 import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
-import com.taurus.modernandroiddevelopmentkata.core.navigation.NavigationRouter
+import com.taurus.modernandroiddevelopmentkata.core.navigation.Navigator
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
-import com.taurus.modernandroiddevelopmentkata.tvseries.navigation.NavigateFromTvSeriesToDetails
-import kotlinx.android.synthetic.main.fragment_tv_series.*
+import com.taurus.modernandroiddevelopmentkata.tvseries.navigation.FromTvSeriesToDetails
+import kotlinx.android.synthetic.main.fragment_tv_series.showDetailButton
 import javax.inject.Inject
 
 class TVSeriesFragment : BaseFragment<TVSeriesStateMachine>() {
 
     @Inject
-    lateinit var navigationRouter: NavigationRouter
+    lateinit var navigator: Navigator
 
     override fun obtainViewModel() = TVSeriesStateMachine::class.java
 
@@ -26,7 +26,7 @@ class TVSeriesFragment : BaseFragment<TVSeriesStateMachine>() {
 
     override fun onReadyToRender(view: View, stateMachine: TVSeriesStateMachine) {
         showDetailButton.setOnClickListener {
-            navigationRouter.navigate(NavigateFromTvSeriesToDetails("From TV Series Fragment"))
+            navigator.navigate(FromTvSeriesToDetails("From TV Series Fragment"))
         }
     }
 

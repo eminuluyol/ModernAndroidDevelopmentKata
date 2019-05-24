@@ -1,18 +1,17 @@
 package com.taurus.modernandroiddevelopmentkata.movies
 
-import android.util.Log
 import android.view.View
 import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
-import com.taurus.modernandroiddevelopmentkata.core.navigation.NavigationRouter
+import com.taurus.modernandroiddevelopmentkata.core.navigation.Navigator
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
-import com.taurus.modernandroiddevelopmentkata.movies.navigation.NavigateFromMoviesToDetails
-import kotlinx.android.synthetic.main.fragment_movie.*
+import com.taurus.modernandroiddevelopmentkata.movies.navigation.FromMoviesToDetails
+import kotlinx.android.synthetic.main.fragment_movie.showDetailButton
 import javax.inject.Inject
 
 class MovieFragment : BaseFragment<MovieStateMachine>() {
 
     @Inject
-    lateinit var navigationRouter: NavigationRouter
+    lateinit var navigator: Navigator
 
     override fun obtainViewModel() = MovieStateMachine::class.java
 
@@ -26,17 +25,8 @@ class MovieFragment : BaseFragment<MovieStateMachine>() {
 
     override fun onReadyToRender(view: View, stateMachine: MovieStateMachine) {
         showDetailButton.setOnClickListener {
-            navigationRouter.navigate(NavigateFromMoviesToDetails("From Movies Fragment"))
+            navigator.navigate(FromMoviesToDetails("From Movies Fragment"))
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        Log.d("Movie", "onResume")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d("Movie", "onPause")
-    }
 }

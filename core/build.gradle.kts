@@ -17,6 +17,10 @@ android {
         versionName = Release.versionName
         testInstrumentationRunner = Config.testInstrumentationRunner
     }
+
+    sourceSets {
+        getByName("main").res.srcDirs("$rootDir/core/src/main/sharedRes")
+    }
 }
 
 androidExtensions {

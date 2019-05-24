@@ -37,6 +37,9 @@ android {
         }
     }
 
+    sourceSets {
+        getByName("debug").res.srcDirs("$rootDir/core/src/main/sharedRes")
+    }
 }
 
 androidExtensions {

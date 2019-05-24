@@ -32,8 +32,8 @@ object CoreLibraries {
   const val roomAnnotationProcessor =  "androidx.room:room-compiler:$roomVersion"
   const val roomCoroutinesSupport =  "androidx.room:room-coroutines:$roomVersion"
   const val paging = "androidx.paging:paging-runtime-ktx:$pagingVersion"
-  const val navigationFragment = "android.arch.navigation:navigation-fragment-ktx:$navVersion"
-  const val navigationUI = "android.arch.navigation:navigation-ui-ktx:$navVersion"
+  const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:$navVersion"
+  const val navigationUI = "androidx.navigation:navigation-ui-ktx:$navVersion"
 }
 
 object ExternalLibraries {

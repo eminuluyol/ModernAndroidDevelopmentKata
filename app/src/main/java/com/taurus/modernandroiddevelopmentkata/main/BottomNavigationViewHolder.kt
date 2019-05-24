@@ -3,7 +3,7 @@ package com.taurus.modernandroiddevelopmentkata.main
 import android.app.Activity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.taurus.modernandroiddevelopmentkata.core.di.scope.ActivityScope
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.bottomNavigationView
 import javax.inject.Inject
 
 @ActivityScope

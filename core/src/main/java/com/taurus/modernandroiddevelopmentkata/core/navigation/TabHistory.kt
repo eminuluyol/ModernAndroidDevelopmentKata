@@ -1,7 +1,8 @@
-package com.taurus.modernandroiddevelopmentkata.navigation
+package com.taurus.modernandroiddevelopmentkata.core.navigation
 
 import java.io.Serializable
-import java.util.*
+import java.util.ArrayDeque
+import java.util.Deque
 
 class TabHistory(initialValue: Int) : Serializable {
 

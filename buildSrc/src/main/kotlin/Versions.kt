@@ -33,6 +33,6 @@ object Versions {
   const val okhttpVersion = "3.12.1"
   const val roomVersion = "2.1.0-alpha03"
   const val pagingVersion = "2.1.0-rc01"
-  const val navVersion = "1.0.0-beta02"
+  const val navVersion = "2.1.0-alpha04"
   const val stethoVersion = "1.5.0"
 }

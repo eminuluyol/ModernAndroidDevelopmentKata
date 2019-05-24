@@ -9,7 +9,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.taurus.modernandroiddevelopmentkata.R
 import com.taurus.modernandroiddevelopmentkata.core.di.scope.ActivityScope
-import com.taurus.modernandroiddevelopmentkata.navigation.NavigationManager
+import com.taurus.modernandroiddevelopmentkata.core.navigation.NavigationManager
 import kotlinx.android.synthetic.main.activity_main_single_container.*
 import javax.inject.Inject
 

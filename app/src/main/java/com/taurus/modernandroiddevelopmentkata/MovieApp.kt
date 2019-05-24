@@ -2,7 +2,6 @@ package com.taurus.modernandroiddevelopmentkata
 
 import com.facebook.stetho.Stetho
 import com.taurus.modernandroiddevelopmentkata.core.sharedpreference.BaseSharedPreferences
-import com.taurus.modernandroiddevelopmentkata.di.component.DaggerApplicationComponent
 import dagger.android.DaggerApplication
 
 class MovieApp : DaggerApplication() {

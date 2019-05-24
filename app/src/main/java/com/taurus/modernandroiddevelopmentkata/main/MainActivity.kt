@@ -7,11 +7,11 @@ import com.taurus.modernandroiddevelopmentkata.core.BaseActivity
 import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
 import com.taurus.modernandroiddevelopmentkata.core.extensions.visibility
 import com.taurus.modernandroiddevelopmentkata.core.navigation.BackCommand
-import com.taurus.modernandroiddevelopmentkata.core.navigation.NavigationRouter
-import com.taurus.modernandroiddevelopmentkata.navigation.NavigationManager
-import com.taurus.modernandroiddevelopmentkata.navigation.NavigationViewModel
-import com.taurus.modernandroiddevelopmentkata.navigation.TabNavigationCommand
-import kotlinx.android.synthetic.main.activity_main.*
+import com.taurus.modernandroiddevelopmentkata.core.navigation.NavigationManager
+import com.taurus.modernandroiddevelopmentkata.core.navigation.NavigationViewModel
+import com.taurus.modernandroiddevelopmentkata.core.navigation.TabNavigationCommand
+import com.taurus.modernandroiddevelopmentkata.navigation.MainNavigator
+import kotlinx.android.synthetic.main.activity_main.bottomNavigationView
 import javax.inject.Inject
 
 val singleContainerTabs = true
@@ -24,7 +24,7 @@ class MainActivity : BaseActivity<NavigationViewModel>(
     @Inject
     lateinit var navigationManager: NavigationManager
     @Inject
-    lateinit var navigationRouter: NavigationRouter
+    lateinit var navigator: MainNavigator
     @Inject
     lateinit var bottomNavigationViewHolder: BottomNavigationViewHolder
     @Inject
@@ -36,7 +36,7 @@ class MainActivity : BaseActivity<NavigationViewModel>(
         tabContainer.bind()
         navigationManager.bind(viewModel.tabHistory)
         bottomNavigationViewHolder.bind { tabId ->
-            navigationRouter.navigate(TabNavigationCommand(tabId))
+            navigator.navigate(TabNavigationCommand(tabId))
         }
 
         handleDeeplinkIntent(intent)
@@ -50,8 +50,8 @@ class MainActivity : BaseActivity<NavigationViewModel>(
     private fun handleDeeplinkIntent(intent: Intent?) {
         // uncomment to simulate custom deep link handling
 //        navigationRouter.navigate(TabNavigationCommand(R.id.navigation_tv_series))
-//        navigationRouter.navigate(NavigateFromTvSeriesToDetails("from deep link"))
-//        navigationRouter.navigate(NavigateFromDetailsToSimilarMovies("from deep link"))
+//        navigationRouter.navigate(FromTvSeriesToDetails("from deep link"))
+//        navigationRouter.navigate(FromDetailsToSimilarMovies("from deep link"))
     }
 
     override fun supportNavigateUpTo(upIntent: Intent) {
@@ -59,7 +59,7 @@ class MainActivity : BaseActivity<NavigationViewModel>(
     }
 
     override fun onBackPressed() {
-        navigationRouter.navigate(BackCommand)
+        navigator.navigate(BackCommand)
     }
 
     override fun handleBottomBarVisibility(isVisible: Boolean) {
