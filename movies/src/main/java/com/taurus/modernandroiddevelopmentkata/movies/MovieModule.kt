@@ -2,15 +2,14 @@ package com.taurus.modernandroiddevelopmentkata.movies
 
 import com.taurus.modernandroiddevelopmentkata.core.di.scope.FragmentScope
 import com.taurus.modernandroiddevelopmentkata.core.navigation.NavigationManager
-import com.taurus.modernandroiddevelopmentkata.core.navigation.Navigator
 import com.taurus.modernandroiddevelopmentkata.movies.navigation.MovieNavigator
-import dagger.Binds
 import dagger.Module
+import dagger.Provides
 
 @Module
-abstract class MovieBindingsModule {
+class MovieModule {
 
     @FragmentScope
-    @Binds
-    abstract fun provideMovieNavigator(navigator: MovieNavigator): Navigator
+    @Provides
+    internal fun provideNavigator(manager: NavigationManager) = MovieNavigator(manager)
 }

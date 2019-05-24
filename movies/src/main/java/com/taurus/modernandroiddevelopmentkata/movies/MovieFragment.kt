@@ -2,16 +2,16 @@ package com.taurus.modernandroiddevelopmentkata.movies
 
 import android.view.View
 import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
-import com.taurus.modernandroiddevelopmentkata.core.navigation.Navigator
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
 import com.taurus.modernandroiddevelopmentkata.movies.navigation.FromMoviesToDetails
-import kotlinx.android.synthetic.main.fragment_movie.showDetailButton
+import com.taurus.modernandroiddevelopmentkata.movies.navigation.MovieNavigator
+import kotlinx.android.synthetic.main.fragment_movie.*
 import javax.inject.Inject
 
 class MovieFragment : BaseFragment<MovieStateMachine>() {
 
     @Inject
-    lateinit var navigator: Navigator
+    internal lateinit var navigator: MovieNavigator
 
     override fun obtainViewModel() = MovieStateMachine::class.java
 
