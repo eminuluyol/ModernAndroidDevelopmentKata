@@ -1,3 +1,9 @@
+import Config.testInstrumentationRunner
+import Release.versionCode
+import Release.versionName
+import Versions.compileSdkVersion
+import Versions.minSdkVersion
+import Versions.targetSdkVersion
 import org.jetbrains.kotlin.gradle.internal.AndroidExtensionsExtension
 
 plugins {
@@ -20,9 +26,7 @@ android {
 }
 
 androidExtensions {
-    configure(delegateClosureOf<AndroidExtensionsExtension> {
-        isExperimental = true
-    })
+    isExperimental = true
 }
 
 dependencies {
@@ -74,6 +78,10 @@ dependencies {
     api(CoreLibraries.roomCore)
     kapt(CoreLibraries.roomAnnotationProcessor)
     api(CoreLibraries.roomCoroutinesSupport)
+    /**
+     * Paging
+     */
+    api(CoreLibraries.paging)
     /**
      * Test
      */

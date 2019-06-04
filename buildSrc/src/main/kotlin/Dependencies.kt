@@ -42,7 +42,7 @@ object ExternalLibraries {
   const val daggerAnnotationProcessor = "com.google.dagger:dagger-android-processor:$daggerVersion"
   const val daggerCompiler ="com.google.dagger:dagger-compiler:$daggerVersion"
   const val retrofitCore = "com.squareup.retrofit2:retrofit:$retrofitVersion"
-  const val retrofitCoroutinesAdapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$retrofitCoroutinesAdapterVersion"
+  const val retrofitCoroutinesAdapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-experimental-adapter:$retrofitCoroutinesAdapterVersion"
   const val retrofitMoshi = "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
   const val moshi = "com.squareup.moshi:moshi:$moshiVersion"
   const val okhttp = "com.squareup.okhttp3:okhttp:$okhttpVersion"
