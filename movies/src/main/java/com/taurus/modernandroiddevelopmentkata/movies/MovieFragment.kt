@@ -5,7 +5,7 @@ import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
 import com.taurus.modernandroiddevelopmentkata.core.navigation.Navigator
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
 import com.taurus.modernandroiddevelopmentkata.movies.navigation.FromMoviesToDetails
-import kotlinx.android.synthetic.main.fragment_movie.showDetailButton
+import kotlinx.android.synthetic.main.fragment_movie.view.showDetailButton
 import javax.inject.Inject
 
 class MovieFragment : BaseFragment<MovieStateMachine>() {
@@ -24,7 +24,7 @@ class MovieFragment : BaseFragment<MovieStateMachine>() {
     }
 
     override fun onReadyToRender(view: View, stateMachine: MovieStateMachine) {
-        showDetailButton.setOnClickListener {
+        view.showDetailButton.setOnClickListener {
             navigator.navigate(FromMoviesToDetails("From Movies Fragment"))
         }
     }

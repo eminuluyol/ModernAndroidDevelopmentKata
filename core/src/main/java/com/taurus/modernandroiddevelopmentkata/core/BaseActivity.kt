@@ -5,7 +5,6 @@ import androidx.annotation.LayoutRes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import com.taurus.modernandroiddevelopmentkata.core.di.viewmodel.ViewModelFactory
-import dagger.android.AndroidInjection
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 

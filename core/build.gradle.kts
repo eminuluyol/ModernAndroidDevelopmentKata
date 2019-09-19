@@ -1,4 +1,4 @@
-import org.jetbrains.kotlin.gradle.internal.AndroidExtensionsExtension
+import Versions.compileSdkVersion
 
 plugins {
     id(Plugins.androidLibrary)
@@ -24,9 +24,7 @@ android {
 }
 
 androidExtensions {
-    configure(delegateClosureOf<AndroidExtensionsExtension> {
-        isExperimental = true
-    })
+    isExperimental = true
 }
 
 dependencies {
@@ -67,7 +65,6 @@ dependencies {
      * Retrofit
      */
     api(ExternalLibraries.retrofitCore)
-    api(ExternalLibraries.retrofitCoroutinesAdapter)
     api(ExternalLibraries.retrofitMoshi)
     api(ExternalLibraries.moshi)
     api(ExternalLibraries.okhttp)

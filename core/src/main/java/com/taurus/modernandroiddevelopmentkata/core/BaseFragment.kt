@@ -9,7 +9,7 @@ import androidx.annotation.LayoutRes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.taurus.modernandroiddevelopmentkata.core.di.viewmodel.ViewModelFactory
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.ToolbarManager
@@ -55,7 +55,7 @@ abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        stateMachine = ViewModelProviders.of(this, viewModelFactory).get(obtainViewModel())
+        stateMachine = ViewModelProviders.of(this , viewModelFactory).get(obtainViewModel())
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -64,7 +64,7 @@ abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        navController = findNavController()
+        navController = findNavController(this)
         ToolbarManager(toolbarBuilder(), view, navController).prepareToolbar()
         fragmentListener?.handleBottomBarVisibility(isBottomBarEnabled)
         onReadyToRender(view, stateMachine)
