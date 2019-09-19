@@ -9,8 +9,8 @@ import dagger.Provides
 @Module
 class MainNavigationModule {
 
-    @Provides
     @ActivityScope
+    @Provides
     fun provideNavigator(
         manager: NavigationManager
     ): Navigator = MainNavigator(manager)

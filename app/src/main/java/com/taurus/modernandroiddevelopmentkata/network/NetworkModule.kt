@@ -1,6 +1,5 @@
 package com.taurus.modernandroiddevelopmentkata.network
 
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.taurus.modernandroiddevelopmentkata.BuildConfig
 import com.taurus.modernandroiddevelopmentkata.core.utilities.debug
 import dagger.Module
@@ -17,7 +16,9 @@ class NetworkModule {
     @Provides
     @Singleton
     fun provideLoggingInterceptor(): HttpLoggingInterceptor = HttpLoggingInterceptor()
-        .setLevel(HttpLoggingInterceptor.Level.BODY)
+        .apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
 
     @Provides
     @Singleton
@@ -33,7 +34,6 @@ class NetworkModule {
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
             .client(okHttpClient)
-            .addCallAdapterFactory(CoroutineCallAdapterFactory.invoke())
             .addConverterFactory(MoshiConverterFactory.create())
             .baseUrl(BuildConfig.API_URL)
             .build()
