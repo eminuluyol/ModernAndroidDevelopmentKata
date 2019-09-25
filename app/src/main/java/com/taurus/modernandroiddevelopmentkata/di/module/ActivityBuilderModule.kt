@@ -16,7 +16,6 @@ abstract class ActivityBuilderModule {
         FragmentBuilderModule::class,
         MainNavigationModule::class
     ])
-
-    abstract fun mainActivity(): MainActivity
+    internal abstract fun contributeMainActivity(): MainActivity
 
 }
