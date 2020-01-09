@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/navigation_tv_series"
+    android:id="@+id/navigation_graph_tv_series">
+
+    <fragment
+        android:id="@id/navigation_tv_series"
+        android:name="com.taurus.modernandroiddevelopmentkata.tvseries.TVSeriesFragment"
+        tools:layout="@layout/fragment_tv_series">
+        <action
+            android:id="@+id/navigate_to_details"
+            app:destination="@id/navigation_details">
+            <argument
+                android:name="title"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@id/navigation_details"
+        android:name="com.taurus.modernandroiddevelopmentkata.detail.DetailFragment"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <action
+            android:id="@+id/navigate_to_similar_movies"
+            app:destination="@id/navigation_similar_movies" />
+    </fragment>
+
+    <!-- Navigating from one nested graph to another requires a global action -->
+    <fragment
+        android:id="@id/navigation_similar_movies"
+        android:name="com.taurus.modernandroiddevelopmentkata.similarmovies.SimilarMoviesFragment"
+        tools:layout="@layout/fragment_similar_movies">
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </fragment>
+
+</navigation>

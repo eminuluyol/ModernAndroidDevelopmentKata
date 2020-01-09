@@ -1,7 +1,7 @@
 package com.taurus.modernandroiddevelopmentkata.di.module
 
 import com.taurus.modernandroiddevelopmentkata.core.di.scope.FragmentScope
-import com.taurus.modernandroiddevelopmentkata.detail.DetailModule
+import com.taurus.modernandroiddevelopmentkata.detail.DetailBuilderModule
 import com.taurus.modernandroiddevelopmentkata.favourites.FavouriteFragment
 import com.taurus.modernandroiddevelopmentkata.favourites.FavouriteModule
 import com.taurus.modernandroiddevelopmentkata.movies.MovieFragment
@@ -14,10 +14,12 @@ import com.taurus.modernandroiddevelopmentkata.tvseries.TVSeriesModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
-@Module(includes = [DetailModule::class, SimilarMoviesModule::class])
+@Module(includes = [
+    DetailBuilderModule::class,
+    SimilarMoviesModule::class
+])
 abstract class FragmentBuilderModule {
 
-    // TODO move fragment provides into respective feature modules
     @FragmentScope
     @ContributesAndroidInjector(modules = [MovieModule::class])
     abstract fun movieFragment(): MovieFragment
@@ -33,4 +35,5 @@ abstract class FragmentBuilderModule {
     @FragmentScope
     @ContributesAndroidInjector(modules = [ProfileModule::class])
     abstract fun profileFragment(): ProfileFragment
+
 }

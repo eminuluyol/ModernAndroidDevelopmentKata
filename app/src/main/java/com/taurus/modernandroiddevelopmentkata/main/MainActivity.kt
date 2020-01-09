@@ -2,44 +2,67 @@ package com.taurus.modernandroiddevelopmentkata.main
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.core.view.isVisible
+import androidx.lifecycle.Observer
 import com.taurus.modernandroiddevelopmentkata.R
 import com.taurus.modernandroiddevelopmentkata.core.BaseActivity
 import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
-import com.taurus.modernandroiddevelopmentkata.core.extensions.visibility
-import com.taurus.modernandroiddevelopmentkata.core.navigation.BackCommand
-import com.taurus.modernandroiddevelopmentkata.core.navigation.NavigationRouter
-import com.taurus.modernandroiddevelopmentkata.navigation.NavigationManager
-import com.taurus.modernandroiddevelopmentkata.navigation.NavigationViewModel
-import com.taurus.modernandroiddevelopmentkata.navigation.TabNavigationCommand
-import kotlinx.android.synthetic.main.activity_main.*
+import com.taurus.modernandroiddevelopmentkata.core.navigation.NavigationManager
+import com.taurus.modernandroiddevelopmentkata.core.navigation.NavigationViewModel
+import kotlinx.android.synthetic.main.activity_main_single_container.*
 import javax.inject.Inject
 
-val singleContainerTabs = true
-
 class MainActivity : BaseActivity<NavigationViewModel>(
-    if (singleContainerTabs) R.layout.activity_main_single_container else R.layout.activity_main,
+    R.layout.activity_main_single_container,
     NavigationViewModel::class.java
 ), BaseFragment.FragmentListener {
 
     @Inject
     lateinit var navigationManager: NavigationManager
-    @Inject
-    lateinit var navigationRouter: NavigationRouter
-    @Inject
-    lateinit var bottomNavigationViewHolder: BottomNavigationViewHolder
-    @Inject
-    lateinit var tabContainer: NavigationManager.TabContainer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        tabContainer.bind()
-        navigationManager.bind(viewModel.tabHistory)
-        bottomNavigationViewHolder.bind { tabId ->
-            navigationRouter.navigate(TabNavigationCommand(tabId))
-        }
+        if (savedInstanceState == null) {
+            setupBottomNavigationBar()
+        } // Else, need to wait for onRestoreInstanceState
 
         handleDeeplinkIntent(intent)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+        super.onRestoreInstanceState(savedInstanceState)
+        // Now that BottomNavigationBar has restored its instance state
+        // and its selectedItemId, we can proceed with setting up the
+        // BottomNavigationBar with Navigation
+        setupBottomNavigationBar()
+    }
+
+    /**
+     * Called on first creation and when restoring state.
+     */
+    private fun setupBottomNavigationBar() {
+
+        val navGraphIds = listOf(
+            R.navigation.navigation_graph_movies,
+            R.navigation.navigation_graph_tv_series,
+            R.navigation.navigation_graph_favourites,
+            R.navigation.navigation_graph_profile
+        )
+
+        // Setup the bottom navigation view with a list of navigation graphs
+        val controller = bottomNavigationView.setupWithNavController(
+            navGraphIds = navGraphIds,
+            fragmentManager = supportFragmentManager,
+            containerId = R.id.nav_host_container,
+            intent = intent
+        )
+
+        // Whenever the selected controller changes, setup the action bar.
+        controller.observe(this, Observer { navController ->
+            navigationManager.update(navController)
+        })
+
     }
 
     override fun onNewIntent(intent: Intent?) {
@@ -49,20 +72,16 @@ class MainActivity : BaseActivity<NavigationViewModel>(
 
     private fun handleDeeplinkIntent(intent: Intent?) {
         // uncomment to simulate custom deep link handling
-//        navigationRouter.navigate(TabNavigationCommand(R.id.navigation_tv_series))
-//        navigationRouter.navigate(NavigateFromTvSeriesToDetails("from deep link"))
-//        navigationRouter.navigate(NavigateFromDetailsToSimilarMovies("from deep link"))
+        // navigationRouter.navigate(TabNavigationCommand(R.id.navigation_graph_tv_series))
+        // navigationRouter.navigate(NavigateFromTvSeriesToDetails("from deep link"))
+        // navigationRouter.navigate(NavigateFromDetailsToSimilarMovies("from deep link"))
     }
 
-    override fun supportNavigateUpTo(upIntent: Intent) {
-        navigationManager.navigateUp()
-    }
-
-    override fun onBackPressed() {
-        navigationRouter.navigate(BackCommand)
+    override fun onSupportNavigateUp(): Boolean {
+        return navigationManager.navigateUp()
     }
 
     override fun handleBottomBarVisibility(isVisible: Boolean) {
-        bottomNavigationView.visibility(isVisible)
+        bottomNavigationView.isVisible = isVisible
     }
 }

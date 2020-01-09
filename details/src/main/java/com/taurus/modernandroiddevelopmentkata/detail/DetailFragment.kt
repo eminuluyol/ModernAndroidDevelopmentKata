@@ -1,24 +1,21 @@
 package com.taurus.modernandroiddevelopmentkata.detail
 
 import android.view.View
+import androidx.navigation.fragment.navArgs
 import com.taurus.details.R
 import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
-import com.taurus.modernandroiddevelopmentkata.core.navigation.NavigationRouter
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
-import com.taurus.modernandroiddevelopmentkata.detail.DetailFragmentArgs.fromBundle
-import com.taurus.modernandroiddevelopmentkata.detail.navigation.NavigateFromDetailsToSimilarMovies
-import kotlinx.android.synthetic.main.fragment_detail.*
+import com.taurus.modernandroiddevelopmentkata.detail.navigation.DetailsNavigator
+import com.taurus.modernandroiddevelopmentkata.detail.navigation.FromDetailsToSimilarMovies
+import kotlinx.android.synthetic.main.fragment_detail.showSimilarMoviesButton
 import javax.inject.Inject
 
 internal class DetailFragment : BaseFragment<DetailStateMachine>() {
 
     @Inject
-    lateinit var navigationRouter: NavigationRouter
+    internal lateinit var navigator: DetailsNavigator
 
-    private val title by lazy {
-        // required arg -> force non-nullability
-        fromBundle(arguments!!).title
-    }
+    private val args: DetailFragmentArgs by navArgs()
 
     override fun obtainViewModel() = DetailStateMachine::class.java
 
@@ -26,7 +23,7 @@ internal class DetailFragment : BaseFragment<DetailStateMachine>() {
 
     override fun toolbarBuilder(): FragmentToolbar {
         return FragmentToolbar.decorateToolbar(R.id.toolbar) {
-            withTitle(title)
+            withTitle(args.title)
             onHomePressedDefaultAction()
         }
     }
@@ -35,7 +32,7 @@ internal class DetailFragment : BaseFragment<DetailStateMachine>() {
 
     override fun onReadyToRender(view: View, stateMachine: DetailStateMachine) {
         showSimilarMoviesButton.setOnClickListener {
-            navigationRouter.navigate(NavigateFromDetailsToSimilarMovies("From Details Fragment"))
+            navigator.navigate(FromDetailsToSimilarMovies("From Details Fragment"))
         }
     }
 

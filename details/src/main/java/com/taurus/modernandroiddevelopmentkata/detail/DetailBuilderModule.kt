@@ -5,9 +5,10 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
 @Module
-abstract class DetailModule {
+abstract class DetailBuilderModule {
 
     @FragmentScope
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = [DetailBindingsModule::class])
     internal abstract fun detailFragment(): DetailFragment
+
 }

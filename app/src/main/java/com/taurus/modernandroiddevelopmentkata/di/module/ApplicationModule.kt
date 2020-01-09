@@ -9,7 +9,6 @@ import dagger.Provides
 import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton
 
-
 @Module(
     includes = [
         AndroidSupportInjectionModule::class,

@@ -1,17 +1,14 @@
 package com.taurus.modernandroiddevelopmentkata.similarmovies
 
 import android.view.View
+import androidx.navigation.fragment.navArgs
 import com.taurus.details.R
 import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
-import com.taurus.modernandroiddevelopmentkata.similarmovies.SimilarMoviesFragmentArgs.fromBundle
 
 internal class SimilarMoviesFragment : BaseFragment<SimilarMoviesMachine>() {
 
-    private val title by lazy {
-        // required arg -> force non-nullability
-        fromBundle(arguments!!).title
-    }
+    private val args: SimilarMoviesFragmentArgs by navArgs()
 
     override fun obtainViewModel() = SimilarMoviesMachine::class.java
 
@@ -19,7 +16,7 @@ internal class SimilarMoviesFragment : BaseFragment<SimilarMoviesMachine>() {
 
     override fun toolbarBuilder(): FragmentToolbar {
         return FragmentToolbar.decorateToolbar(R.id.toolbar) {
-            withTitle(title)
+            withTitle(args.title)
             onHomePressedDefaultAction()
         }
     }

@@ -17,6 +17,19 @@ android {
         versionName = Release.versionName
         testInstrumentationRunner = Config.testInstrumentationRunner
     }
+
+    sourceSets {
+        getByName("main").res.srcDirs("$rootDir/core/src/main/sharedRes")
+    }
+
+    compileOptions {
+        sourceCompatibility = org.gradle.api.JavaVersion.VERSION_1_8
+        targetCompatibility = org.gradle.api.JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 androidExtensions {

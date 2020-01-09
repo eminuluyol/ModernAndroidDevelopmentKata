@@ -17,8 +17,7 @@ class FragmentToolbar private constructor(
         const val NO_TOOLBAR = -1
         const val NO_TITLE = -1
 
-        fun decorateToolbar(@IdRes resId: Int,
-                            func: FragmentToolbar.Builder.() -> Unit): FragmentToolbar {
+        fun decorateToolbar(@IdRes resId: Int, func: Builder.() -> Unit): FragmentToolbar {
             return Builder()
                 .withId(resId)
                 .apply(func)

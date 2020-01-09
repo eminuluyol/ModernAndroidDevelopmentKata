@@ -11,7 +11,6 @@ import Versions.materialComponentVersion
 import Versions.moshiVersion
 import Versions.navVersion
 import Versions.okhttpVersion
-import Versions.pagingVersion
 import Versions.retrofitVersion
 import Versions.roomVersion
 import Versions.stethoVersion
@@ -30,7 +29,6 @@ object CoreLibraries {
   const val roomCore = "androidx.room:room-runtime:$roomVersion"
   const val roomAnnotationProcessor =  "androidx.room:room-compiler:$roomVersion"
   const val roomCoroutinesSupport =  "androidx.room:room-ktx:$roomVersion"
-  const val paging = "androidx.paging:paging-runtime-ktx:$pagingVersion"
   const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:$navVersion"
   const val navigationUI = "androidx.navigation:navigation-ui-ktx:$navVersion"
 }

@@ -15,11 +15,11 @@ object Versions {
   /**
    * Dependency Versions
    */
-  const val gradleVersion = "3.5.0"
-  const val kotlinVersion = "1.3.50"
+  const val gradleVersion = "3.5.2"
+  const val kotlinVersion = "1.3.61"
   const val supportVersion = "1.0.0"
-  const val materialComponentVersion = "1.1.0-alpha10"
-  const val constraintLayoutVersion = "2.0.0-beta2"
+  const val materialComponentVersion = "1.1.0-alpha02"
+  const val constraintLayoutVersion = "2.0.0-alpha3"
   const val lifecycleExtensionVersion = "2.2.0-alpha05"
   const val coroutinesVersion = "1.3.1"
   const val ktxVersion = "1.0.1"
@@ -30,8 +30,7 @@ object Versions {
   const val retrofitVersion = "2.6.2"
   const val moshiVersion = "1.8.0"
   const val okhttpVersion = "4.2.0"
-  const val roomVersion = "2.2.0-rc01"
-  const val pagingVersion = "2.1.0-rc01"
-  const val navVersion = "2.2.0-alpha03"
+  const val roomVersion = "2.2.3"
+  const val navVersion = "2.2.0-rc04"
   const val stethoVersion = "1.5.0"
 }
