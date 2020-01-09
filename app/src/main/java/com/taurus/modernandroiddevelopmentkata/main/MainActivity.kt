@@ -11,13 +11,11 @@ import com.taurus.modernandroiddevelopmentkata.core.navigation.NavigationManager
 import com.taurus.modernandroiddevelopmentkata.core.navigation.NavigationViewModel
 import com.taurus.modernandroiddevelopmentkata.core.navigation.TabNavigationCommand
 import com.taurus.modernandroiddevelopmentkata.navigation.MainNavigator
-import kotlinx.android.synthetic.main.activity_main.bottomNavigationView
+import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
-val singleContainerTabs = true
-
 class MainActivity : BaseActivity<NavigationViewModel>(
-    if (singleContainerTabs) R.layout.activity_main_single_container else R.layout.activity_main,
+    R.layout.activity_main_single_container,
     NavigationViewModel::class.java
 ), BaseFragment.FragmentListener {
 
