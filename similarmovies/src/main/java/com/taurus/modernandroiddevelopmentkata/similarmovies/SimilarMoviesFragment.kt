@@ -5,8 +5,6 @@ import androidx.navigation.fragment.navArgs
 import com.taurus.details.R
 import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
-import com.taurus.modernandroiddevelopmentkata.detail.DetailFragmentArgs
-import com.taurus.modernandroiddevelopmentkata.similarmovies.SimilarMoviesFragmentArgs.fromBundle
 
 internal class SimilarMoviesFragment : BaseFragment<SimilarMoviesMachine>() {
 
