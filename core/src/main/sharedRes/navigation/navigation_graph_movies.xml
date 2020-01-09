@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     app:startDestination="@id/navigation_movies"
-    android:id="@+id/navigation_movies">
+    android:id="@+id/navigation_graph_movies">
 
     <fragment
         android:id="@id/navigation_movies"
@@ -19,7 +19,7 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_details"
+        android:id="@id/navigation_details"
         android:name="com.taurus.modernandroiddevelopmentkata.detail.DetailFragment"
         tools:layout="@layout/fragment_detail">
         <argument
@@ -32,7 +32,7 @@
 
     <!-- Navigating from one nested graph to another requires a global action -->
     <fragment
-        android:id="@+id/navigation_similar_movies"
+        android:id="@id/navigation_similar_movies"
         android:name="com.taurus.modernandroiddevelopmentkata.similarmovies.SimilarMoviesFragment"
         tools:layout="@layout/fragment_similar_movies">
         <argument

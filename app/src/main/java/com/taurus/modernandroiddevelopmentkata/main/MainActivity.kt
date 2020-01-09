@@ -44,10 +44,10 @@ class MainActivity : BaseActivity<NavigationViewModel>(
     private fun setupBottomNavigationBar() {
 
         val navGraphIds = listOf(
-            R.navigation.navigation_movies,
-            R.navigation.navigation_tv_series,
-            R.navigation.navigation_favourites,
-            R.navigation.navigation_profile
+            R.navigation.navigation_graph_movies,
+            R.navigation.navigation_graph_tv_series,
+            R.navigation.navigation_graph_favourites,
+            R.navigation.navigation_graph_profile
         )
 
         // Setup the bottom navigation view with a list of navigation graphs
@@ -72,7 +72,7 @@ class MainActivity : BaseActivity<NavigationViewModel>(
 
     private fun handleDeeplinkIntent(intent: Intent?) {
         // uncomment to simulate custom deep link handling
-        // navigationRouter.navigate(TabNavigationCommand(R.id.navigation_tv_series))
+        // navigationRouter.navigate(TabNavigationCommand(R.id.navigation_graph_tv_series))
         // navigationRouter.navigate(NavigateFromTvSeriesToDetails("from deep link"))
         // navigationRouter.navigate(NavigateFromDetailsToSimilarMovies("from deep link"))
     }
