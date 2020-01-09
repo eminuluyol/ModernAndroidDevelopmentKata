@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     app:startDestination="@id/navigation_movies"
-    android:id="@+id/navigation_graph">
+    android:id="@+id/navigation_movies">
 
     <fragment
         android:id="@id/navigation_movies"
@@ -17,29 +17,6 @@
                 app:argType="string" />
         </action>
     </fragment>
-
-    <fragment
-        android:id="@id/navigation_tv_series"
-        android:name="com.taurus.modernandroiddevelopmentkata.tvseries.TVSeriesFragment"
-        tools:layout="@layout/fragment_tv_series">
-        <action
-            android:id="@+id/navigate_to_details"
-            app:destination="@id/navigation_details">
-            <argument
-                android:name="title"
-                app:argType="string" />
-        </action>
-    </fragment>
-
-    <fragment
-        android:id="@id/navigation_favourites"
-        android:name="com.taurus.modernandroiddevelopmentkata.favourites.FavouriteFragment"
-        tools:layout="@layout/fragment_favourite" />
-
-    <fragment
-        android:id="@id/navigation_profile"
-        android:name="com.taurus.modernandroiddevelopmentkata.profile.ProfileFragment"
-        tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/navigation_details"

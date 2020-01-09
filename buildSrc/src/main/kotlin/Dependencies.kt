@@ -11,8 +11,6 @@ import Versions.materialComponentVersion
 import Versions.moshiVersion
 import Versions.navVersion
 import Versions.okhttpVersion
-import Versions.pagingVersion
-import Versions.retrofitCoroutinesAdapterVersion
 import Versions.retrofitVersion
 import Versions.roomVersion
 import Versions.stethoVersion
@@ -30,8 +28,7 @@ object CoreLibraries {
   const val lifeCycleAnnotationProcessor = "androidx.lifecycle:lifecycle-compiler:$lifecycleExtensionVersion"
   const val roomCore = "androidx.room:room-runtime:$roomVersion"
   const val roomAnnotationProcessor =  "androidx.room:room-compiler:$roomVersion"
-  const val roomCoroutinesSupport =  "androidx.room:room-coroutines:$roomVersion"
-  const val paging = "androidx.paging:paging-runtime-ktx:$pagingVersion"
+  const val roomCoroutinesSupport =  "androidx.room:room-ktx:$roomVersion"
   const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:$navVersion"
   const val navigationUI = "androidx.navigation:navigation-ui-ktx:$navVersion"
 }
@@ -42,7 +39,6 @@ object ExternalLibraries {
   const val daggerAnnotationProcessor = "com.google.dagger:dagger-android-processor:$daggerVersion"
   const val daggerCompiler ="com.google.dagger:dagger-compiler:$daggerVersion"
   const val retrofitCore = "com.squareup.retrofit2:retrofit:$retrofitVersion"
-  const val retrofitCoroutinesAdapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$retrofitCoroutinesAdapterVersion"
   const val retrofitMoshi = "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
   const val moshi = "com.squareup.moshi:moshi:$moshiVersion"
   const val okhttp = "com.squareup.okhttp3:okhttp:$okhttpVersion"

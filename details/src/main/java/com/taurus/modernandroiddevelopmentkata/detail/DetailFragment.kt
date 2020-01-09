@@ -1,11 +1,10 @@
 package com.taurus.modernandroiddevelopmentkata.detail
 
 import android.view.View
+import androidx.navigation.fragment.navArgs
 import com.taurus.details.R
 import com.taurus.modernandroiddevelopmentkata.core.BaseFragment
-import com.taurus.modernandroiddevelopmentkata.core.navigation.Navigator
 import com.taurus.modernandroiddevelopmentkata.core.toolbar.FragmentToolbar
-import com.taurus.modernandroiddevelopmentkata.detail.DetailFragmentArgs.fromBundle
 import com.taurus.modernandroiddevelopmentkata.detail.navigation.DetailsNavigator
 import com.taurus.modernandroiddevelopmentkata.detail.navigation.FromDetailsToSimilarMovies
 import kotlinx.android.synthetic.main.fragment_detail.showSimilarMoviesButton
@@ -16,10 +15,7 @@ internal class DetailFragment : BaseFragment<DetailStateMachine>() {
     @Inject
     internal lateinit var navigator: DetailsNavigator
 
-    private val title by lazy {
-        // required arg -> force non-nullability
-        fromBundle(arguments!!).title
-    }
+    private val args: DetailFragmentArgs by navArgs()
 
     override fun obtainViewModel() = DetailStateMachine::class.java
 
@@ -27,7 +23,7 @@ internal class DetailFragment : BaseFragment<DetailStateMachine>() {
 
     override fun toolbarBuilder(): FragmentToolbar {
         return FragmentToolbar.decorateToolbar(R.id.toolbar) {
-            withTitle(title)
+            withTitle(args.title)
             onHomePressedDefaultAction()
         }
     }
